@@ -23,8 +23,13 @@
   <link href="../images/webclip.jpg" rel="apple-touch-icon">
   <style>
     .slider-2 .w-slide img {
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 50%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 50%, transparent 100%);
+    }
+
+    .slider-2 {
+      height: 100vh !important;
+      min-height: 800px;
     }
   </style>
 </head>
@@ -101,12 +106,8 @@
       <div class="page-content">
         <section class="section">
           <div class="container top-margin---medium-space">
-            <div class="w-layout-grid grid">
-              <div id="w-node-c3f312d0-ac23-6497-a0f7-c078832ae03e-3424e3b8" class="divider top-margin---small-space">
-              </div>
-              <div id="w-node-c3f312d0-ac23-6497-a0f7-c078832ae03f-3424e3b8" class="section-title">
-                <div class="text-block-2">Sci-Fi short film created with unreal engine<br>‍</div>
-              </div>
+            <!-- Removed undesired text and graphics -->
+            <div class="w-layout-grid grid" style="display: none;">
             </div>
           </div>
         </section>
@@ -365,6 +366,102 @@
           src="https://cdn.jsdelivr.net/npm/@flowbase-co/boosters-before-after-slider@1/dist/before-after-slider.min.js"></script>
       </div>
     </div>
+    <div fb-before-after-start="50" fb-before-after="true" fb-before-after-direction="horizontal" class="bas-wrapper">
+      <img sizes="(max-width: 1920px) 100vw, 1920px" alt="" src="../images/lighting_before_2.png" loading="lazy"
+        class="bas-image-before">
+      <img class="bas-image-after-h" src="../images/lighting_after_2.png" fb-before-after-side="after" alt=""
+        sizes="(max-width: 1920px) 100vw, 1920px" loading="lazy">
+      <div fb-before-after-handle="true" class="bas-handle-h">
+        <div class="bas-icon-regular w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewbox="0 0 24 24" fill="none">
+            <path d="M17.25 7.25L22 12M22 12L17.25 16.75M22 12H2M6.75 7.25L2 12M2 12L6.75 16.75" stroke="currentColor"
+              stroke-width="1.5"></path>
+          </svg></div>
+      </div>
+      <div fb-before-after-line="true" class="bas-line-h"></div>
+      <div fb-before-after-label="before" class="bas-label-before-h">Before</div>
+      <div fb-before-after-label="after" class="bas-label-after-h">After</div>
+      <div class="booster-script w-embed w-script"><!--  Flowbase Booster [Before & After Slider]  -->
+        <script
+          src="https://cdn.jsdelivr.net/npm/@flowbase-co/boosters-before-after-slider@1/dist/before-after-slider.min.js"></script>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3 class="h3-heading-3"> <span class="text-color-gradient">Spaceship Modeling</span></h3>
+    <section class="section-large-8" style="padding-top: 2rem; padding-bottom: 2rem;">
+      <div class="container-large">
+        <div class="w-layout-grid grid-three-column">
+          <img src="../images/spaceship_1.png" loading="lazy" alt="Spaceship Model View 1"
+            style="width: 100%; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+          <img src="../images/spaceship_2.png" loading="lazy" alt="Spaceship Model View 2"
+            style="width: 100%; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+          <img src="../images/spaceship_3.png" loading="lazy" alt="Spaceship Model View 3"
+            style="width: 100%; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        </div>
+      </div>
+    </section>
+  </div>
+  <div>
+    <h3 class="h3-heading-3"> <span class="text-color-gradient">Character Modeling</span></h3>
+    <section class="section-large-8" style="padding-top: 2rem; padding-bottom: 2rem;">
+      <div class="container-large">
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: center;">
+          <!-- Left Column: Main Image -->
+          <div>
+            <img src="../images/character_modeling.png" loading="lazy" alt="Character Modeling Main"
+              onclick="openLightbox(this.src)"
+              style="width: 100%; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); cursor: pointer; transition: transform 0.3s ease;">
+          </div>
+          <!-- Right Column: 2x2 Grid of Detail Images -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <img src="../images/char_detail_1.png" loading="lazy" alt="Character Detail 1"
+              onclick="openLightbox(this.src)"
+              style="width: 100%; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.3s ease;">
+            <img src="../images/char_detail_2.png" loading="lazy" alt="Character Detail 2"
+              onclick="openLightbox(this.src)"
+              style="width: 100%; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.3s ease;">
+            <img src="../images/char_detail_3.png" loading="lazy" alt="Character Detail 3"
+              onclick="openLightbox(this.src)"
+              style="width: 100%; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.3s ease;">
+            <img src="../images/char_detail_4.png" loading="lazy" alt="Character Detail 4"
+              onclick="openLightbox(this.src)"
+              style="width: 100%; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.3s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Simple Lightbox Modal -->
+      <div id="lightboxModal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center;">
+        <span
+          style="position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer;"
+          onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImage"
+          style="margin: auto; display: block; max-width: 90%; max-height: 90%;">
+      </div>
+
+      <script>
+        function openLightbox(src) {
+          var modal = document.getElementById("lightboxModal");
+          var modalImg = document.getElementById("lightboxImage");
+          modal.style.display = "flex";
+          modalImg.src = src;
+        }
+
+        function closeLightbox() {
+          var modal = document.getElementById("lightboxModal");
+          modal.style.display = "none";
+        }
+
+        // Close when clicking outside the image
+        document.getElementById("lightboxModal").onclick = function (e) {
+          if (e.target !== document.getElementById("lightboxImage")) {
+            closeLightbox();
+          }
+        }
+      </script>
+    </section>
   </div>
   <div>
     <h3 class="h3-heading-3"> <span class="text-color-gradient">Fianl Cut</span></h3>
