@@ -1,0 +1,251 @@
+/* Premium Showcase Styles */
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.premium-card {
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.premium-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(163, 85, 247, 0.5);
+    /* Purple glow border */
+    box-shadow: 0 20px 40px -10px rgba(163, 85, 247, 0.2), 0 0 20px rgba(163, 85, 247, 0.1);
+    /* Purple ambient glow */
+}
+
+/* Subtle gradient border for default state */
+.premium-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    pointer-events: none;
+}
+
+.card-image-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.premium-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 24px;
+    position: relative;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+    z-index: 2;
+}
+
+.card-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: 'Inter Tight', sans-serif;
+}
+
+.card-tags {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.showcase-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+    .showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* Custom Large Button Variant */
+.button-primary-large {
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    color: #fff;
+    text-align: center;
+    background-color: #ffffff1f;
+    background-image: linear-gradient(#ffffff14, #8e78b014);
+    border: 1px solid #ffffff0f;
+    border-radius: 40px;
+    flex-direction: row;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding: 12px 32px;
+    /* Increased padding */
+    font-size: 16px;
+    /* Increased font size */
+    font-weight: 500;
+    line-height: 1.7;
+    transition: all .3s;
+    display: flex;
+    box-shadow: inset 0 .75px .75px #ffffff29, inset 0 0 1px #ffffff1f;
+    text-decoration: none;
+}
+
+.button-primary-large:hover {
+    background-color: #ffffff0f;
+}
+
+/* Ensure logos fit within the square without distortion */
+.logo-2 {
+    object-fit: contain;
+}
+
+/* Skillset Design Refinement */
+.skillset-gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Replaced gradient with image */
+    background-image: url('../images/Grid-Light_1-p-1600.png');
+    background-size: 80% auto;
+    /* Adjust size to be contained but wide enough */
+    background-position: center top;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.8;
+    /* Subtle transparency */
+}
+
+.skillset-title {
+    font-family: 'Inter Tight', sans-serif;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+    /* Add spacing below title */
+}
+
+.skill-icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-icon-box:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.logo-group {
+    position: relative;
+    z-index: 1;
+    gap: 16px;
+    /* Ensure gap between boxes */
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+.skill-tag-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-family: 'Inter Tight', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tag-box:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix for top light gap */
+.light-right-2,
+.light-left {
+    top: 0 !important;
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Scroll Reveal Animation */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for children if needed */
+.scroll-reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.scroll-reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.scroll-reveal-delay-3 {
+    transition-delay: 0.3s;
+}
