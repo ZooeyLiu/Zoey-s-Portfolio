@@ -22,6 +22,47 @@
   font-display: swap;
 }
 
+/* Google Sans Font Family */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/Google_Sans/static/GoogleSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/Google_Sans/static/GoogleSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/Google_Sans/static/GoogleSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/Google_Sans/static/GoogleSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/Google_Sans/static/GoogleSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --black: black;
   --text: #fff;
@@ -46,15 +87,26 @@
 body {
   background-color: var(--black);
   color: var(--text);
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 h1 {
   margin-top: 0;
   margin-bottom: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-weight: 500;
 }
 
 p {
@@ -4123,6 +4175,7 @@ blockquote {
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   display: grid;
+  margin-top: -10px;
 }
 
 .video-overlay {
@@ -4158,13 +4211,23 @@ blockquote {
   grid-row-gap: 4px;
   color: var(--text);
   text-align: center;
-  background-color: #905b2f87;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   padding: 24px;
   display: flex;
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
 }
 
 .button-slide-icon {
@@ -4389,6 +4452,22 @@ blockquote {
   background-image: url('../images/cv-1.png');
   background-position: 0 0;
   background-repeat: repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.body-7::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: none;
 }
 
 .image-12 {
@@ -5356,10 +5435,11 @@ blockquote {
 .blog-card-large {
   grid-column-gap: 12px;
   grid-row-gap: 12px;
-  background-color: #fff;
+  background-color: transparent;
   background-image: url('../images/截屏2024-08-23-18.46.28.png');
-  background-position: 0 0;
+  background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 16px;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr;
@@ -5370,14 +5450,16 @@ blockquote {
 
 .blog-card-large.bg1 {
   background-image: url('../images/截屏2024-08-23-18.49.19.png');
-  background-position: 50%;
+  background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .blog-card-large.bg2 {
   background-image: url('../images/cv-1.png');
-  background-position: 0 0;
+  background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .column-regular-3 {

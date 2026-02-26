@@ -3,31 +3,21 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #0f0f1a 100%);
+    background: transparent;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding-top: 80px;
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Google Sans', sans-serif;
     color: #fff;
 }
 
 /* Grid Background Effect */
+/* Grid Background Effect removed to match homepage */
 #projects-fan::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 /* Header */
@@ -49,6 +39,9 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    padding-bottom: 0.1em;
+    padding-top: 0.1em;
 }
 
 .projects-header .subtitle {
@@ -104,7 +97,7 @@
     justify-content: flex-end;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
     z-index: 2;
-    opacity: 0.8;
+    opacity: 1;
     transition: opacity 0.3s;
 }
 
@@ -118,6 +111,11 @@
 .project-card:not(.active) {
     /* Styles handled by JS for transform, but here defining fade */
     filter: brightness(0.6) blur(1px);
+}
+
+.playdate-inner {
+    background-size: 150% !important;
+    /* Scale up the gaming console image to match reference */
 }
 
 /* Hover Glint/Glow */
@@ -380,4 +378,74 @@
     color: #000;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Buttons */
+.projects-nav-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.projects-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    /* Circle for this section */
+}
+
+.projects-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.projects-nav-btn.prev {
+    left: 40px;
+}
+
+.projects-nav-btn.next {
+    right: 40px;
+}
+
+/* Ensure container doesn't overflow buttons too much */
+.cards-container {
+    width: calc(100% - 200px);
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .projects-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .projects-nav-btn.prev {
+        left: 10px;
+    }
+
+    .projects-nav-btn.next {
+        right: 10px;
+    }
+
+    .cards-container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }

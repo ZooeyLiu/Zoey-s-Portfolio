@@ -249,3 +249,16 @@
 .scroll-reveal-delay-3 {
     transition-delay: 0.3s;
 }
+
+/* Playdate Image Shrink Overrides */
+.playdate-inner {
+    background-size: 70% auto !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.playdate-img {
+    transform: scale(0.8) !important;
+    transform-origin: center center;
+    object-fit: contain !important;
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Echo — A Deep Space Derivative Short Film | Zoey Liu</title>
+    <meta name="description"
+        content="Echo is a derivative short film born from the Deep Space universe, completed in 48 hours. View the film, process, and behind-the-scenes work by Zoey Liu.">
+    <meta content="Echo — Zoey Liu" property="og:title">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="css/webflow.css" rel="stylesheet" type="text/css">
+    <link href="css/zoeyliu-portfolio-0205.webflow.css" rel="stylesheet" type="text/css">
+    <link href="css/custom-layout.css" rel="stylesheet" type="text/css">
+    <link href="css/echo.css" rel="stylesheet">
+
+    <!-- Favicon (reuse existing) -->
+    <link href="images/favicon.jpg" rel="shortcut icon" type="image/x-icon">
+</head>
+
+<body class="echo-page">
+
+    <!-- ============================================================
+       GLOBAL NAV (From index.html)
+       ============================================================ -->
+    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
+        role="banner" class="navbar-4 w-nav">
+        <div class="nav-container-lines-2">
+            <div class="nav-container">
+                <a id="w-node-_218f1848-a45b-370f-c75b-959ac68edfdd-3424e3b3" href="index.html"
+                    class="nav-logo w-nav-brand"><img width="170" sizes="(max-width: 479px) 85vw, 170px" alt=""
+                        src="images/ChatGPT-Image-2026年1月20日-13_23_09.png" loading="lazy"
+                        srcset="images/ChatGPT-Image-2026年1月20日-13_23_09-p-500.png 500w, images/ChatGPT-Image-2026年1月20日-13_23_09-p-800.png 800w, images/ChatGPT-Image-2026年1月20日-13_23_09-p-1080.png 1080w, images/ChatGPT-Image-2026年1月20日-13_23_09.png 1536w"
+                        class="image-16">
+                    <div class="navigation-line"></div>
+                </a>
+                <nav role="navigation" class="nav-menu w-nav-menu">
+                    <a href="index.html" class="navigation-link w-nav-link">Home</a>
+                    <a href="index.html#projects-fan" class="navigation-link w-nav-link">Work</a>
+                    <a href="#" class="navigation-link w-nav-link">Resume</a>
+                    <a href="#" class="navigation-link w-nav-link">Contact</a>
+                </nav>
+                <div id="w-node-_218f1848-a45b-370f-c75b-959ac68edfe7-3424e3b3" class="nav-button-group">
+                    <a href="index.html" target="_self" class="button-secondary-5 w-inline-block">
+                        <div class="button-5">
+                            <div>ZOEY.LIU</div>
+                        </div>
+                        <div class="button-background">
+                            <div class="button-bg w-embed">
+                                <style>
+                                    .button-secondary {
+                                        background: conic-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.32)) !important;
+                                        background: rgba(255, 255, 255, 0.12);
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="menu-button w-nav-button">
+                        <div class="w-icon-nav-menu"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="lines-group">
+                <div class="line-vertical-left"></div>
+                <div class="line-vertical-right"></div>
+                <div class="line-dot bottom-left"></div>
+                <div class="line-dot bottom-right"></div>
+            </div>
+        </div>
+        <div class="line-horizontal"></div>
+    </div>
+
+    <main>
+        <!-- ============================================================
+         TOC / CONTENTS — Anchor chip links
+         ============================================================ -->
+        <section class="echo-toc" id="contents">
+            <div class="echo-container">
+                <div class="echo-toc__label">Contents</div>
+                <div class="echo-toc__list" role="navigation" aria-label="Page contents">
+                    <a href="#film" class="echo-toc__chip">Film</a>
+                    <a href="#overview" class="echo-toc__chip">Overview</a>
+                    <a href="#process" class="echo-toc__chip">Process</a>
+                    <a href="#stills" class="echo-toc__chip">Stills</a>
+                    <a href="#credits" class="echo-toc__chip">Credits</a>
+                    <a href="#related" class="echo-toc__chip">Related</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         HERO
+         ============================================================ -->
+        <section class="echo-hero" id="hero">
+            <!-- Background video -->
+            <video class="echo-hero__bg-video" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+                <source src="images/Echo/EchoBG.mp4" type="video/mp4">
+            </video>
+            <div class="echo-hero__overlay"></div>
+            <div class="echo-container echo-hero__content">
+                <h1 class="echo-hero__title">Echo<br><span class="echo-hero__title-sub">the call of civilization</span>
+                </h1>
+
+                <!-- REPLACE: Subtitle — pick one or rewrite -->
+                <p class="echo-hero__subtitle">
+                    A derivative short film expanding the <em>Deep Space</em> universe — conceived and produced within
+                    48 hours.
+                </p>
+
+                <!-- REPLACE: Update role/timeframe/tools as needed -->
+                <div class="echo-hero__meta">
+                    <span class="echo-meta-tag"><span class="echo-meta-tag__label">Role</span> Director / Editor</span>
+                    <span class="echo-meta-tag"><span class="echo-meta-tag__label">Timeframe</span> 48 Hours</span>
+                    <span class="echo-meta-tag"><span class="echo-meta-tag__label">Tools</span> UE5 · Premiere · After
+                        Effects</span>
+                </div>
+
+                <div class="echo-hero__actions">
+                    <a href="#film" class="echo-btn echo-btn--primary">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 2.5v11l10-5.5L4 2.5z" fill="currentColor" />
+                        </svg>
+                        Watch Film
+                    </a>
+                    <a href="#process" class="echo-btn echo-btn--secondary">View Process</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         FILM — Video player (16:9)
+         ============================================================ -->
+        <section class="echo-film echo-section" id="film">
+            <div class="echo-container">
+                <span class="echo-section__label">01 — Film</span>
+                <div class="echo-film__player">
+                    <iframe src="https://www.youtube.com/embed/pGljucAbGu4?autoplay=0&rel=0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         OVERVIEW — Short bullet points
+         ============================================================ -->
+        <section class="echo-section" id="overview">
+            <div class="echo-container">
+                <span class="echo-section__label">02 — Overview</span>
+                <h2 class="echo-section__title">What Is Echo?</h2>
+                <!-- REPLACE: Update bullets with accurate project info -->
+                <ul class="echo-overview__list">
+                    <li>A standalone short film derived from the <em>Deep Space</em> project, exploring an alternate
+                        narrative thread within the same sci-fi universe.</li>
+                    <li>Produced under a 48-hour constraint as a rapid creative exercise — from script to final render.
+                    </li>
+                    <li>Themes of memory, identity, and resonance — the "echo" of choices made in <em>Deep Space</em>.
+                    </li>
+                    <li>Sole contributor: responsible for direction, editing, compositing, sound design, and color
+                        grading.</li>
+                    <li>Built entirely in Unreal Engine 5, reusing and extending assets from the parent project.</li>
+                </ul>
+
+                <!-- Software Toolbar -->
+                <div class="echo-software-toolbar">
+                    <img src="LOGO/Maya.png" alt="Maya" class="echo-software-icon" title="Autodesk Maya">
+                    <img src="LOGO/UE.png" alt="Unreal Engine" class="echo-software-icon" title="Unreal Engine 5">
+                    <div class="echo-software-text" title="Motion Capture">MoCap</div>
+                    <div class="echo-software-text" title="Autodesk 3ds Max">3Ds Max</div>
+                    <img src="LOGO/AE.png" alt="After Effects" class="echo-software-icon" title="Adobe After Effects">
+                    <img src="LOGO/FCP.png" alt="Final Cut Pro" class="echo-software-icon" title="Final Cut Pro">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         PROCESS — Image grid with lightbox
+         ============================================================ -->
+        <section class="echo-section" id="process">
+            <div class="echo-container">
+                <span class="echo-section__label">03 — Process</span>
+                <h2 class="echo-section__title">Behind the Scenes</h2>
+                <div class="echo-process__grid">
+
+                    <!-- REPLACE: Swap src/alt for each process image.
+               Place images at images/echo/process-01.jpg etc. -->
+
+                    <figure class="echo-process__item" data-lightbox>
+                        <img src="images/echo/process-01.jpg" alt="Script and storyboard planning" loading="lazy">
+                        <figcaption class="echo-process__caption">Script & Storyboard</figcaption>
+                    </figure>
+
+                    <figure class="echo-process__item" data-lightbox>
+                        <img src="images/echo/process-02.jpg" alt="Scene blockout in Unreal Engine" loading="lazy">
+                        <figcaption class="echo-process__caption">Scene Blockout</figcaption>
+                    </figure>
+
+                    <figure class="echo-process__item" data-lightbox>
+                        <img src="images/echo/process-03.jpg" alt="Lighting setup and iteration" loading="lazy">
+                        <figcaption class="echo-process__caption">Lighting Setup</figcaption>
+                    </figure>
+
+                    <figure class="echo-process__item" data-lightbox>
+                        <img src="images/echo/process-04.jpg" alt="Camera animation and sequencer work" loading="lazy">
+                        <figcaption class="echo-process__caption">Camera & Sequencer</figcaption>
+                    </figure>
+
+                    <figure class="echo-process__item" data-lightbox>
+                        <img src="images/echo/process-05.jpg" alt="Post-production compositing" loading="lazy">
+                        <figcaption class="echo-process__caption">Compositing</figcaption>
+                    </figure>
+
+                    <figure class="echo-process__item" data-lightbox>
+                        <img src="images/echo/process-06.jpg" alt="Color grading and final output" loading="lazy">
+                        <figcaption class="echo-process__caption">Color Grading</figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         STILLS — Horizontal scroll gallery
+         ============================================================ -->
+        <section class="echo-section" id="stills">
+            <div class="echo-container">
+                <span class="echo-section__label">04 — Stills</span>
+                <h2 class="echo-section__title">Selected Frames</h2>
+            </div>
+            <!-- Full-bleed scroll track -->
+            <div class="echo-container">
+                <div class="echo-stills__wrapper" style="position: relative;">
+                    <!-- Navigation Arrows -->
+                    <button class="echo-stills__nav echo-stills__nav--prev" aria-label="Previous Slide">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="echo-stills__track" id="stillsTrack">
+                        <div class="echo-stills__item" data-lightbox>
+                            <img src="images/Echo/1.png" alt="Echo film still 1" loading="lazy">
+                        </div>
+                        <div class="echo-stills__item" data-lightbox>
+                            <img src="images/Echo/2.png" alt="Echo film still 2" loading="lazy">
+                        </div>
+                        <div class="echo-stills__item" data-lightbox>
+                            <img src="images/Echo/3.png" alt="Echo film still 3" loading="lazy">
+                        </div>
+                        <div class="echo-stills__item" data-lightbox>
+                            <img src="images/Echo/4.png" alt="Echo film still 4" loading="lazy">
+                        </div>
+                        <div class="echo-stills__item" data-lightbox>
+                            <img src="images/Echo/5.png" alt="Echo film still 5" loading="lazy">
+                        </div>
+                    </div>
+
+                    <button class="echo-stills__nav echo-stills__nav--next" aria-label="Next Slide">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         CREDITS — Roles & tools card
+         ============================================================ -->
+        <section class="echo-section" id="credits">
+            <div class="echo-container">
+                <span class="echo-section__label">05 — Credits</span>
+                <h2 class="echo-section__title">My Contribution</h2>
+                <div class="echo-credits__card">
+                    <!-- REPLACE: Add or remove tags to match your actual roles -->
+                    <div class="echo-credits__row">
+                        <span class="echo-credit-tag">Direction</span>
+                        <span class="echo-credit-tag">Editing</span>
+                        <span class="echo-credit-tag">3D Modeling</span>
+                        <span class="echo-credit-tag">Scene Composition</span>
+                        <span class="echo-credit-tag">Lighting</span>
+                        <span class="echo-credit-tag">Rendering</span>
+                        <span class="echo-credit-tag">Compositing</span>
+                        <span class="echo-credit-tag">Color Grading</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         RELATED — Link to Deep Space
+         ============================================================ -->
+        <section class="echo-section" id="related">
+            <div class="echo-container">
+                <span class="echo-section__label">06 — Related</span>
+                <h2 class="echo-section__title">Parent Project</h2>
+                <a href="deep-space.html" class="echo-related__card">
+                    <div class="echo-related__thumb">
+                        <!-- Reuses existing Deep Space cover image -->
+                        <img src="images/CG00007970_1.png" alt="Deep Space project thumbnail" loading="lazy">
+                    </div>
+                    <div class="echo-related__info">
+                        <h3>Deep Space</h3>
+                        <p>Echo is a derivative short film — a spin-off expanding the world and narrative of <em>Deep
+                                Space</em>, a sci-fi short created with UE5.</p>
+                    </div>
+                    <span class="echo-related__arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================================
+         CTA FOOTER
+         ============================================================ -->
+        <section class="echo-cta">
+            <div class="echo-container">
+                <div class="echo-cta__buttons">
+                    <a href="index.html#projects-fan" class="echo-btn echo-btn--primary">Back to Projects</a>
+                    <a href="index.html" class="echo-btn echo-btn--secondary">Back Home</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================
+       BACK TO CONTENTS BAR — Fixed bottom, scroll-triggered
+       ============================================================ -->
+    <div class="echo-back-bar" id="backBar" role="complementary" aria-label="Back to contents">
+        <button class="echo-back-bar__btn" id="backBarBtn" type="button">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 12V4M8 4L4 8M8 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            Back to Contents
+        </button>
+    </div>
+
+    <!-- ============================================================
+       LIGHTBOX OVERLAY
+       ============================================================ -->
+    <div class="echo-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="echo-lightbox__close" id="lightboxClose" aria-label="Close image viewer">&times;</button>
+        <img class="echo-lightbox__img" id="lightboxImg" src="" alt="">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="js/webflow.js" type="text/javascript"></script>
+    <script src="js/echo.js"></script>
+</body>
+
+</html>
