@@ -86,12 +86,29 @@
                 </div>
 
                 <div class="cta-row">
-                    <a href="#results" class="btn-primary">Watch Demo</a>
-                    <a href="#systems" class="btn-secondary">See Systems</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Software Toolbar Added per Request -->
+    <div
+        style="background-color: transparent; margin: 40px auto; padding: 0 20px; display: flex; justify-content: center;">
+        <div class="echo-software-toolbar"
+            style="max-width: 1128px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 40px; opacity: 1; flex-wrap: wrap;">
+            <img src="LOGO/UE.png" alt="Unreal Engine"
+                style="height: 48px; width: auto; object-fit: contain; filter: invert(100%); opacity: 0.8;"
+                title="Unreal Engine 5">
+            <img src="LOGO/Maya.png" alt="Maya" style="height: 48px; width: auto; object-fit: contain; opacity: 0.8;"
+                title="Autodesk Maya">
+            <img src="LOGO/ZB.png" alt="ZBrush" style="height: 48px; width: auto; object-fit: contain; opacity: 0.8;"
+                title="ZBrush">
+            <img src="LOGO/pt.png" alt="Substance Painter"
+                style="height: 48px; width: auto; object-fit: contain; opacity: 0.8;" title="Substance Painter">
+            <img src="LOGO/AE.png" alt="After Effects"
+                style="height: 48px; width: auto; object-fit: contain; opacity: 0.8;" title="Adobe After Effects">
+        </div>
+    </div>
 
     <!-- 2) What I Built -->
     <section class="section-std">
@@ -143,11 +160,16 @@
     <!-- 3) Core Loop -->
     <section class="section-std">
         <div class="container-custom core-loop-container">
-            <h2>Core Loop</h2>
-            <p class="loop-intro">Design cycle balancing exploration risk with creative building rewards.</p>
-            <div class="loop-diagram">
+            <h2 class="text-center">Core Loop</h2>
+            <p class="loop-intro" style="text-align:center;">Design cycle balancing exploration risk with creative
+                building rewards.</p>
+            <div class="loop-diagram" onclick="openLightbox('images/Find Way Home/gameloop.png')"
+                style="cursor: zoom-in;">
                 <img src="images/Find Way Home/gameloop.png" alt="Core Loop Diagram"
                     style="height: auto; width: auto; max-width: 100%;">
+                <div
+                    style="text-align:center; margin-top:6px; font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.05em;">
+                    Click to enlarge</div>
             </div>
             <div class="loop-nodes">
                 <span class="node-chip">Explore</span>
@@ -163,8 +185,8 @@
     <!-- 3.5) Flowchart -->
     <section class="section-std">
         <div class="container-custom core-loop-container">
-            <h2>Flowchart</h2>
-            <p class="loop-intro">Technical flow of game logic and state management.</p>
+            <h2 class="text-center">Flowchart</h2>
+            <p class="loop-intro" style="text-align:center;">Technical flow of game logic and state management.</p>
             <div class="loop-diagram">
                 <img src="images/Find Way Home/loop.png" alt="Game Flowchart"
                     style="height: auto; width: auto; max-width: 100%;">
@@ -182,8 +204,8 @@
     <!-- 3.6) Modeling -->
     <section class="section-std">
         <div class="container-custom core-loop-container">
-            <h2>Modeling</h2>
-            <p class="loop-intro">3D asset creation for characters and environment.</p>
+            <h2 class="text-center">Modeling</h2>
+            <p class="loop-intro" style="text-align:center;">3D asset creation for characters and environment.</p>
             <div class="loop-diagram"
                 style="padding: 0; min-height: 0; background: none; border: none; overflow: hidden; display: block; line-height: 0;">
                 <img src="images/Find Way Home/Modeling.png" alt="3D Modeling"
@@ -209,18 +231,43 @@
         <div class="container-custom">
             <h2 class="text-center">Character Pipeline</h2>
 
-            <div class="pipeline-flow">
-                <span class="pipeline-step">Modeling</span>
-                <span class="pipeline-arrow">→</span>
-                <span class="pipeline-step">Rigging</span>
-                <span class="pipeline-arrow">→</span>
-                <span class="pipeline-step">Animation</span>
-                <span class="pipeline-arrow">→</span>
-                <span class="pipeline-step">Animation Blend in UE</span>
+            <!-- Mind-map style pipeline flow -->
+            <div
+                style="display:flex; justify-content:center; align-items:center; gap:0; flex-wrap:wrap; margin:32px auto 40px; max-width:900px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                    <div
+                        style="padding:10px 22px; border-radius:8px; border:1.5px solid rgba(240,192,64,0.7); background:rgba(240,192,64,0.08); color:#f0c040; font-size:13px; font-weight:600; letter-spacing:0.07em; white-space:nowrap;">
+                        Modeling</div>
+                    <div style="width:2px; height:0;"></div>
+                </div>
+                <div
+                    style="width:32px; height:2px; background:linear-gradient(90deg,rgba(240,192,64,0.5),rgba(240,192,64,0.5)); flex-shrink:0; margin-bottom:2px;">
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                    <div
+                        style="padding:10px 22px; border-radius:8px; border:1.5px solid rgba(240,192,64,0.7); background:rgba(240,192,64,0.08); color:#f0c040; font-size:13px; font-weight:600; letter-spacing:0.07em; white-space:nowrap;">
+                        Rigging</div>
+                </div>
+                <div
+                    style="width:32px; height:2px; background:linear-gradient(90deg,rgba(240,192,64,0.5),rgba(240,192,64,0.5)); flex-shrink:0; margin-bottom:2px;">
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                    <div
+                        style="padding:10px 22px; border-radius:8px; border:1.5px solid rgba(240,192,64,0.7); background:rgba(240,192,64,0.08); color:#f0c040; font-size:13px; font-weight:600; letter-spacing:0.07em; white-space:nowrap;">
+                        Animation</div>
+                </div>
+                <div
+                    style="width:32px; height:2px; background:linear-gradient(90deg,rgba(240,192,64,0.5),rgba(240,192,64,0.5)); flex-shrink:0; margin-bottom:2px;">
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                    <div
+                        style="padding:10px 22px; border-radius:8px; border:1.5px solid rgba(255,255,255,0.4); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.85); font-size:13px; font-weight:600; letter-spacing:0.07em; white-space:nowrap;">
+                        Animation Blend in UE</div>
+                </div>
             </div>
 
             <!-- New Single Row Design -->
-            <div class="pipeline-strip">
+            <div class="pipeline-strip" style="justify-content: center;">
                 <!-- Group 1: Modeling -->
                 <div class="pipeline-group">
                     <span class="group-label">Modeling</span>
@@ -260,6 +307,135 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Second Pipeline Row: Character Details -->
+            <div class="pipeline-strip" style="margin-top: 32px; justify-content: center;">
+                <!-- Group 1: Modeling (Placeholder) -->
+                <div class="pipeline-group">
+                    <span class="group-label">Modeling</span>
+                    <div class="pipeline-images-row">
+                        <div class="pipeline-img-card">
+                            <img src="images/Find Way Home/1_1.png" alt="Cat Character Modeling">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 2: Rigging -->
+                <div class="pipeline-group">
+                    <span class="group-label">Rigging</span>
+                    <div class="pipeline-images-row">
+                        <div class="pipeline-img-card">
+                            <img src="images/Find Way Home/c2.1.png" alt="Rigging Detail 1">
+                        </div>
+                        <div class="pipeline-img-card">
+                            <img src="images/Find Way Home/c2.2.png" alt="Rigging Detail 2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 3: Animation -->
+                <div class="pipeline-group">
+                    <span class="group-label">Animation</span>
+                    <div class="pipeline-images-row">
+                        <div class="pipeline-img-card">
+                            <img src="images/Find Way Home/r5.png" alt="Animation r5">
+                        </div>
+                        <div class="pipeline-img-card">
+                            <img src="images/Find Way Home/r6.png" alt="Animation r6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.8) Animation Blend in UE -->
+    <section class="section-std">
+        <div class="container-custom">
+            <h2 class="text-center">Animation Blend in UE</h2>
+            <p class="loop-intro" style="text-align:center;">Speed-driven Blend Space transitioning seamlessly between
+                Idle, Walk, and Run — wired through the Animation Blueprint.</p>
+
+            <!-- Blend States: Idle → Walk → Run -->
+            <div
+                style="display:flex; align-items:flex-start; justify-content:center; gap:24px; margin-bottom:40px; flex-wrap:wrap;">
+
+                <!-- Idle -->
+                <div
+                    style="flex:1; min-width:220px; max-width:340px; display:flex; flex-direction:column; align-items:center; gap:10px;">
+                    <div
+                        style="width:100%; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+                        <img src="images/Find Way Home/AnimationBlend/idle.png" alt="Idle State"
+                            style="width:100%; display:block;">
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                        <span
+                            style="font-size:13px; font-weight:600; color:#f0c040; letter-spacing:0.08em; text-transform:uppercase;">Idle</span>
+                        <span style="font-size:11px; color:rgba(255,255,255,0.45);">Speed ≈ 0</span>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div
+                    style="display:flex; align-items:center; padding-top:60px; color:rgba(255,255,255,0.3); font-size:22px;">
+                    →</div>
+
+                <!-- Walk -->
+                <div
+                    style="flex:1; min-width:220px; max-width:340px; display:flex; flex-direction:column; align-items:center; gap:10px;">
+                    <div
+                        style="width:100%; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+                        <img src="images/Find Way Home/AnimationBlend/walk.png" alt="Walk State"
+                            style="width:100%; display:block;">
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                        <span
+                            style="font-size:13px; font-weight:600; color:#f0c040; letter-spacing:0.08em; text-transform:uppercase;">Walk</span>
+                        <span style="font-size:11px; color:rgba(255,255,255,0.45);">Speed ≈ 175</span>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div
+                    style="display:flex; align-items:center; padding-top:60px; color:rgba(255,255,255,0.3); font-size:22px;">
+                    →</div>
+
+                <!-- Run -->
+                <div
+                    style="flex:1; min-width:220px; max-width:340px; display:flex; flex-direction:column; align-items:center; gap:10px;">
+                    <div
+                        style="width:100%; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+                        <img src="images/Find Way Home/AnimationBlend/run.png" alt="Run State"
+                            style="width:100%; display:block;">
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                        <span
+                            style="font-size:13px; font-weight:600; color:#f0c040; letter-spacing:0.08em; text-transform:uppercase;">Run</span>
+                        <span style="font-size:11px; color:rgba(255,255,255,0.45);">Speed ≈ 500</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blueprint section label -->
+            <p
+                style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); text-align:center; margin-bottom:16px;">
+                Animation Blueprint</p>
+
+            <!-- Two Blueprint screenshots side by side -->
+            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:32px;">
+                <div
+                    style="flex:1; min-width:280px; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+                    <img src="images/Find Way Home/AnimationBlend/截屏2023-08-27 16.49.29.png"
+                        alt="Event Graph - Update Animation Speed" style="width:100%; display:block;">
+                </div>
+                <div
+                    style="flex:1; min-width:280px; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+                    <img src="images/Find Way Home/AnimationBlend/截屏2023-08-27 16.49.52.png"
+                        alt="Anim Graph - Blendspace Player" style="width:100%; display:block;">
+                </div>
+            </div>
+
+
         </div>
     </section>
 
@@ -270,13 +446,16 @@
                 <div class="tab-nav">
                     <button class="tab-btn active" onclick="openTab('adventure')">Adventure Mode</button>
                     <button class="tab-btn" onclick="openTab('island')">My Island</button>
+                    <button class="tab-btn" onclick="openTab('interaction')">Interaction</button>
                 </div>
 
                 <!-- Tab A -->
                 <div id="adventure" class="tab-content active">
                     <div class="tab-media">
-                        <img src="images/Find Way Home/idle1.png" alt="Adventure Mode Idle"
+                        <video autoplay loop muted playsinline
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <source src="images/Find Way Home/mechanic_explore.m4v" type="video/mp4">
+                        </video>
                     </div>
                     <div class="tab-details">
                         <div class="tab-bullets">
@@ -286,22 +465,16 @@
                                 <li>Threat/pressure moments (e.g., hostile NPC)</li>
                             </ul>
                         </div>
-                        <div class="ui-strip"
-                            style="background: none; border: none; height: auto; gap: 10px; justify-content: flex-start; overflow-x: auto;">
-                            <!-- Using f-series images for the strip as they likely represent features/frames -->
-                            <img src="images/Find Way Home/f1.png" style="height: 80px; border-radius: 8px;">
-                            <img src="images/Find Way Home/f2_1.png" style="height: 80px; border-radius: 8px;">
-                            <img src="images/Find Way Home/f3..png" style="height: 80px; border-radius: 8px;">
-                            <img src="images/Find Way Home/f5.png" style="height: 80px; border-radius: 8px;">
-                        </div>
                     </div>
                 </div>
 
                 <!-- Tab B -->
                 <div id="island" class="tab-content">
                     <div class="tab-media">
-                        <img src="images/Find Way Home/ISLAND_MEDIA.png" alt="Island Mode Creation"
+                        <video autoplay loop muted playsinline
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <source src="images/Find Way Home/myisland.m4v" type="video/mp4">
+                        </video>
                     </div>
                     <div class="tab-details">
                         <div class="tab-bullets">
@@ -311,11 +484,24 @@
                                 <li>Unlock new structures via Adventure progress</li>
                             </ul>
                         </div>
-                        <div class="ui-strip"
-                            style="background: none; border: none; height: auto; gap: 10px; justify-content: flex-start; overflow-x: auto;">
-                            <img src="images/Find Way Home/f6.png" style="height: 80px; border-radius: 8px;">
-                            <img src="images/Find Way Home/f7.png" style="height: 80px; border-radius: 8px;">
-                            <img src="images/Find Way Home/f5.2.png" style="height: 80px; border-radius: 8px;">
+                    </div>
+                </div>
+
+                <!-- Tab C -->
+                <div id="interaction" class="tab-content">
+                    <div class="tab-media">
+                        <video autoplay loop muted playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <source src="images/Find Way Home/interaction.m4v" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="tab-details">
+                        <div class="tab-bullets">
+                            <ul>
+                                <li>NPC dialogue and interaction system</li>
+                                <li>Context-sensitive prompts and responses</li>
+                                <li>Branching conversation triggers quest events</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -323,35 +509,6 @@
         </div>
     </section>
 
-    <!-- 5) Systems Deep Dive -->
-    <section id="systems" class="section-std">
-        <div class="container-custom">
-            <h2>Systems Deep Dive</h2>
-            <div class="systems-grid">
-                <!-- Card A -->
-                <div class="system-card">
-                    <h3>Energy + Weather</h3>
-                    <div class="system-rule">Rule: Energy drains faster in rain/night.</div>
-                    <div class="system-micro">Why: Adds environmental pressure</div>
-                    <div class="system-media">[SYS_ENERGY_WEATHER_GIF]</div>
-                </div>
-                <!-- Card B -->
-                <div class="system-card">
-                    <h3>Economy</h3>
-                    <div class="system-rule">Rule: Surreal objects cost Adventure Points.</div>
-                    <div class="system-micro">Why: Links the two gameplay loops</div>
-                    <div class="system-media">[SYS_ENERGY_POINTS_GIF]</div>
-                </div>
-                <!-- Card C -->
-                <div class="system-card">
-                    <h3>Random Rewards</h3>
-                    <div class="system-rule">Rule: Chance for rare loot on task complete.</div>
-                    <div class="system-micro">Why: incentivizes replay & mastery</div>
-                    <div class="system-media">[SYS_RANDOM_REWARD_GIF]</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 6) Context (Optional) -->
     <section class="section-std">
@@ -368,44 +525,63 @@
         </div>
     </section>
 
-    <!-- 7) Results -->
-    <section id="results" class="section-std">
-        <div class="container-custom">
-            <div class="results-grid">
-                <div class="results-media">
-                    <!-- [RESULTS_VIDEO] -->
-                    <div class="hero-placeholder">30-60s GAMEPLAY MONTAGE</div>
-                </div>
-                <div class="results-content">
-                    <h2>Results</h2>
-                    <ul class="takeaways">
-                        <li>Successfully implemented persistent cross-mode data storage.</li>
-                        <li>Optimized dynamic lighting for performant day/night cycles.</li>
-                        <li>Created a modular interaction system for scalable NPC design.</li>
-                    </ul>
-                    <div class="cta-group">
-                        <a href="#" class="btn-primary">Download Build</a>
-                        <a href="#" class="btn-secondary">View Repo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 8) Footer -->
-    <footer class="footer-custom">
-        <div class="container-custom">
-            <p>ziyu.liu@duke.edu</p>
-            <div class="social-icons">
-                <div class="social-icon"></div>
-                <div class="social-icon"></div>
+    <!-- Content Button -->
+    <div style="text-align:center; margin: 60px auto 0;">
+        <a href="index.html#projects-fan"
+            style="display:inline-block; padding:14px 36px; border-radius:50px; border:1px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.85); font-size:14px; font-weight:500; letter-spacing:0.06em; text-decoration:none; transition:background 0.2s, border-color 0.2s;"
+            onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='rgba(255,255,255,0.5)';"
+            onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.25)';">
+            ← View All Content
+        </a>
+    </div>
+
+    <!-- FOOTER MINIMAL -->
+    <div class="footer-minimal"
+        style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 40px 0; margin-top: 80px; font-family: 'Google Sans', sans-serif;">
+        <div
+            style="max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="color: rgba(255, 255, 255, 0.8); font-size: 14px;">
+                <strong style="color: #fff; font-size: 16px; margin-right: 20px;">Zoey Liu</strong>
+                <a href="mailto:ziyu.liu@duke.edu"
+                    style="color: inherit; text-decoration: none; transition: opacity 0.2s;"
+                    onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">ziyu.liu@duke.edu</a>
             </div>
-            <p class="copyright">© 2026 Zoey Liu. All Rights Reserved.</p>
+            <div
+                style="display: flex; gap: 24px; align-items: center; color: rgba(255, 255, 255, 0.6); font-size: 14px;">
+                <a href="https://www.linkedin.com/in/zoey-liu2002" target="_blank"
+                    style="color: inherit; text-decoration: none; transition: color 0.2s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255, 255, 255, 0.6)'">LinkedIn</a>
+                <a href="resume.html" style="color: inherit; text-decoration: none; transition: color 0.2s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255, 255, 255, 0.6)'">Resume</a>
+                <span>© 2026 Zoey Liu. All Rights Reserved.</span>
+            </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox-overlay" onclick="closeLightbox()"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; cursor:zoom-out; align-items:center; justify-content:center;">
+        <img id="lightbox-img" src="" alt=""
+            style="max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 8px 60px rgba(0,0,0,0.6);">
+    </div>
 
     <script src="js/webflow.js" type="text/javascript"></script>
     <script>
+        function openLightbox(src) {
+            const overlay = document.getElementById('lightbox-overlay');
+            document.getElementById('lightbox-img').src = src;
+            overlay.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox-overlay').style.display = 'none';
+        }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
         function openTab(tabName) {
             // Hide all tabs
             const contents = document.querySelectorAll('.tab-content');

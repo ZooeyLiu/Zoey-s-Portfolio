@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "images/截屏2023-08-26-20.47.50.png",
             tags: ["UE5", "C++", "Systems Design"],
             bgColor: "linear-gradient(180deg, rgba(20,50,100,0.4) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "center 80%", // Shifts the image up to show more of the bottom geometry
+            bgPosition: "center 60%", // Shifts the image up to show more of the bottom geometry
             link: "find-the-way-home.html"
         },
         {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: "Sci-Fi 3D Animation created in Unreal Engine 5",
             category: "Animation / Unreal Engine / motion capture",
             description: "An exploration of Niagara particle systems and chaos physics in Unreal Engine 5, creating realistic destruction and gravity manipulation effects.",
-            image: "images/CG00007970_1-p-800.png",
+            image: "images/DeepSpaceScene/cardDS.png",
             tags: ["UE5", "Niagara", "Chaos Physics"],
             bgColor: "linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(0,0,0,0) 100%)",
             bgPosition: "center 10%",
@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: "Various Projects",
             category: "Miscellaneous",
             description: "A collection of other creative works, experiments, and technical explorations.",
-            image: "images/placeholder.png",
-            tags: ["Various"],
+            image: "images/OtherWorks/graffiti.jpg",
+            tags: ["Graphic", "Branding"],
             bgColor: "linear-gradient(180deg, rgba(50,50,50,0.4) 0%, rgba(0,0,0,0) 100%)",
-            link: "content.html"
+            link: "other-works.html"
         }
     ];
 

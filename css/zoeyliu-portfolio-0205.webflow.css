@@ -22,6 +22,23 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Aquire';
+  src: url('../fonts/aquire-font/Aquire-BW0ox.otf') format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Progress';
+  src: url('../fonts/progress-font/ProgressPersonalUse-EaJdz.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* Google Sans Font Family */
 @font-face {
   font-family: 'Google Sans';
@@ -5124,7 +5141,7 @@ blockquote {
 }
 
 .footer-card.large {
-  width: 50%;
+  width: 52%;
   margin-bottom: 64px;
   margin-left: -126px;
   transform: rotate(-5deg);
@@ -5132,14 +5149,14 @@ blockquote {
 
 .footer-card.medium {
   z-index: 1;
-  width: 40%;
+  width: 60%;
   position: relative;
   transform: rotate(10deg);
 }
 
 .footer-card.small {
   z-index: 2;
-  width: 30%;
+  width: 36%;
   margin-bottom: 24px;
   margin-right: -48px;
   position: relative;

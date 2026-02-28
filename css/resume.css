@@ -1,0 +1,369 @@
+/* =========================================================================
+   Resume Page Specific Styles
+   Combines modern recruiter-skim layout with portfolio's dark/glassmorphic aesthetics
+   ========================================================================= */
+
+.resume-page-wrapper {
+    padding: 120px 5% 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- HERO SECTION --- */
+.resume-hero {
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resume-title-wrap {
+    margin-bottom: 24px;
+}
+
+.resume-name {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.resume-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+.resume-summary {
+    max-width: 800px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 32px;
+}
+
+.resume-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.resume-btn.primary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.resume-btn.primary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.resume-btn.secondary {
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid transparent;
+}
+
+.resume-btn.secondary:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- LAYOUT SPLIT --- */
+.resume-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 320px) 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.resume-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.resume-main {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* --- SECTION STYLES --- */
+.resume-section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+}
+
+.resume-section-title::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* --- SKILLS CHIPS --- */
+.skill-category {
+    margin-bottom: 20px;
+}
+
+.skill-category-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 12px;
+}
+
+.skill-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-chip {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
+}
+
+.skill-chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- EXPERIENCE TIMELINE --- */
+.exp-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 24px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.exp-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(25px, 25px, 25px, 1);
+    /* Matches dark bg to cut out line */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exp-item:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.exp-role {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.exp-company {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.exp-date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: monospace;
+    /* Gives a technical feel */
+    letter-spacing: -0.02em;
+}
+
+.exp-summary {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.exp-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.exp-bullets li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    position: relative;
+    padding-left: 16px;
+}
+
+.exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: monospace;
+}
+
+.exp-bullets strong {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* --- MINI PROJECT CARDS --- */
+.resume-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.mini-project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.mini-project-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+}
+
+.mini-p-title {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.mini-p-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.mini-p-tech {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: monospace;
+}
+
+/* --- LISTS (Edu & Awards) --- */
+.resume-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.resume-list li {
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.resume-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.resume-list-title {
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.resume-list-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media screen and (max-width: 991px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .resume-sidebar {
+        position: relative;
+        top: 0;
+        gap: 32px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .resume-page-wrapper {
+        padding-top: 100px;
+    }
+
+    .resume-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .resume-btn {
+        text-align: center;
+    }
+
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}

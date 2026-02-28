@@ -823,9 +823,11 @@ ul {
         align-items: stretch;
     }
 }
+
 /* ---------- Software Toolbar ---------- */
 .echo-software-toolbar {
     display: flex;
+    justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
     align-items: stretch;
@@ -837,14 +839,10 @@ ul {
     height: 44px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%) brightness(200%);
-    opacity: 0.7;
     transition: all var(--echo-duration) var(--echo-ease);
 }
 
 .echo-software-icon:hover {
-    filter: grayscale(0%) brightness(100%);
-    opacity: 1;
     transform: translateY(-2px);
 }
 
@@ -862,15 +860,11 @@ ul {
     font-family: var(--echo-font);
     height: 44px;
     box-sizing: border-box;
-    filter: grayscale(100%) brightness(200%);
-    opacity: 0.7;
     transition: all var(--echo-duration) var(--echo-ease);
     cursor: default;
 }
 
 .echo-software-text:hover {
-    filter: grayscale(0%) brightness(100%);
-    opacity: 1;
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.3);
