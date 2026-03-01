@@ -254,11 +254,11 @@
 .playdate-inner {
     background-size: 70% auto !important;
     background-repeat: no-repeat !important;
-    background-position: center center !important;
+    background-position: calc(50% + 20px) center !important;
 }
 
 .playdate-img {
-    transform: scale(0.8) !important;
+    transform: scale(0.8) translateX(25px) !important;
     transform-origin: center center;
     object-fit: contain !important;
 }

@@ -1,25 +1,27 @@
 /* Other Works Page specifically */
 
 .hero-others {
-    padding: 220px 20px 100px;
+    padding: 400px 20px 260px;
+    min-height: 700px;
     max-width: 100%;
     margin: 0;
     text-align: center;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url('../images/OtherWorks/graffiti.jpg');
+    background-color: #0d0008;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%), url('../images/OtherWorks/34.JPG');
     background-size: cover;
-    background-position: center 40%;
+    background-position: center 30%;
     background-repeat: no-repeat;
 }
 
 .hero-others h1 {
-    font-size: 4rem;
+    font-size: 4.6rem;
     margin-bottom: 20px;
     font-family: 'Google Sans', sans-serif;
     color: white;
 }
 
 .hero-others p {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 40px;
     font-family: 'Inter Tight', sans-serif;
@@ -29,6 +31,10 @@
     max-width: 1200px;
     margin: 0 auto 120px;
     padding: 0 20px;
+}
+
+.section-others:first-of-type {
+    margin-top: 80px;
 }
 
 .section-title {

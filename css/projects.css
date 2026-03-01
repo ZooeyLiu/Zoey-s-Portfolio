@@ -115,6 +115,7 @@
 
 .playdate-inner {
     background-size: 150% !important;
+    background-position: calc(50% + 25px) center !important;
     /* Scale up the gaming console image to match reference */
 }
 
