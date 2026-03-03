@@ -25,19 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "find-the-way-home.html"
         },
         {
-            id: 3,
-            title: "Deep Space",
-            subtitle: "Sci-Fi 3D Animation created in Unreal Engine 5",
-            category: "Animation / Unreal Engine / motion capture",
-            description: "An exploration of Niagara particle systems and chaos physics in Unreal Engine 5, creating realistic destruction and gravity manipulation effects.",
-            image: "images/DeepSpaceScene/cardDS.png",
-            tags: ["UE5", "Niagara", "Chaos Physics"],
-            bgColor: "linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "center 10%",
-            bgSize: "140%",
-            link: "deep-space.html"
-        },
-        {
             id: 4,
             title: "Into the Unknown",
             subtitle: "First Person Mystery Game",
@@ -61,16 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "adventure-of.html"
         },
         {
-            id: 6,
-            title: "Playdate Demo",
-            subtitle: "Handheld Game Dev",
-            category: "Game Dev / Lua",
-            description: "A game developed for the Playdate console using Lua and the Playdate SDK.",
-            image: "images/Playdate/game%20control_2.png",
-            tags: ["Lua", "Playdate", "Game Dev"],
-            bgColor: "linear-gradient(180deg, rgba(255,200,50,0.2) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "40% 65%", // Pulled down horizontally a bit to move image right, pulled up vertically to move image up
-            link: "playdate-demo.html"
+            id: 3,
+            title: "Deep Space",
+            subtitle: "Sci-Fi 3D Animation created in Unreal Engine 5",
+            category: "Animation / Unreal Engine / motion capture",
+            description: "An exploration of Niagara particle systems and chaos physics in Unreal Engine 5, creating realistic destruction and gravity manipulation effects.",
+            image: "images/DeepSpaceScene/cardDS.png",
+            tags: ["UE5", "Niagara", "Chaos Physics"],
+            bgColor: "linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(0,0,0,0) 100%)",
+            link: "deep-space.html"
+        },
+        {
+            id: 8,
+            title: "Echo",
+            subtitle: "The call of civilization",
+            category: "Short Film",
+            description: "A derivative short film expanding the Deep Space universe — conceived and produced within 48 hours.",
+            image: "images/Echo/3.png",
+            tags: ["UE5", "Premiere", "After Effects"],
+            bgColor: "linear-gradient(180deg, rgba(30,30,40,0.4) 0%, rgba(0,0,0,0) 100%)",
+            link: "echo.html"
         },
         {
             id: 7,
@@ -84,15 +81,29 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "pizza-delivery.html"
         },
         {
-            id: 8,
-            title: "Echo",
-            subtitle: "The call of civilization",
-            category: "Short Film",
-            description: "A derivative short film expanding the Deep Space universe — conceived and produced within 48 hours.",
-            image: "images/Echo/3.png",
-            tags: ["UE5", "Premiere", "After Effects"],
-            bgColor: "linear-gradient(180deg, rgba(30,30,40,0.4) 0%, rgba(0,0,0,0) 100%)",
-            link: "echo.html"
+            id: 6,
+            title: "Playdate Demo",
+            subtitle: "Handheld Game Dev",
+            category: "Game Dev / Lua",
+            description: "A game developed for the Playdate console using Lua and the Playdate SDK.",
+            image: "images/Playdate/game%20control_2.png",
+            tags: ["Lua", "Playdate", "Game Dev"],
+            bgColor: "linear-gradient(180deg, rgba(255,200,50,0.2) 0%, rgba(0,0,0,0) 100%)",
+            bgPosition: "40% 65%", // Pulled down horizontally a bit to move image right, pulled up vertically to move image up
+            link: "playdate-demo.html"
+        },
+        {
+            id: 10,
+            title: "Athlete Training Portal",
+            subtitle: "Web Application",
+            category: "Front-End Development",
+            description: "A comprehensive training portal for athletes.",
+            image: "images/ATP/atp_logo_tagline.png",
+            tags: ["React", "Web App", "Front-End"],
+            bgColor: "linear-gradient(180deg, rgba(20,80,60,0.4) 0%, rgba(0,0,0,0) 100%)",
+            bgSize: "80%",
+            bgPosition: "center",
+            link: "https://athletic-training-portal-front-end.vercel.app"
         },
         {
             id: 9,
@@ -126,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const bgSize = project.bgSize || 'cover';
 
             const isVideo = project.image && project.image.endsWith('.mp4');
-            const bgStyle = isVideo ? '' : `background-image: url('${project.image}'); background-size: ${bgSize}; background-position: ${bgPos};`;
+            const bgStyle = isVideo ? '' : `background-image: url('${project.image}'); background-size: ${bgSize}; background-position: ${bgPos}; background-repeat: no-repeat;`;
             const videoElement = isVideo ? `<video class="fan-card-bg-video" autoplay loop muted playsinline src="${project.image}" style="position: absolute; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 0; pointer-events: none;"></video>` : '';
 
             const isPlaydate = project.title === 'Playdate Demo';

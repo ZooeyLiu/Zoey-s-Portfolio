@@ -38,6 +38,22 @@
   <style>
     /* Playdate Demo Specific Styles */
     /* Playdate Demo Specific Styles */
+
+    /* Body Background Override for Playdate Demo */
+    body.body-playdate {
+      background-color: #111 !important;
+      background-image:
+        url('images/Hero-Right_1Hero Right.webp'),
+        url('images/Hero-Left_1Hero Left.webp') !important;
+      background-position:
+        right -116px top 40px,
+        left 0 top 0 !important;
+      background-size:
+        min(80vw, 1440px) auto,
+        min(80vw, 1440px) auto !important;
+      background-repeat: no-repeat, no-repeat !important;
+    }
+
     #playdate-canvas-container canvas {
       display: block;
       outline: none;
@@ -140,15 +156,7 @@
     </div>
   </div>
 
-  <div class="home-lights">
-    <div class="light-wrap"><img width="760" sizes="(max-width: 767px) 100vw, 760px" alt=""
-        src="images/Hero-Right_1Hero Right.webp" loading="lazy"
-        srcset="images/Hero-Right_1-p-500.png 500w, images/Hero-Right_1-p-800.png 800w, images/Hero-Right_1-p-1080.png 1080w, images/Hero-Right_1Hero Right.webp 1440w"
-        class="light-right"><img width="1440" sizes="(max-width: 1440px) 100vw, 1440px" alt=""
-        src="images/Hero-Left_1Hero Left.webp" loading="lazy"
-        srcset="images/Hero-Left_1-p-500.png 500w, images/Hero-Left_1-p-800.png 800w, images/Hero-Left_1-p-1080.png 1080w, images/Hero-Left_1Hero Left.webp 1440w"
-        class="light-left"></div>
-  </div>
+
 
   <!-- Hero Section -->
   <div style="display: flex; height: 80vh; max-width: 1200px; margin: 0 auto; align-items: center;">

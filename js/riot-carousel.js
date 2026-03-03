@@ -21,13 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
             platforms: ['ue5', 'cpp']
         },
         {
-            title: "Deep Space",
-            category: "3D Animation",
-            image: "images/CG00008361.png",
-            link: "deep-space.html",
-            platforms: ['ue5', 'maya']
-        },
-        {
             title: "Into Unknown",
             category: "Mystery Game",
             image: "images/cover-into-the-unknown.png",
@@ -42,11 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
             platforms: ['maya', 'cgi']
         },
         {
-            title: "Playdate",
-            category: "Handheld Game",
-            image: "images/Playdate/game%20control_2.png",
-            link: "playdate-demo.html",
-            platforms: ['lua', 'sdk']
+            title: "Deep Space",
+            category: "3D Animation",
+            image: "images/CG00008361.png",
+            link: "deep-space.html",
+            platforms: ['ue5', 'maya']
+        },
+        {
+            title: "Echo",
+            category: "Short Film",
+            image: "images/Echo/3.png",
+            link: "echo.html",
+            platforms: ['ue5', 'maya'] // Assuming UE5 based on 3D text
         },
         {
             title: "Pizza Delivery",
@@ -56,11 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
             platforms: ['ue5', 'cpp']
         },
         {
-            title: "Echo",
-            category: "Short Film",
-            image: "images/Echo/3.png",
-            link: "echo.html",
-            platforms: ['ue5', 'maya'] // Assuming UE5 based on 3D text
+            title: "Playdate",
+            category: "Handheld Game",
+            image: "images/Playdate/game%20control_2.png",
+            link: "playdate-demo.html",
+            platforms: ['lua', 'sdk']
+        },
+        {
+            title: "Athlete Training Portal",
+            category: "Graphic Engineer/",
+            image: "images/ATP/atp_logo_tagline.png",
+            link: "https://athletic-training-portal-front-end.vercel.app",
+            platforms: ['react', 'web'], // Add appropriate platform icons or default
+            bgSize: "90%",
+            bgPosition: "center"
         }
     ];
 
@@ -108,10 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </svg>
         `).join('');
 
-        const isVideo = project.image && project.image.endsWith('.mp4');
+        const isPlaydate = project.title === 'Playdate' || project.title === 'Playdate Demo';
+        const bgPos = project.bgPosition || 'center';
+        const bgSize = project.bgSize || 'cover';
         const bgElement = isVideo
             ? `<video class="riot-card-bg-video" autoplay loop muted playsinline src="${project.image}"></video>`
-            : `<div class="riot-card-inner ${isPlaydate ? 'playdate-inner' : ''}" style="background-image: url('${project.image}')">`;
+            : `<div class="riot-card-inner ${isPlaydate ? 'playdate-inner' : ''}" style="background-image: url('${project.image}'); background-position: ${bgPos}; background-size: ${bgSize}; background-repeat: no-repeat;">`;
 
         card.innerHTML = `
             ${isVideo ? `<div class="riot-card-inner">` : bgElement}
