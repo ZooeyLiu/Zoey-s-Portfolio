@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: "The call of civilization",
             category: "Short Film",
             description: "A derivative short film expanding the Deep Space universe — conceived and produced within 48 hours.",
-            image: "images/Echo/3.png",
+            image: "images/Echo/3.png", imageClass: "echo-inner",
             tags: ["UE5", "Premiere", "After Effects"],
             bgColor: "linear-gradient(180deg, rgba(30,30,40,0.4) 0%, rgba(0,0,0,0) 100%)",
             link: "echo.html"
@@ -141,8 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const videoElement = isVideo ? `<video class="fan-card-bg-video" autoplay loop muted playsinline src="${project.image}" style="position: absolute; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; z-index: 0; pointer-events: none;"></video>` : '';
 
             const isPlaydate = project.title === 'Playdate Demo';
+            const isEcho = project.title === 'Echo';
             card.innerHTML = `
-                <div class="card-inner ${isPlaydate ? 'playdate-inner' : ''}" style="${bgStyle}">
+                <div class="card-inner ${isPlaydate ? 'playdate-inner' : ''} ${isEcho ? 'echo-inner' : ''}" style="${bgStyle}">
                     ${videoElement}
                     <div class="card-overlay" style="background: ${project.bgColor}; position: absolute; inset: 0; opacity: 0.6; z-index: 1; border-radius: inherit;"></div>
                     <div class="card-content" style="position: relative; z-index: 2;">
@@ -197,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Base transformations
             let rotateY = 0;
             let rotateZ = 0;
-            let translateX = offset * 130; // Spacing
+            let translateX = offset * 180; // Spacing (Increased from 130 to 180)
             let translateZ = -absOffset * 150; // Depth
             let scale = 1 - (absOffset * 0.15);
             let opacity = 1 - (absOffset * 0.1);
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Left side
                 rotateY = 25; // Turn towards center
                 rotateZ = -4;
-                translateX = offset * 160 + 40; // Compress slightly
+                translateX = offset * 210 + 40; // Compress slightly (Increased from 160)
                 if (absOffset >= 3) {
                     translateX += (absOffset - 2) * 50; // pull outer cards closer to center
                 }
@@ -215,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Right side
                 rotateY = -25;
                 rotateZ = 4;
-                translateX = offset * 160 - 40;
+                translateX = offset * 210 - 40; // Increased from 160
                 if (absOffset >= 3) {
                     translateX -= (absOffset - 2) * 50; // pull outer cards closer to center
                 }

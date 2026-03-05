@@ -1374,9 +1374,19 @@ blockquote {
   left: auto;
 }
 
+
 .grid-three-column.ittuk {
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
 }
+.grid-three-column.ittuk > .cta-card-outline {
+  flex: 1;
+  min-width: 0;
+}
+
 
 .image-cover {
   box-sizing: border-box;
@@ -7628,6 +7638,10 @@ blockquote {
 }
 
 @media screen and (max-width: 991px) {
+  .grid-three-column.ittuk {
+    flex-direction: column !important;
+  }
+
   .top-margin---medium-space {
     margin-top: 80px;
   }
@@ -9117,6 +9131,10 @@ blockquote {
 }
 
 @media screen and (max-width: 991px) {
+  .grid-three-column.ittuk {
+    flex-direction: column !important;
+  }
+
 
   #w-node-_6ef6758b-f825-835e-5ae5-426c0747d4f1-3424e3b3,
   #w-node-_218f1848-a45b-370f-c75b-959ac68ee116-3424e3b3 {
