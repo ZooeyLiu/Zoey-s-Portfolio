@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Virtual Actor — Project Card Blockout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-nav">
+    <a class="brand" href="#">ZOEY.</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#">Home</a>
+      <a href="#selected">Work</a>
+      <a href="#">Resume</a>
+      <a href="#">Contact</a>
+    </nav>
+    <span class="nav-pill">ZOEY.LIU</span>
+  </header>
+
+  <div class="review-banner">
+    <span><strong>BLOCKOUT 01</strong> · Selected Works card + open state</span>
+    <a href="case-study-blockout.html">Open detail-page blockout →</a>
+  </div>
+
+  <main class="blockout-shell" id="selected">
+    <header class="card-review-head">
+      <span class="eyebrow">Tech Art / AI Pipeline / Tool Development</span>
+      <h1>Selected Works</h1>
+      <p>The proposed card sits near the front of the carousel because it is the strongest bridge between technical art, production tooling, and real-time character work.</p>
+    </header>
+
+    <section class="fan-stage" aria-label="Project card placement preview">
+      <article class="fan-card fan-card--far-left" aria-hidden="true">
+        <div class="placeholder-art"></div>
+        <div class="fan-card__wash"></div>
+        <div class="fan-card__body">
+          <span class="fan-card__tag">Interactive Design</span>
+          <h3>Existing Work</h3>
+          <p>Current portfolio card</p>
+        </div>
+      </article>
+
+      <article class="fan-card fan-card--left" aria-hidden="true">
+        <div class="placeholder-art"></div>
+        <div class="fan-card__wash"></div>
+        <div class="fan-card__body">
+          <span class="fan-card__tag">Game Dev</span>
+          <h3>Existing Work</h3>
+          <p>Current portfolio card</p>
+        </div>
+      </article>
+
+      <a class="fan-card fan-card--hero" href="#open-state" aria-label="Open AI Virtual Actor card preview">
+        <img class="fan-card__image" src="assets/plugin-ui.png" alt="AI Virtual Actor tool running inside Maya">
+        <div class="fan-card__wash"></div>
+        <div class="fan-card__body">
+          <span class="fan-card__tag">AI Tools / Maya / Unreal</span>
+          <h2>AI Virtual Actor</h2>
+          <p>From character image and voice to engine-ready facial animation.</p>
+        </div>
+      </a>
+
+      <article class="fan-card fan-card--right" aria-hidden="true">
+        <div class="placeholder-art"></div>
+        <div class="fan-card__wash"></div>
+        <div class="fan-card__body">
+          <span class="fan-card__tag">Animation / UE5</span>
+          <h3>Existing Work</h3>
+          <p>Current portfolio card</p>
+        </div>
+      </article>
+
+      <article class="fan-card fan-card--far-right" aria-hidden="true">
+        <div class="placeholder-art"></div>
+        <div class="fan-card__wash"></div>
+        <div class="fan-card__body">
+          <span class="fan-card__tag">Short Film</span>
+          <h3>Existing Work</h3>
+          <p>Current portfolio card</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="card-open-state" id="open-state" aria-label="Static modal open state">
+      <div class="card-open-state__visual">
+        <img src="assets/result-comparison.png" alt="Comparison of actor capture and AI facial capture results">
+      </div>
+      <div class="card-open-state__copy">
+        <span class="section-label">Card open state</span>
+        <div class="tag-list" aria-label="Project tags">
+          <span class="tag">Maya</span>
+          <span class="tag">ComfyUI</span>
+          <span class="tag">Unreal Engine</span>
+          <span class="tag">Python</span>
+        </div>
+        <h2>AI Virtual Actor</h2>
+        <h3>Character-aware facial animation, built for a production pipeline.</h3>
+        <p>I designed and developed an end-to-end workflow that converts a character image, voice, and structured performance direction into a generated performance and engine-ready facial animation data.</p>
+        <div class="button-row">
+          <a class="button button--primary" href="case-study-blockout.html">View Case Study</a>
+          <a class="button" href="#selected">Back to Card</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Project-card blockout · Content and hierarchy for review · No production files modified</footer>
+</body>
+</html>
