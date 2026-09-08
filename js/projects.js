@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const projectsData = [
         {
+            id: 0,
+            title: "AI Virtual Actor",
+            subtitle: "AI Facial Capture Pipeline & Maya Plugin",
+            category: "AI Tools / Tech Art / Pipeline",
+            description: "An end-to-end AI facial animation pipeline that converts a character image, voice, and structured performance direction into engine-ready facial animation data — all from inside Maya. The tool integrates ComfyUI orchestration, cloud generation, facial solving, and MetaHuman handoff into one repeatable workflow.",
+            image: "ai-virtual-actor-blockout/assets/plugin-ui.png",
+            tags: ["ComfyUI", "Maya", "Unreal Engine", "Python", "MetaHuman"],
+            bgColor: "linear-gradient(180deg, rgba(255,173,37,0.35) 0%, rgba(100,50,180,0.2) 50%, rgba(0,0,0,0) 100%)",
+            bgPosition: "60% center",
+            link: "ai-virtual-actor.html"
+        },
+        {
             id: 1,
             title: "Shaman",
             subtitle: "The Call of Alien Civilization",
