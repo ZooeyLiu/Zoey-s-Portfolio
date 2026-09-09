@@ -6,7 +6,7 @@
   <title>AI Virtual Actor Tool— AI Facial Capture Pipeline | Zoey Liu</title>
   <meta name="description"
     content="An end-to-end AI facial animation pipeline and Maya plugin that converts character images and voice into engine-ready facial animation data for MetaHuman and Unreal Engine.">
-  <meta content="AI Virtual Actor | Zoey Liu" property="og:title">
+  <meta content="AI Virtual Actor Tool | Zoey Liu" property="og:title">
   <meta content="AI facial capture pipeline bridging ComfyUI, Maya, and Unreal Engine." property="og:description">
   <meta content="ai-virtual-actor-blockout/assets/result-comparison.png" property="og:image">
   <meta content="AI Virtual Actor | Zoey Liu" property="twitter:title">
@@ -144,7 +144,7 @@
     }
 
     .ava-chapter-divider__inner {
-      max-width: 600px;
+      max-width: 950px;
       margin: 0 auto;
     }
 
@@ -153,13 +153,33 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       margin: 16px 0;
-      color: var(--ava-text);
+      background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-bottom: 0.1em;
     }
 
     .ava-chapter-divider p {
       font-size: 1.05rem;
       color: var(--ava-muted);
       line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .ava-chapter-divider p {
+        white-space: nowrap;
+      }
+    }
+
+    .ava-glow-bar {
+      width: 700px;
+      max-width: 90%;
+      height: 2px;
+      margin: 0 auto 40px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #ffd08a, #ffad25, #ff756f, #9e8cff);
+      box-shadow: 0 4px 20px rgba(255, 173, 37, 0.5), 0 4px 20px rgba(158, 140, 255, 0.4);
     }
 
     /* ——— Shared ——— */
@@ -181,7 +201,7 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       color: var(--ava-orange-soft);
       font-family: var(--ava-mono);
       font-size: 0.74rem;
@@ -211,6 +231,11 @@
       letter-spacing: -0.025em;
       line-height: 1.2;
       margin: 0;
+      background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-bottom: 0.1em;
     }
 
     .ava-section-head p {
@@ -223,13 +248,13 @@
     /* ——— HERO ——— */
     .ava-hero {
       position: relative;
-      min-height: 85vh;
+      min-height: auto;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       margin: 0 auto;
-      padding: 80px 8vw 60px;
+      padding: 0 8vw 60px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -271,6 +296,11 @@
       letter-spacing: -0.04em;
       line-height: 1.1;
       margin: 0 0 8px;
+      background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-bottom: 0.1em;
     }
 
     .ava-hero h1 span {
@@ -280,21 +310,21 @@
       color: var(--ava-muted);
       letter-spacing: -0.01em;
       line-height: 1.5;
-      margin-top: 12px;
+      margin-top: 4px;
     }
 
     .ava-hero__lede {
       max-width: 640px;
       font-size: 1rem;
       color: var(--ava-muted);
-      margin: 20px 0 28px;
+      margin: 12px 0 20px;
     }
 
     .ava-meta-list {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .ava-meta-chip {
@@ -306,7 +336,7 @@
       font-family: var(--ava-mono);
       font-size: 0.72rem;
       font-weight: 540;
-      color: var(--ava-muted);
+      color: var(--ava-text);
       letter-spacing: 0.02em;
     }
 
@@ -355,7 +385,7 @@
       display: flex;
       align-items: center;
       gap: 48px;
-      margin: 80px auto 0;
+      margin: 50px auto 0;
     }
 
     .ava-toolbar__item {
@@ -395,6 +425,10 @@
 
     .ava-toolbar__item--ue:hover img {
       filter: brightness(0) invert(1) opacity(1);
+    }
+
+    .ava-toolbar__item--python img {
+      transform: scale(0.85);
     }
 
     /* ——— Comfy Workflow Component (Image based) ——— */
@@ -575,17 +609,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--ava-surface-strong);
       margin-bottom: 16px;
-      font-size: 1.2rem;
+      font-size: 2rem;
     }
 
     .ava-flow-node .node-icon img {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       object-fit: contain;
     }
 
@@ -772,11 +802,13 @@
       overflow: hidden;
       border: 1px solid var(--ava-line);
       background: var(--ava-surface);
-      transition: border-color 0.3s;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .ava-media-frame:hover {
       border-color: var(--ava-line-strong);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, 0.55);
     }
 
     .ava-media-frame img {
@@ -798,9 +830,9 @@
     /* ——— Split Feature ——— */
     .ava-split-feature {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: start;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 36px;
+      align-items: center;
     }
 
     .ava-feature-copy {
@@ -817,7 +849,7 @@
     .ava-feature-copy p {
       font-size: 0.92rem;
       color: var(--ava-muted);
-      margin: 0 0 24px;
+      margin: 0 0 12px;
     }
 
     .ava-step-list {
@@ -831,7 +863,7 @@
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      padding: 16px 0;
+      padding: 10px 0;
       border-bottom: 1px solid var(--ava-line);
     }
 
@@ -1231,6 +1263,93 @@
         gap: 10px;
       }
     }
+
+    /* ——— Language Toggle Switcher ——— */
+    .ava-lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      cursor: pointer;
+      font-family: var(--ava-mono);
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .ava-lang-toggle:hover {
+      border-color: rgba(255, 173, 37, 0.6);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 16px rgba(255, 173, 37, 0.2);
+    }
+
+    .ava-lang-opt {
+      transition: color 0.2s ease, font-weight 0.2s ease, text-shadow 0.2s ease;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .ava-lang-opt.active {
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 173, 37, 0.7);
+    }
+
+    .ava-lang-divider {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 0.75rem;
+    }
+
+    .ava-floating-lang {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 30px;
+      background: rgba(14, 14, 18, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 173, 37, 0.15);
+      cursor: pointer;
+      font-family: var(--ava-mono);
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+
+    .ava-floating-lang:hover {
+      transform: translateY(-3px) scale(1.03);
+      border-color: var(--ava-cyan);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.7), 0 0 24px rgba(101, 217, 255, 0.3);
+    }
+
+    #tech-details .ava-section-head {
+      display: block !important;
+      text-align: left !important;
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    #tech-details .ava-section-head h2,
+    #tech-details .ava-section-head p {
+      text-align: left !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+      display: block !important;
+      width: 100% !important;
+    }
   </style>
 </head>
 
@@ -1247,10 +1366,10 @@
           <div class="navigation-line"></div>
         </a>
         <nav role="navigation" class="nav-menu w-nav-menu">
-          <a href="index.html" class="navigation-link w-nav-link">Home</a>
-          <a href="index.html#projects-fan" class="navigation-link w-nav-link">Work</a>
-          <a href="resume.html" class="navigation-link w-nav-link">Resume</a>
-          <a href="mailto:ziyu.liu@duke.edu" class="navigation-link w-nav-link">Contact</a>
+          <a href="index.html" class="navigation-link w-nav-link" data-i18n="nav.home">Home</a>
+          <a href="index.html#projects-fan" class="navigation-link w-nav-link" data-i18n="nav.work">Work</a>
+          <a href="resume.html" class="navigation-link w-nav-link" data-i18n="nav.resume">Resume</a>
+          <a href="mailto:ziyu.liu@duke.edu" class="navigation-link w-nav-link" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-button-group">
           <a href="index.html" target="_self" class="button-secondary-3 w-inline-block">
@@ -1283,21 +1402,23 @@
     <section class="ava-hero" id="hero">
       <div class="ava-hero__grid">
         <div class="ava-hero__content">
-          <span class="ava-eyebrow">Technical Art · AI Pipeline · DCC Tooling</span>
-          <h1>AI Virtual Actor<span>From a character still to engine-ready facial animation</span></h1>
-          <p class="ava-hero__lede">An end-to-end workflow and Maya tool that turns a character image, voice, and
-            structured performance direction into a generated performance — then solves it back into facial animation
-            data
-            for Maya and Unreal Engine.</p>
+          <span class="ava-eyebrow" data-i18n="hero.eyebrow">Technical Art · AI Pipeline · DCC Tooling</span>
+          <h1 data-i18n="hero.title">AI Virtual Actor<span>From a character still to engine-ready facial
+              animation</span></h1>
+          <p class="ava-hero__lede" data-i18n="hero.lede">An end-to-end workflow and Maya tool that turns a character
+            image, voice, and structured performance direction into a generated performance — then solves it back into
+            facial animation data for Maya and Unreal Engine.</p>
           <div class="ava-meta-list">
-            <span class="ava-meta-chip">Role · Technical Artist / Tool Developer</span>
-            <span class="ava-meta-chip">System · Maya · ComfyUI · Unreal Engine</span>
-            <span class="ava-meta-chip">Focus · Facial Animation Pipeline</span>
-            <span class="ava-meta-chip">2026 · R&amp;D Prototype</span>
+            <span class="ava-meta-chip" data-i18n="hero.chip1">Pipeline · AI Generative Pipeline</span>
+            <span class="ava-meta-chip" data-i18n="hero.chip2">Tooling · DCC & Engine Plugins</span>
+            <span class="ava-meta-chip" data-i18n="hero.chip3">Backend · Cloud Services</span>
+            <span class="ava-meta-chip" data-i18n="hero.chip4">Model · LoRA Training</span>
+            <span class="ava-meta-chip" data-i18n="hero.chip5">★ Patented</span>
+            <span class="ava-meta-chip" data-i18n="hero.chip6">● For Tencent Internal Use</span>
           </div>
           <div class="ava-btn-row">
-            <a class="ava-btn ava-btn--primary" href="#system">Explore the Pipeline</a>
-            <a class="ava-btn" href="#tool">See the Tool</a>
+            <a class="ava-btn" href="#chapter-comfyui" data-i18n="hero.btnExplore">Explore the Pipeline</a>
+            <a class="ava-btn" href="#tool" data-i18n="hero.btnTool">See the Tool</a>
           </div>
         </div>
         <div class="ava-hero__image-wrapper">
@@ -1308,66 +1429,111 @@
         <span class="ava-toolbar__item ava-toolbar__item--comfy"><img src="LOGO/comfyui.png" alt="ComfyUI"></span>
         <span class="ava-toolbar__item"><img src="LOGO/Maya.png" alt="Maya"></span>
         <span class="ava-toolbar__item ava-toolbar__item--ue"><img src="LOGO/UE.png" alt="Unreal Engine"></span>
-        <span class="ava-toolbar__item ava-toolbar__item--python"><img src="LOGO/python.png" alt="Python"></span>
+        <span class="ava-toolbar__item ava-toolbar__item--python"><img src="LOGO/python-logo-only.svg"
+            alt="Python"></span>
       </div>
     </section>
 
     <!-- DEMO VIDEO & PLUGIN OVERVIEW -->
     <div class="ava-chapter-divider ava-wrap ava-reveal" id="plugin-overview-divider"
-      style="margin-bottom: 40px; padding: 20px 0;">
-      <div class="ava-chapter-divider__inner" style="margin-bottom: 24px;">
-        <h2 style="margin: 0;">Plugin Overview</h2>
+      style="margin-top: 50px; margin-bottom: 50px; padding: 0;">
+      <div class="ava-chapter-divider__inner" style="margin-bottom: 36px;">
+        <div class="ava-glow-bar"></div>
+        <h2 style="margin: 0;" data-i18n="plugin.title">Plugin Overview</h2>
+        <p style="margin-top: 10px;" data-i18n="plugin.subtitle">编排模型、提示词与训练数据，从静态角色生成面部表演。</p>
       </div>
 
+      <!-- 03 · TOOL -->
+      <section class="ava-section ava-reveal" id="tool"
+        style="padding-top: 10px; padding-bottom: 40px; border-bottom: none; text-align: left; width: 100%;">
+        <div class="ava-section-head" style="padding-top: 0; margin-bottom: 24px; text-align: left;">
+          <div>
+            <h2 data-i18n="tool.title">The pipeline lives inside Maya.</h2>
+          </div>
+        </div>
+
+        <div class="ava-split-feature">
+          <figure class="ava-media-frame">
+            <img src="ai-virtual-actor-blockout/assets/plugin-ui.png"
+              alt="AI Virtual Actor tool embedded in Maya viewport">
+          </figure>
+          <div class="ava-feature-copy">
+            <span class="ava-eyebrow" data-i18n="tool.eyebrow">Four artist-facing steps</span>
+            <h3 data-i18n="tool.head">Install once. Generate without leaving the scene.</h3>
+            <p data-i18n="tool.desc">The plugin is packaged as a productized Maya shelf tool with bundled media
+              utilities and automated environment checks.</p>
+            <ol class="ava-step-list">
+              <li data-i18n="tool.step1"><span>01</span>
+                <div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.
+                </div>
+              </li>
+              <li data-i18n="tool.step2"><span>02</span>
+                <div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion,
+                  intensity, and output path.</div>
+              </li>
+              <li data-i18n="tool.step3"><span>03</span>
+                <div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and
+                  poll the cloud task without blocking Maya.</div>
+              </li>
+              <li data-i18n="tool.step4"><span>04</span>
+                <div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import
+                  facial data back to Maya.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <!-- WORKFLOW DIAGRAM -->
-      <section class="ava-section ava-wrap ava-reveal" id="workflow-diagram"
-        style="padding-top: 0; border-bottom: none; margin-bottom: 40px;">
-        <div class="ava-workflow-container">
+      <section class="ava-section ava-reveal" id="workflow-diagram"
+        style="padding: 0; border-bottom: none; margin-bottom: 0; width: 100%;">
+        <div class="ava-workflow-container"
+          style="transform: scale(0.85); transform-origin: top center; margin-bottom: -16px;">
           <div class="ava-flow-node">
             <div class="node-icon">📄</div>
-            <div class="node-title">Inputs</div>
-            <div class="node-desc">Image, Audio & Emotion</div>
+            <div class="node-title" data-i18n="flow.inputs.title">Inputs</div>
+            <div class="node-desc" data-i18n="flow.inputs.desc">Image, Audio & Emotion</div>
           </div>
           <div class="ava-flow-arrow">➔</div>
 
           <div class="ava-flow-node">
             <div class="node-icon"><img src="LOGO/comfyicon.png" alt="ComfyUI"></div>
-            <div class="node-title">ComfyUI Workflow</div>
-            <div class="node-desc">Generates Video</div>
+            <div class="node-title" data-i18n="flow.comfy.title">ComfyUI Workflow</div>
+            <div class="node-desc" data-i18n="flow.comfy.desc">Generates Video</div>
           </div>
           <div class="ava-flow-arrow">➔</div>
 
           <div class="ava-flow-node">
             <div class="node-icon"><img src="LOGO/Maya.png" alt="Maya"></div>
-            <div class="node-title">Maya Plugin</div>
-            <div class="node-desc">Receives Video & Calls UE</div>
+            <div class="node-title" data-i18n="flow.maya1.title">Maya Plugin</div>
+            <div class="node-desc" data-i18n="flow.maya1.desc">Receives Video & Calls UE</div>
           </div>
           <div class="ava-flow-arrow">➔</div>
 
           <div class="ava-flow-node">
             <div class="node-icon"><img src="LOGO/UE.png" alt="Unreal Engine" style="filter: brightness(0) invert(1);">
             </div>
-            <div class="node-title">Unreal Engine</div>
-            <div class="node-desc">Facial Capture Data</div>
+            <div class="node-title" data-i18n="flow.ue.title">Unreal Engine</div>
+            <div class="node-desc" data-i18n="flow.ue.desc">Facial Capture Data</div>
           </div>
           <div class="ava-flow-arrow">➔</div>
 
           <div class="ava-flow-node">
             <div class="node-icon"><img src="LOGO/Maya.png" alt="Maya"></div>
-            <div class="node-title">Maya Plugin</div>
-            <div class="node-desc">Retargets to Character</div>
+            <div class="node-title" data-i18n="flow.maya2.title">Maya Plugin</div>
+            <div class="node-desc" data-i18n="flow.maya2.desc">Retargets to Character</div>
           </div>
         </div>
       </section>
 
       <div
-        style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--ava-radius); border: 1px solid var(--ava-line); background: #000; box-shadow: 0 24px 64px rgba(0,0,0,0.4); margin: 0 auto; width: 100%;">
-        <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-          <source src="images/AI virtual actor tool/AI面捕工具demo.mov">
-          Your browser does not support the video tag.
-        </video>
+        style="position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--ava-radius); border: 1px solid var(--ava-line); background: #000; box-shadow: 0 24px 64px rgba(0,0,0,0.4); margin: 0 auto; width: 100%; max-width: 960px;">
+        <iframe src="https://www.youtube.com/embed/kLRI0NCcJSE" title="Plugin Demo" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
       </div>
     </div>
+
 
 
 
@@ -1376,1155 +1542,251 @@
          ============================================== -->
     <div class="ava-chapter-divider ava-wrap ava-reveal" id="chapter-comfyui">
       <div class="ava-chapter-divider__inner">
-        <span class="ava-eyebrow">Part I</span>
-        <h2>ComfyUI & Generative Pipeline</h2>
-        <p>Orchestrating models, prompts, and training data to generate facial performance from static characters.</p>
+        <div class="ava-glow-bar"></div>
+        <h2 data-i18n="chapter.comfyui.title">ComfyUI & Generative Pipeline</h2>
       </div>
     </div>
 
     <section class="ava-section ava-wrap ava-reveal" id="comfyui-overview"
       style="padding-top: 0; padding-bottom: 20px; border-bottom: none;">
       <div class="ava-comfy-workflow">
-        <h3>目前工作流概述:</h3>
+        <h3 data-i18n="comfy.overview.h3">目前工作流概述:</h3>
 
-        <div class="ava-cw-nodes">
-          <div class="ava-cw-node-wrapper">
-            <div class="ava-cw-node ava-cw-node--blue">角色图像 /<br>音频</div>
-            <div class="ava-cw-line"></div>
-          </div>
-
-          <div class="ava-cw-node-wrapper">
-            <div class="ava-cw-node ava-cw-node--blue">输入预处理</div>
-            <div class="ava-cw-line"></div>
-          </div>
-
-          <div class="ava-cw-node-wrapper">
-            <div class="ava-cw-node ava-cw-node--orange">LLM + AU<br>提示词</div>
-            <div class="ava-cw-line"></div>
-          </div>
-
-          <div class="ava-cw-node-wrapper">
-            <div class="ava-cw-node ava-cw-node--orange">TTS / LoRA /<br>表情</div>
-            <div class="ava-cw-line"></div>
-          </div>
-
-          <div class="ava-cw-node-wrapper">
-            <div class="ava-cw-node ava-cw-node--green">Wan<br>视频生成</div>
-            <div class="ava-cw-line"></div>
-          </div>
-
-          <div class="ava-cw-node-wrapper">
-            <div class="ava-cw-node ava-cw-node--green" style="min-width: 140px;">视频 + JSON 输出</div>
-          </div>
+        <div
+          style="max-width: 75%; margin: 0 auto 48px auto; border-radius: var(--ava-radius); overflow: hidden; position: relative;">
+          <img src="ai-virtual-actor-blockout/assets/虚拟面捕总流程.png" alt="虚拟面捕总流程"
+            style="width: 100%; height: auto; display: block; transform-origin: center; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);"
+            onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
         </div>
 
         <div class="ava-cw-cols">
           <div class="ava-cw-col ava-cw-col--blue">
-            <h4>参考约束</h4>
-            <p>Pose /<br>表情参考图用于约束角色姿态与表情，不直接作为最终生成输入。</p>
+            <h4 data-i18n="comfy.col1.title">参考约束</h4>
+            <p data-i18n="comfy.col1.p">Pose /<br>表情参考图用于约束角色姿态与表情，不直接作为最终生成输入。</p>
           </div>
 
           <div class="ava-cw-col ava-cw-col--green">
-            <h4>交付出口</h4>
-            <p>输出视频进入产品端；JSON 动画数据可继续传回 Maya, UE 面捕链路已完成验证，Superman 接入中。</p>
+            <h4 data-i18n="comfy.col2.title">交付出口</h4>
+            <p data-i18n="comfy.col2.p">输出视频进入产品端；JSON 动画数据可继续传回 Maya, UE 面捕链路已完成验证，Superman 接入中。</p>
           </div>
         </div>
 
-        <div class="ava-cw-banner">
-          核心变化：<strong>把分散的模型与服务能力，收敛成一条可重复执行的 Comfy 工作流</strong>
-        </div>
-      </div>
-    </section>
+        <!-- COMYUI PANORAMA VIEW -->
+        <div class="ava-workflow-panorama" style="margin-top: 80px;">
+          <div class="ava-panorama-head" style="margin-bottom: 40px; max-width: 900px; position: relative;">
+            <div style="width: 60px; height: 3px; background: #48d7a6; margin-bottom: 24px; border-radius: 2px;"></div>
+            <h3 style="font-size: 1.6rem; margin-bottom: 20px; font-weight: 700; color: #fff;">ComfyUI Workflow</h3>
+          </div>
 
-    <!-- 02 · SYSTEM -->
-    <section class="ava-section ava-wrap ava-reveal" id="system">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">02 · System</span>
-          <h2>One pipeline, five handoffs.</h2>
-        </div>
-        <p>I consolidated model orchestration, performance direction, cloud task management, preview, facial solving,
-          and
-          DCC delivery into one repeatable flow.</p>
-      </div>
-
-      <div class="ava-pipeline-grid">
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">01</span>
-          <h3>Character + Voice</h3>
-          <p>Upload a character source image and recorded audio, or synthesize the line with TTS.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">02</span>
-          <h3>Performance Direction</h3>
-          <p>Select personality, emotion, and intensity instead of writing a fragile free-form prompt.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">03</span>
-          <h3>Generative Performance</h3>
-          <p>LLM + AU rules, TTS, LoRA, and the video model produce a character-aware performance.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">04</span>
-          <h3>Facial Solve</h3>
-          <p>Video frames become expression, gaze, head-pose, mouth, and timing data.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">05</span>
-          <h3>Maya + Unreal</h3>
-          <p>Export JSON / animation data, preview on MetaHuman, and import the result back to Maya.</p>
-        </article>
-      </div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/pipeline-overview.png"
-            alt="Overview of the ComfyUI and production handoff pipeline">
-          <figcaption class="ava-asset-caption"><span>Workflow overview</span><span>Source: development report</span>
-          </figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/four-steps.png" alt="Four-step plugin operation walkthrough">
-          <figcaption class="ava-asset-caption"><span>User-facing flow</span><span>Install → input → auth →
-              submit</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 03 · SYSTEM -->
-    <section class="ava-section ava-wrap ava-reveal" id="system">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · System</span>
-          <h2>One pipeline, five handoffs.</h2>
-        </div>
-        <p>I consolidated model orchestration, performance direction, cloud task management, preview, facial solving,
-          and
-          DCC delivery into one repeatable flow.</p>
-      </div>
-
-      <div class="ava-pipeline-grid">
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">01</span>
-          <h3>Character + Voice</h3>
-          <p>Upload a character source image and recorded audio, or synthesize the line with TTS.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">02</span>
-          <h3>Performance Direction</h3>
-          <p>Select personality, emotion, and intensity instead of writing a fragile free-form prompt.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">03</span>
-          <h3>Generative Performance</h3>
-          <p>LLM + AU rules, TTS, LoRA, and the video model produce a character-aware performance.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">04</span>
-          <h3>Facial Solve</h3>
-          <p>Video frames become expression, gaze, head-pose, mouth, and timing data.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">05</span>
-          <h3>Maya + Unreal</h3>
-          <p>Export JSON / animation data, preview on MetaHuman, and import the result back to Maya.</p>
-        </article>
-      </div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/pipeline-overview.png"
-            alt="Overview of the ComfyUI and production handoff pipeline">
-          <figcaption class="ava-asset-caption"><span>Workflow overview</span><span>Source: development report</span>
-          </figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/four-steps.png" alt="Four-step plugin operation walkthrough">
-          <figcaption class="ava-asset-caption"><span>User-facing flow</span><span>Install → input → auth →
-              submit</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 03 · TOOL -->
-    <section class="ava-section ava-wrap ava-reveal" id="tool">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · Product Surface</span>
-          <h2>The pipeline lives inside Maya.</h2>
-        </div>
-        <p>The tool hides service addresses, ComfyUI nodes, media conversion, request packaging, and polling. Artists
-          stay in the DCC and provide only the inputs that affect the performance.</p>
-      </div>
-
-      <div class="ava-split-feature">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/plugin-ui.png"
-            alt="AI Virtual Actor tool embedded in Maya viewport">
-        </figure>
-        <div class="ava-feature-copy">
-          <span class="ava-eyebrow">Four artist-facing steps</span>
-          <h3>Install once. Generate without leaving the scene.</h3>
-          <p>The plugin is packaged as a productized Maya shelf tool with bundled media utilities and automated
-            environment checks.</p>
-          <ol class="ava-step-list">
-            <li><span>01</span>
-              <div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.
-              </div>
-            </li>
-            <li><span>02</span>
-              <div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion, intensity,
-                and output path.</div>
-            </li>
-            <li><span>03</span>
-              <div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and
-                poll
-                the cloud task without blocking Maya.</div>
-            </li>
-            <li><span>04</span>
-              <div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import
-                facial data back to Maya.</div>
-            </li>
-          </ol>
+          <div class="ava-panorama-images" style="display: block;">
+            <div style="border-radius: var(--ava-radius); overflow: hidden; position: relative;">
+              <img src="ai-virtual-actor-blockout/assets/comfy工作流构成.png" alt="ComfyUI Workflow Overview"
+                style="display: block; width: 100%; height: auto; transform-origin: center; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);"
+                onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 03 · PERFORMANCE CONTROL -->
     <section class="ava-section ava-wrap ava-reveal" id="control">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · Performance Control</span>
-          <h2>Direction becomes structured data.</h2>
-        </div>
-        <p>The control model separates long-term personality, current emotion, and performance intensity. Each selection
-          maps to tested description fragments and AU guidance before entering the generation workflow.</p>
+      <div class="ava-section-head" style="display: block;">
+        <h2 data-i18n="control.title">Performance Emotion Control</h2>
+        <p style="padding-top: 16px;" data-i18n="control.desc">The control model separates long-term personality,
+          current emotion, and performance intensity. Each selection maps to tested description fragments and AU
+          guidance before entering the generation workflow.</p>
       </div>
 
       <div class="ava-control-layout">
         <div class="ava-control-panel" aria-label="Static performance controls mockup">
-          <div class="ava-control-panel__top"><span>Performance Settings</span><span
+          <div class="ava-control-panel__top"><span data-i18n="control.panel.top">Performance Settings</span><span
               class="ava-control-panel__rule"></span></div>
           <div class="ava-control-field">
-            <label>Personality</label>
+            <label data-i18n="control.panel.personality">Personality</label>
             <div class="ava-control-select"><span>gentle · 温柔</span><span>⌄</span></div>
           </div>
           <div class="ava-control-field">
-            <label>Emotion</label>
+            <label data-i18n="control.panel.emotion">Emotion</label>
             <div class="ava-control-select"><span>surprised · 惊讶</span><span>⌄</span></div>
           </div>
           <div class="ava-control-field">
-            <label>Intensity</label>
+            <label data-i18n="control.panel.intensity">Intensity</label>
             <div class="ava-control-select"><span>strong · 强烈</span><span>⌄</span></div>
           </div>
           <div class="ava-control-field">
-            <label>Audio</label>
+            <label data-i18n="control.panel.audio">Audio</label>
             <div class="ava-control-select"><span>test_audio_01.wav</span><span>Browse</span></div>
           </div>
-          <div class="ava-control-generate">Generate</div>
+          <div class="ava-control-generate" data-i18n="control.panel.btnGenerate">Generate</div>
         </div>
 
         <div>
           <article class="ava-logic-card">
             <span class="ava-logic-card__mark">P</span>
             <div>
-              <h3>Personality = persistent acting tone</h3>
-              <p>Controls micro-expression frequency, eye intensity, and the character's overall behavioral tendency.
-              </p>
+              <h3 data-i18n="control.card1.title">Personality = persistent acting tone</h3>
+              <p data-i18n="control.card1.p">Controls micro-expression frequency, eye intensity, and the character's
+                overall behavioral tendency.</p>
             </div>
           </article>
           <article class="ava-logic-card">
             <span class="ava-logic-card__mark">E</span>
             <div>
-              <h3>Emotion = momentary state</h3>
-              <p>Shapes mouth corners, brows, eyelids, and muscle direction for the current line.</p>
+              <h3 data-i18n="control.card2.title">Emotion = momentary state</h3>
+              <p data-i18n="control.card2.p">Shapes mouth corners, brows, eyelids, and muscle direction for the current
+                line.</p>
             </div>
           </article>
           <article class="ava-logic-card">
             <span class="ava-logic-card__mark">I</span>
             <div>
-              <h3>Intensity = motion amplitude</h3>
-              <p>Adjusts expression weight, motion range, and exaggeration from micro to strong.</p>
+              <h3 data-i18n="control.card3.title">Intensity = motion amplitude</h3>
+              <p data-i18n="control.card3.p">Adjusts expression weight, motion range, and exaggeration from micro to
+                strong.</p>
             </div>
           </article>
           <article class="ava-logic-card">
             <span class="ava-logic-card__mark">R</span>
             <div>
-              <h3>Rules = repeatability</h3>
-              <p>Base constraints, negative controls, AU logic, and a recorded seed reduce semantic conflicts and
-                improve
-                reproducibility.</p>
+              <h3 data-i18n="control.card4.title">Rules = repeatability</h3>
+              <p data-i18n="control.card4.p">Base constraints, negative controls, AU logic, and a recorded seed reduce
+                semantic conflicts and improve reproducibility.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
-
-    <!-- 04 · SYSTEM -->
-    <section class="ava-section ava-wrap ava-reveal" id="system">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">04 · System</span>
-          <h2>One pipeline, five handoffs.</h2>
-        </div>
-        <p>I consolidated model orchestration, performance direction, cloud task management, preview, facial solving,
-          and
-          DCC delivery into one repeatable flow.</p>
+    <!-- 03.2 · RESULTS SHOWCASE -->
+    <section class="ava-section ava-wrap ava-reveal" id="results-showcase"
+      style="padding-top: 20px; padding-bottom: 60px; border-bottom: none;">
+      <div class="ava-section-head" style="display: block; text-align: left; margin-bottom: 40px;">
+        <h2 style="font-size: 2rem; color: #fff; font-weight: 700; text-align: left;" data-i18n="results.title">效果展示
+        </h2>
+        <p style="padding-top: 16px; text-align: left; margin: 0;" data-i18n="results.desc">Final generated performance
+          showcasing the integration of the ComfyUI pipeline.</p>
       </div>
 
-      <div class="ava-pipeline-grid">
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">01</span>
-          <h3>Character + Voice</h3>
-          <p>Upload a character source image and recorded audio, or synthesize the line with TTS.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">02</span>
-          <h3>Performance Direction</h3>
-          <p>Select personality, emotion, and intensity instead of writing a fragile free-form prompt.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">03</span>
-          <h3>Generative Performance</h3>
-          <p>LLM + AU rules, TTS, LoRA, and the video model produce a character-aware performance.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">04</span>
-          <h3>Facial Solve</h3>
-          <p>Video frames become expression, gaze, head-pose, mouth, and timing data.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">05</span>
-          <h3>Maya + Unreal</h3>
-          <p>Export JSON / animation data, preview on MetaHuman, and import the result back to Maya.</p>
-        </article>
-      </div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/pipeline-overview.png"
-            alt="Overview of the ComfyUI and production handoff pipeline">
-          <figcaption class="ava-asset-caption"><span>Workflow overview</span><span>Source: development report</span>
-          </figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/four-steps.png" alt="Four-step plugin operation walkthrough">
-          <figcaption class="ava-asset-caption"><span>User-facing flow</span><span>Install → input → auth →
-              submit</span>
-          </figcaption>
-        </figure>
+      <div
+        style="position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--ava-radius); border: 1px solid var(--ava-line); box-shadow: 0 24px 64px rgba(0,0,0,0.4); margin: 0 auto; width: 100%; max-width: 960px;">
+        <iframe src="https://www.youtube.com/embed/M-5ADg1aoxk" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
       </div>
     </section>
-
-    <!-- 04 · TOOL -->
-    <section class="ava-section ava-wrap ava-reveal" id="tool">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">04 · Product Surface</span>
-          <h2>The pipeline lives inside Maya.</h2>
-        </div>
-        <p>The tool hides service addresses, ComfyUI nodes, media conversion, request packaging, and polling. Artists
-          stay in the DCC and provide only the inputs that affect the performance.</p>
+    <!-- 03.5 · TECHNICAL DETAILS SHOWCASE -->
+    <section class="ava-section ava-wrap ava-reveal" id="tech-details"
+      style="padding-top: 40px; border-bottom: 1px solid var(--ava-line);">
+      <div class="ava-section-head" style="display: block !important; text-align: left !important; margin-bottom: 40px; width: 100% !important;">
+        <h2 style="font-size: 2rem; color: #fff; font-weight: 700; text-align: left !important; margin: 0 0 16px 0 !important;" data-i18n="tech.title">Technical Details</h2>
+        <p style="padding: 0 !important; text-align: left !important; margin: 0 !important; display: block !important; width: 100% !important;" data-i18n="tech.desc">Core mechanics of the ComfyUI nodes, model processing, and custom prompt system integration.</p>
       </div>
 
-      <div class="ava-split-feature">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/plugin-ui.png"
-            alt="AI Virtual Actor tool embedded in Maya viewport">
-        </figure>
-        <div class="ava-feature-copy">
-          <span class="ava-eyebrow">Four artist-facing steps</span>
-          <h3>Install once. Generate without leaving the scene.</h3>
-          <p>The plugin is packaged as a productized Maya shelf tool with bundled media utilities and automated
-            environment checks.</p>
-          <ol class="ava-step-list">
-            <li><span>01</span>
-              <div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.
-              </div>
-            </li>
-            <li><span>02</span>
-              <div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion, intensity,
-                and output path.</div>
-            </li>
-            <li><span>03</span>
-              <div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and
-                poll
-                the cloud task without blocking Maya.</div>
-            </li>
-            <li><span>04</span>
-              <div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import
-                facial data back to Maya.</div>
-            </li>
-          </ol>
+      <div class="ava-tech-showcase"
+        style="display: flex; flex-direction: row; gap: 24px; overflow-x: auto; padding-bottom: 32px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent;">
+        <!-- Card 1 -->
+        <div
+          style="flex: 0 0 85%; scroll-snap-align: center; border-radius: var(--ava-radius-lg); overflow: hidden; background: #000000; border: 1px solid var(--ava-line); padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); transition: border-color 0.3s ease;"
+          onmouseover="this.style.borderColor='var(--ava-line-strong)'"
+          onmouseout="this.style.borderColor='var(--ava-line)'">
+          <img src="ai-virtual-actor-blockout/assets/tech-detail-1.png" alt="美术输入区 vs Maya插件"
+            style="width: 100%; height: auto; display: block; border-radius: calc(var(--ava-radius-lg) - 10px);">
         </div>
-      </div>
-    </section>
-
-    <!-- 04 · PERFORMANCE CONTROL -->
-    <section class="ava-section ava-wrap ava-reveal" id="control">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">04 · Performance Control</span>
-          <h2>Direction becomes structured data.</h2>
+        <!-- Card 2 -->
+        <div
+          style="flex: 0 0 85%; scroll-snap-align: center; border-radius: var(--ava-radius-lg); overflow: hidden; background: #000000; border: 1px solid var(--ava-line); padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); transition: border-color 0.3s ease;"
+          onmouseover="this.style.borderColor='var(--ava-line-strong)'"
+          onmouseout="this.style.borderColor='var(--ava-line)'">
+          <img src="ai-virtual-actor-blockout/assets/tech-detail-2.png" alt="模型处理区"
+            style="width: 100%; height: auto; display: block; border-radius: calc(var(--ava-radius-lg) - 10px);">
         </div>
-        <p>The control model separates long-term personality, current emotion, and performance intensity. Each selection
-          maps to tested description fragments and AU guidance before entering the generation workflow.</p>
-      </div>
-
-      <div class="ava-control-layout">
-        <div class="ava-control-panel" aria-label="Static performance controls mockup">
-          <div class="ava-control-panel__top"><span>Performance Settings</span><span
-              class="ava-control-panel__rule"></span></div>
-          <div class="ava-control-field">
-            <label>Personality</label>
-            <div class="ava-control-select"><span>gentle · 温柔</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Emotion</label>
-            <div class="ava-control-select"><span>surprised · 惊讶</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Intensity</label>
-            <div class="ava-control-select"><span>strong · 强烈</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Audio</label>
-            <div class="ava-control-select"><span>test_audio_01.wav</span><span>Browse</span></div>
-          </div>
-          <div class="ava-control-generate">Generate</div>
+        <!-- Card 3 -->
+        <div
+          style="flex: 0 0 85%; scroll-snap-align: center; border-radius: var(--ava-radius-lg); overflow: hidden; background: #000000; border: 1px solid var(--ava-line); padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); transition: border-color 0.3s ease;"
+          onmouseover="this.style.borderColor='var(--ava-line-strong)'"
+          onmouseout="this.style.borderColor='var(--ava-line)'">
+          <img src="ai-virtual-actor-blockout/assets/tech-detail-3.png" alt="模型运行逻辑"
+            style="width: 100%; height: auto; display: block; border-radius: calc(var(--ava-radius-lg) - 10px);">
         </div>
-
-        <div>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">P</span>
-            <div>
-              <h3>Personality = persistent acting tone</h3>
-              <p>Controls micro-expression frequency, eye intensity, and the character's overall behavioral tendency.
-              </p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">E</span>
-            <div>
-              <h3>Emotion = momentary state</h3>
-              <p>Shapes mouth corners, brows, eyelids, and muscle direction for the current line.</p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">I</span>
-            <div>
-              <h3>Intensity = motion amplitude</h3>
-              <p>Adjusts expression weight, motion range, and exaggeration from micro to strong.</p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">R</span>
-            <div>
-              <h3>Rules = repeatability</h3>
-              <p>Base constraints, negative controls, AU logic, and a recorded seed reduce semantic conflicts and
-                improve
-                reproducibility.</p>
-            </div>
-          </article>
+        <!-- Card 4 -->
+        <div
+          style="flex: 0 0 85%; scroll-snap-align: center; border-radius: var(--ava-radius-lg); overflow: hidden; background: #000000; border: 1px solid var(--ava-line); padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); transition: border-color 0.3s ease;"
+          onmouseover="this.style.borderColor='var(--ava-line-strong)'"
+          onmouseout="this.style.borderColor='var(--ava-line)'">
+          <img src="ai-virtual-actor-blockout/assets/tech-detail-4.png" alt="全局变量 / 图像处理区"
+            style="width: 100%; height: auto; display: block; border-radius: calc(var(--ava-radius-lg) - 10px);">
         </div>
-      </div>
-    </section>
-
-    <!-- 04 · EVIDENCE -->
-    <section class="ava-section ava-wrap ava-reveal" id="evidence">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">04 · Development Evidence</span>
-          <h2>Measured as a pipeline, not a single output.</h2>
+        <!-- Card 5 -->
+        <div
+          style="flex: 0 0 85%; scroll-snap-align: center; border-radius: var(--ava-radius-lg); overflow: hidden; background: #000000; border: 1px solid var(--ava-line); padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); transition: border-color 0.3s ease;"
+          onmouseover="this.style.borderColor='var(--ava-line-strong)'"
+          onmouseout="this.style.borderColor='var(--ava-line)'">
+          <img src="ai-virtual-actor-blockout/assets/tech-detail-5.png" alt="提示词系统"
+            style="width: 100%; height: auto; display: block; border-radius: calc(var(--ava-radius-lg) - 10px);">
         </div>
-        <p>The current prototype has been validated across model orchestration, cloud execution, performance controls,
-          and a full Maya / Unreal handoff.</p>
-      </div>
-
-      <div class="ava-stats-grid">
-        <div class="ava-stat"><strong>2–3×</strong><span>generation speed improvement observed with the acceleration
-            LoRA compared with the earlier flow</span></div>
-        <div class="ava-stat"><strong>29s</strong><span>test performance generated in approximately 8 minutes on
-            ComfyCloud, including TTS and LLM stages</span></div>
-        <div class="ava-stat"><strong>90</strong><span>video / caption pairs used to train the happy-emotion LoRA across
-            30 performers and three intensity levels</span></div>
-      </div>
-      <div class="ava-evidence-note">TEST CONTEXT · Wan2.1 I2V 480p 14B · H20 training environment · prototype
-        measurements from the development report</div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/character.png" alt="Stylized blue-haired character source image">
-          <figcaption class="ava-asset-caption"><span>Character source</span><span>Input</span></figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/metahuman.png" alt="MetaHuman reference output">
-          <figcaption class="ava-asset-caption"><span>MetaHuman validation</span><span>Handoff target</span>
-          </figcaption>
-        </figure>
       </div>
     </section>
 
     <!-- ==============================================
-         PART II : PLUGIN & TOOL DEVELOPMENT
+         MODEL : LORA TRAINING
          ============================================== -->
-    <div class="ava-chapter-divider ava-wrap ava-reveal" id="chapter-plugin">
+    <div class="ava-chapter-divider ava-wrap ava-reveal" id="chapter-lora">
       <div class="ava-chapter-divider__inner">
-        <span class="ava-eyebrow">Part II</span>
-        <h2>Plugin & DCC Tool Development</h2>
-        <p>Bridging the AI generation gap by delivering a seamless, productized Maya tool and Unreal Engine handoff.</p>
+        <div class="ava-glow-bar"></div>
+        <h2 data-i18n="lora.title">Model · LoRA Training</h2>
       </div>
     </div>
 
-    <!-- 01 · SYSTEM -->
-    <section class="ava-section ava-wrap ava-reveal" id="system">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">01 · System</span>
-          <h2>One pipeline, five handoffs.</h2>
-        </div>
-        <p>I consolidated model orchestration, performance direction, cloud task management, preview, facial solving,
-          and
-          DCC delivery into one repeatable flow.</p>
-      </div>
+    <section class="ava-section ava-wrap ava-reveal" id="lora-training"
+      style="padding-top: 0; padding-bottom: 20px; border-bottom: none;">
+      <div style="display: flex; justify-content: center; margin: 40px 0 60px;">
+        <a href="https://github.com/ZooeyLiu/wan2.1-happy-emotion-lora" target="_blank" rel="noopener noreferrer"
+          style="display: flex; align-items: center; gap: 24px; padding: 32px 40px; background: rgba(0,0,0,0.4); border: 1px solid var(--ava-line-strong); border-radius: var(--ava-radius-lg); text-decoration: none; color: #fff; max-width: 680px; width: 100%; transition: all 0.3s ease; box-shadow: 0 16px 40px rgba(0,0,0,0.3);"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='var(--ava-cyan)'; this.style.boxShadow='0 20px 50px rgba(101, 217, 255, 0.15)';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='var(--ava-line-strong)'; this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)';">
 
-      <div class="ava-pipeline-grid">
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">01</span>
-          <h3>Character + Voice</h3>
-          <p>Upload a character source image and recorded audio, or synthesize the line with TTS.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">02</span>
-          <h3>Performance Direction</h3>
-          <p>Select personality, emotion, and intensity instead of writing a fragile free-form prompt.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">03</span>
-          <h3>Generative Performance</h3>
-          <p>LLM + AU rules, TTS, LoRA, and the video model produce a character-aware performance.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">04</span>
-          <h3>Facial Solve</h3>
-          <p>Video frames become expression, gaze, head-pose, mouth, and timing data.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">05</span>
-          <h3>Maya + Unreal</h3>
-          <p>Export JSON / animation data, preview on MetaHuman, and import the result back to Maya.</p>
-        </article>
-      </div>
+          <div
+            style="flex-shrink: 0; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 50%;">
+            <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true"
+              style="fill: #000;">
+              <path
+                d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z">
+              </path>
+            </svg>
+          </div>
 
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/pipeline-overview.png"
-            alt="Overview of the ComfyUI and production handoff pipeline">
-          <figcaption class="ava-asset-caption"><span>Workflow overview</span><span>Source: development report</span>
-          </figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/four-steps.png" alt="Four-step plugin operation walkthrough">
-          <figcaption class="ava-asset-caption"><span>User-facing flow</span><span>Install → input → auth →
-              submit</span>
-          </figcaption>
-        </figure>
+          <div style="flex-grow: 1;">
+            <div
+              style="font-family: var(--ava-mono); font-size: 0.85rem; color: var(--ava-orange-soft); margin-bottom: 6px; letter-spacing: 0.05em; text-transform: uppercase;"
+              data-i18n="lora.repoLabel">GitHub Repository</div>
+            <h3 style="margin: 0 0 8px 0; font-size: 1.4rem; font-weight: 700;">wan2.1-happy-emotion-lora</h3>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--ava-muted); line-height: 1.5;" data-i18n="lora.desc">
+              Wan2.1 video generation LoRA fine-tuned specifically for controlling character emotional performances.</p>
+          </div>
+
+          <div style="flex-shrink: 0; color: var(--ava-muted); opacity: 0.7;" onmouseover="this.style.opacity='1'"
+            onmouseout="this.style.opacity='0.7'">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
       </div>
     </section>
-
-    <!-- 01 · TOOL -->
-    <section class="ava-section ava-wrap ava-reveal" id="tool">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">01 · Product Surface</span>
-          <h2>The pipeline lives inside Maya.</h2>
-        </div>
-        <p>The tool hides service addresses, ComfyUI nodes, media conversion, request packaging, and polling. Artists
-          stay in the DCC and provide only the inputs that affect the performance.</p>
-      </div>
-
-      <div class="ava-split-feature">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/plugin-ui.png"
-            alt="AI Virtual Actor tool embedded in Maya viewport">
-        </figure>
-        <div class="ava-feature-copy">
-          <span class="ava-eyebrow">Four artist-facing steps</span>
-          <h3>Install once. Generate without leaving the scene.</h3>
-          <p>The plugin is packaged as a productized Maya shelf tool with bundled media utilities and automated
-            environment checks.</p>
-          <ol class="ava-step-list">
-            <li><span>01</span>
-              <div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.
-              </div>
-            </li>
-            <li><span>02</span>
-              <div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion, intensity,
-                and output path.</div>
-            </li>
-            <li><span>03</span>
-              <div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and
-                poll
-                the cloud task without blocking Maya.</div>
-            </li>
-            <li><span>04</span>
-              <div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import
-                facial data back to Maya.</div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 · SYSTEM -->
-    <section class="ava-section ava-wrap ava-reveal" id="system">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">02 · System</span>
-          <h2>One pipeline, five handoffs.</h2>
-        </div>
-        <p>I consolidated model orchestration, performance direction, cloud task management, preview, facial solving,
-          and
-          DCC delivery into one repeatable flow.</p>
-      </div>
-
-      <div class="ava-pipeline-grid">
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">01</span>
-          <h3>Character + Voice</h3>
-          <p>Upload a character source image and recorded audio, or synthesize the line with TTS.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">02</span>
-          <h3>Performance Direction</h3>
-          <p>Select personality, emotion, and intensity instead of writing a fragile free-form prompt.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">03</span>
-          <h3>Generative Performance</h3>
-          <p>LLM + AU rules, TTS, LoRA, and the video model produce a character-aware performance.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">04</span>
-          <h3>Facial Solve</h3>
-          <p>Video frames become expression, gaze, head-pose, mouth, and timing data.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">05</span>
-          <h3>Maya + Unreal</h3>
-          <p>Export JSON / animation data, preview on MetaHuman, and import the result back to Maya.</p>
-        </article>
-      </div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/pipeline-overview.png"
-            alt="Overview of the ComfyUI and production handoff pipeline">
-          <figcaption class="ava-asset-caption"><span>Workflow overview</span><span>Source: development report</span>
-          </figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/four-steps.png" alt="Four-step plugin operation walkthrough">
-          <figcaption class="ava-asset-caption"><span>User-facing flow</span><span>Install → input → auth →
-              submit</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 02 · TOOL -->
-    <section class="ava-section ava-wrap ava-reveal" id="tool">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">02 · Product Surface</span>
-          <h2>The pipeline lives inside Maya.</h2>
-        </div>
-        <p>The tool hides service addresses, ComfyUI nodes, media conversion, request packaging, and polling. Artists
-          stay in the DCC and provide only the inputs that affect the performance.</p>
-      </div>
-
-      <div class="ava-split-feature">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/plugin-ui.png"
-            alt="AI Virtual Actor tool embedded in Maya viewport">
-        </figure>
-        <div class="ava-feature-copy">
-          <span class="ava-eyebrow">Four artist-facing steps</span>
-          <h3>Install once. Generate without leaving the scene.</h3>
-          <p>The plugin is packaged as a productized Maya shelf tool with bundled media utilities and automated
-            environment checks.</p>
-          <ol class="ava-step-list">
-            <li><span>01</span>
-              <div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.
-              </div>
-            </li>
-            <li><span>02</span>
-              <div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion, intensity,
-                and output path.</div>
-            </li>
-            <li><span>03</span>
-              <div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and
-                poll
-                the cloud task without blocking Maya.</div>
-            </li>
-            <li><span>04</span>
-              <div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import
-                facial data back to Maya.</div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 · PERFORMANCE CONTROL -->
-    <section class="ava-section ava-wrap ava-reveal" id="control">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">02 · Performance Control</span>
-          <h2>Direction becomes structured data.</h2>
-        </div>
-        <p>The control model separates long-term personality, current emotion, and performance intensity. Each selection
-          maps to tested description fragments and AU guidance before entering the generation workflow.</p>
-      </div>
-
-      <div class="ava-control-layout">
-        <div class="ava-control-panel" aria-label="Static performance controls mockup">
-          <div class="ava-control-panel__top"><span>Performance Settings</span><span
-              class="ava-control-panel__rule"></span></div>
-          <div class="ava-control-field">
-            <label>Personality</label>
-            <div class="ava-control-select"><span>gentle · 温柔</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Emotion</label>
-            <div class="ava-control-select"><span>surprised · 惊讶</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Intensity</label>
-            <div class="ava-control-select"><span>strong · 强烈</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Audio</label>
-            <div class="ava-control-select"><span>test_audio_01.wav</span><span>Browse</span></div>
-          </div>
-          <div class="ava-control-generate">Generate</div>
-        </div>
-
-        <div>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">P</span>
-            <div>
-              <h3>Personality = persistent acting tone</h3>
-              <p>Controls micro-expression frequency, eye intensity, and the character's overall behavioral tendency.
-              </p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">E</span>
-            <div>
-              <h3>Emotion = momentary state</h3>
-              <p>Shapes mouth corners, brows, eyelids, and muscle direction for the current line.</p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">I</span>
-            <div>
-              <h3>Intensity = motion amplitude</h3>
-              <p>Adjusts expression weight, motion range, and exaggeration from micro to strong.</p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">R</span>
-            <div>
-              <h3>Rules = repeatability</h3>
-              <p>Base constraints, negative controls, AU logic, and a recorded seed reduce semantic conflicts and
-                improve
-                reproducibility.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 · EVIDENCE -->
-    <section class="ava-section ava-wrap ava-reveal" id="evidence">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">02 · Development Evidence</span>
-          <h2>Measured as a pipeline, not a single output.</h2>
-        </div>
-        <p>The current prototype has been validated across model orchestration, cloud execution, performance controls,
-          and a full Maya / Unreal handoff.</p>
-      </div>
-
-      <div class="ava-stats-grid">
-        <div class="ava-stat"><strong>2–3×</strong><span>generation speed improvement observed with the acceleration
-            LoRA compared with the earlier flow</span></div>
-        <div class="ava-stat"><strong>29s</strong><span>test performance generated in approximately 8 minutes on
-            ComfyCloud, including TTS and LLM stages</span></div>
-        <div class="ava-stat"><strong>90</strong><span>video / caption pairs used to train the happy-emotion LoRA across
-            30 performers and three intensity levels</span></div>
-      </div>
-      <div class="ava-evidence-note">TEST CONTEXT · Wan2.1 I2V 480p 14B · H20 training environment · prototype
-        measurements from the development report</div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/character.png" alt="Stylized blue-haired character source image">
-          <figcaption class="ava-asset-caption"><span>Character source</span><span>Input</span></figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/metahuman.png" alt="MetaHuman reference output">
-          <figcaption class="ava-asset-caption"><span>MetaHuman validation</span><span>Handoff target</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 02 · HANDOFF -->
-    <section class="ava-section ava-wrap ava-reveal" id="handoff">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">02 · Production Handoff</span>
-          <h2>Preview first. Solve second. Deliver data.</h2>
-        </div>
-        <p>The artist can inspect the generated performance before spending time on solving and transfer. Once approved,
-          the same tool checks the Unreal environment, creates facial animation, exports JSON, and sends the result back
-          to the Maya controls.</p>
-      </div>
-
-      <div class="ava-handoff-hero">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/maya-ue-handoff.png"
-            alt="Facial animation result in Maya and Unreal Engine">
-        </figure>
-        <div class="ava-handoff-copy">
-          <span class="ava-eyebrow">Output logic</span>
-          <h3>Pixels become animation controls.</h3>
-          <p>Expression weights, head pose, eye motion, mouth motion, frame rate, and timing are packaged for engine and
-            DCC use. Optional head-motion transfer keeps facial-only and full-performance workflows separate.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 · SYSTEM -->
-    <section class="ava-section ava-wrap ava-reveal" id="system">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · System</span>
-          <h2>One pipeline, five handoffs.</h2>
-        </div>
-        <p>I consolidated model orchestration, performance direction, cloud task management, preview, facial solving,
-          and
-          DCC delivery into one repeatable flow.</p>
-      </div>
-
-      <div class="ava-pipeline-grid">
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">01</span>
-          <h3>Character + Voice</h3>
-          <p>Upload a character source image and recorded audio, or synthesize the line with TTS.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">02</span>
-          <h3>Performance Direction</h3>
-          <p>Select personality, emotion, and intensity instead of writing a fragile free-form prompt.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">03</span>
-          <h3>Generative Performance</h3>
-          <p>LLM + AU rules, TTS, LoRA, and the video model produce a character-aware performance.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">04</span>
-          <h3>Facial Solve</h3>
-          <p>Video frames become expression, gaze, head-pose, mouth, and timing data.</p>
-        </article>
-        <article class="ava-pipeline-step">
-          <span class="ava-pipeline-step__node">05</span>
-          <h3>Maya + Unreal</h3>
-          <p>Export JSON / animation data, preview on MetaHuman, and import the result back to Maya.</p>
-        </article>
-      </div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/pipeline-overview.png"
-            alt="Overview of the ComfyUI and production handoff pipeline">
-          <figcaption class="ava-asset-caption"><span>Workflow overview</span><span>Source: development report</span>
-          </figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/four-steps.png" alt="Four-step plugin operation walkthrough">
-          <figcaption class="ava-asset-caption"><span>User-facing flow</span><span>Install → input → auth →
-              submit</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 03 · TOOL -->
-    <section class="ava-section ava-wrap ava-reveal" id="tool">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · Product Surface</span>
-          <h2>The pipeline lives inside Maya.</h2>
-        </div>
-        <p>The tool hides service addresses, ComfyUI nodes, media conversion, request packaging, and polling. Artists
-          stay in the DCC and provide only the inputs that affect the performance.</p>
-      </div>
-
-      <div class="ava-split-feature">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/plugin-ui.png"
-            alt="AI Virtual Actor tool embedded in Maya viewport">
-        </figure>
-        <div class="ava-feature-copy">
-          <span class="ava-eyebrow">Four artist-facing steps</span>
-          <h3>Install once. Generate without leaving the scene.</h3>
-          <p>The plugin is packaged as a productized Maya shelf tool with bundled media utilities and automated
-            environment checks.</p>
-          <ol class="ava-step-list">
-            <li><span>01</span>
-              <div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.
-              </div>
-            </li>
-            <li><span>02</span>
-              <div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion, intensity,
-                and output path.</div>
-            </li>
-            <li><span>03</span>
-              <div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and
-                poll
-                the cloud task without blocking Maya.</div>
-            </li>
-            <li><span>04</span>
-              <div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import
-                facial data back to Maya.</div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 · PERFORMANCE CONTROL -->
-    <section class="ava-section ava-wrap ava-reveal" id="control">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · Performance Control</span>
-          <h2>Direction becomes structured data.</h2>
-        </div>
-        <p>The control model separates long-term personality, current emotion, and performance intensity. Each selection
-          maps to tested description fragments and AU guidance before entering the generation workflow.</p>
-      </div>
-
-      <div class="ava-control-layout">
-        <div class="ava-control-panel" aria-label="Static performance controls mockup">
-          <div class="ava-control-panel__top"><span>Performance Settings</span><span
-              class="ava-control-panel__rule"></span></div>
-          <div class="ava-control-field">
-            <label>Personality</label>
-            <div class="ava-control-select"><span>gentle · 温柔</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Emotion</label>
-            <div class="ava-control-select"><span>surprised · 惊讶</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Intensity</label>
-            <div class="ava-control-select"><span>strong · 强烈</span><span>⌄</span></div>
-          </div>
-          <div class="ava-control-field">
-            <label>Audio</label>
-            <div class="ava-control-select"><span>test_audio_01.wav</span><span>Browse</span></div>
-          </div>
-          <div class="ava-control-generate">Generate</div>
-        </div>
-
-        <div>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">P</span>
-            <div>
-              <h3>Personality = persistent acting tone</h3>
-              <p>Controls micro-expression frequency, eye intensity, and the character's overall behavioral tendency.
-              </p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">E</span>
-            <div>
-              <h3>Emotion = momentary state</h3>
-              <p>Shapes mouth corners, brows, eyelids, and muscle direction for the current line.</p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">I</span>
-            <div>
-              <h3>Intensity = motion amplitude</h3>
-              <p>Adjusts expression weight, motion range, and exaggeration from micro to strong.</p>
-            </div>
-          </article>
-          <article class="ava-logic-card">
-            <span class="ava-logic-card__mark">R</span>
-            <div>
-              <h3>Rules = repeatability</h3>
-              <p>Base constraints, negative controls, AU logic, and a recorded seed reduce semantic conflicts and
-                improve
-                reproducibility.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 · EVIDENCE -->
-    <section class="ava-section ava-wrap ava-reveal" id="evidence">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · Development Evidence</span>
-          <h2>Measured as a pipeline, not a single output.</h2>
-        </div>
-        <p>The current prototype has been validated across model orchestration, cloud execution, performance controls,
-          and a full Maya / Unreal handoff.</p>
-      </div>
-
-      <div class="ava-stats-grid">
-        <div class="ava-stat"><strong>2–3×</strong><span>generation speed improvement observed with the acceleration
-            LoRA compared with the earlier flow</span></div>
-        <div class="ava-stat"><strong>29s</strong><span>test performance generated in approximately 8 minutes on
-            ComfyCloud, including TTS and LLM stages</span></div>
-        <div class="ava-stat"><strong>90</strong><span>video / caption pairs used to train the happy-emotion LoRA across
-            30 performers and three intensity levels</span></div>
-      </div>
-      <div class="ava-evidence-note">TEST CONTEXT · Wan2.1 I2V 480p 14B · H20 training environment · prototype
-        measurements from the development report</div>
-
-      <div class="ava-asset-board">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/character.png" alt="Stylized blue-haired character source image">
-          <figcaption class="ava-asset-caption"><span>Character source</span><span>Input</span></figcaption>
-        </figure>
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/metahuman.png" alt="MetaHuman reference output">
-          <figcaption class="ava-asset-caption"><span>MetaHuman validation</span><span>Handoff target</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 03 · HANDOFF -->
-    <section class="ava-section ava-wrap ava-reveal" id="handoff">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · Production Handoff</span>
-          <h2>Preview first. Solve second. Deliver data.</h2>
-        </div>
-        <p>The artist can inspect the generated performance before spending time on solving and transfer. Once approved,
-          the same tool checks the Unreal environment, creates facial animation, exports JSON, and sends the result back
-          to the Maya controls.</p>
-      </div>
-
-      <div class="ava-handoff-hero">
-        <figure class="ava-media-frame">
-          <img src="ai-virtual-actor-blockout/assets/maya-ue-handoff.png"
-            alt="Facial animation result in Maya and Unreal Engine">
-        </figure>
-        <div class="ava-handoff-copy">
-          <span class="ava-eyebrow">Output logic</span>
-          <h3>Pixels become animation controls.</h3>
-          <p>Expression weights, head pose, eye motion, mouth motion, frame rate, and timing are packaged for engine and
-            DCC use. Optional head-motion transfer keeps facial-only and full-performance workflows separate.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 · CONTRIBUTION -->
-    <section class="ava-section ava-wrap ava-reveal" id="contribution">
-      <div class="ava-section-head">
-        <div>
-          <span class="ava-eyebrow">03 · My Contribution</span>
-          <h2>I designed the whole bridge.</h2>
-        </div>
-        <p>This is a technical-art project as much as an AI project: the value comes from connecting models, artist
-          controls, production constraints, and animation tools into one usable system.</p>
-      </div>
-
-      <div class="ava-contribution-grid">
-        <article class="ava-contribution-item"><span>01</span>
-          <div>
-            <h3>Workflow architecture</h3>
-            <p>ComfyUI orchestration across preprocessing, LLM + AU, optional TTS, LoRA, generation, and result output.
-            </p>
-          </div>
-        </article>
-        <article class="ava-contribution-item"><span>02</span>
-          <div>
-            <h3>Performance system</h3>
-            <p>Structured personality, emotion, and intensity controls with reusable prompt fragments and AU guidance.
-            </p>
-          </div>
-        </article>
-        <article class="ava-contribution-item"><span>03</span>
-          <div>
-            <h3>Model development</h3>
-            <p>Happy-emotion LoRA dataset design, training SOP, checkpoints, integration, and speed / weight comparison.
-            </p>
-          </div>
-        </article>
-        <article class="ava-contribution-item"><span>04</span>
-          <div>
-            <h3>Maya productization</h3>
-            <p>Shelf installer, UI, preview, environment checks, bundled ffmpeg, input normalization, and artist
-              documentation.</p>
-          </div>
-        </article>
-        <article class="ava-contribution-item"><span>05</span>
-          <div>
-            <h3>Cloud task integration</h3>
-            <p>Authentication, protobuf packaging, task submission, background polling, result extraction, error states,
-              and traceable IDs.</p>
-          </div>
-        </article>
-        <article class="ava-contribution-item"><span>06</span>
-          <div>
-            <h3>DCC / engine handoff</h3>
-            <p>Unreal environment validation, MetaHuman facial solve, JSON export, optional head motion, and import back
-              to Maya.</p>
-          </div>
-        </article>
-      </div>
-    </section>
+    <div style="display: flex; justify-content: center; padding: 20px 0 100px;">
+      <a href="index.html" class="ava-btn"
+        style="padding: 0 48px; min-height: 60px; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.02em; background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.2);"
+        onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='var(--ava-cyan)';"
+        onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.15)';">
+        <span data-i18n="footer.backBtn">← 返回首页</span>
+      </a>
+    </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <!-- CTA -->
-    <section class="ava-next-cta ava-wrap ava-reveal" id="next">
-      <span class="ava-eyebrow">Continue Exploring</span>
-      <h2>From working prototype to dependable artist tool.</h2>
-      <p>This project bridges AI generation and traditional animation pipelines. Explore the rest of my portfolio to see
-        more technical art and game development work.</p>
-      <div class="ava-btn-row" style="justify-content:center">
-        <a class="ava-btn ava-btn--primary" href="index.html#projects-fan">Back to Portfolio</a>
-        <a class="ava-btn" href="#hero">Back to Top</a>
-      </div>
-    </section>
-
-    <footer class="ava-footer ava-wrap">
-      AI Virtual Actor case study · Built from project source, development reports, demo footage, and patent draft ·
-      2026
-    </footer>
+    <footer class="ava-footer ava-wrap" data-i18n="footer.text">AI Virtual Actor case study · Built from project source,
+      development reports, demo footage, and patent draft · 2026</footer>
   </div>
 
   <!-- Scroll Reveal Script -->
@@ -2546,6 +1808,202 @@
       reveals.forEach(el => observer.observe(el));
     });
   </script>
+  <!-- Floating Language Switcher for convenience on long scroll -->
+  <div class="ava-floating-lang" onclick="toggleLanguage()" role="button" tabindex="0" title="Switch Language / 切换语言">
+    <span class="ava-lang-opt opt-en active">EN</span>
+    <span class="ava-lang-divider">/</span>
+    <span class="ava-lang-opt opt-zh">中文</span>
+  </div>
+
+
+  <!-- I18N Internationalization Script -->
+  <script>
+    const I18N_DICT = {
+      en: {
+        'nav.home': 'Home',
+        'nav.work': 'Work',
+        'nav.resume': 'Resume',
+        'nav.contact': 'Contact',
+        'hero.eyebrow': 'Technical Art · AI Pipeline · DCC Tooling',
+        'hero.title': 'AI Virtual Actor<span>From a character still to engine-ready facial animation</span>',
+        'hero.lede': 'An end-to-end workflow and Maya tool that turns a character image, voice, and structured performance direction into a generated performance — then solves it back into facial animation data for Maya and Unreal Engine.',
+        'hero.chip1': 'Pipeline · AI Generative Pipeline',
+        'hero.chip2': 'Tooling · DCC & Engine Plugins',
+        'hero.chip3': 'Backend · Cloud Services',
+        'hero.chip4': 'Model · LoRA Training',
+        'hero.chip5': '★ Patented',
+        'hero.chip6': '● For Tencent Internal Use',
+        'hero.btnExplore': 'Explore the Pipeline',
+        'hero.btnTool': 'See the Tool',
+        'plugin.title': 'Plugin Overview',
+        'plugin.subtitle': 'Orchestrating models, prompts, and training data to generate facial performances from static characters.',
+        'tool.title': 'The pipeline lives inside Maya.',
+        'tool.eyebrow': 'Four artist-facing steps',
+        'tool.head': 'Install once. Generate without leaving the scene.',
+        'tool.desc': 'The plugin is packaged as a productized Maya shelf tool with bundled media utilities and automated environment checks.',
+        'tool.step1': '<span>01</span><div><strong>Drag to install.</strong>Drop one installer script into Maya to create the shelf button.</div>',
+        'tool.step2': '<span>02</span><div><strong>Choose the performance.</strong>Select the character, audio, personality, emotion, intensity, and output path.</div>',
+        'tool.step3': '<span>03</span><div><strong>Submit in the background.</strong>Authenticate, normalize media, package the request, and poll the cloud task without blocking Maya.</div>',
+        'tool.step4': '<span>04</span><div><strong>Preview and continue.</strong>Review the returned video, then solve it in Unreal or import facial data back to Maya.</div>',
+        'flow.inputs.title': 'Inputs',
+        'flow.inputs.desc': 'Image, Audio & Emotion',
+        'flow.comfy.title': 'ComfyUI Workflow',
+        'flow.comfy.desc': 'Generates Video',
+        'flow.maya1.title': 'Maya Plugin',
+        'flow.maya1.desc': 'Receives Video & Calls UE',
+        'flow.ue.title': 'Unreal Engine',
+        'flow.ue.desc': 'Facial Capture Data',
+        'flow.maya2.title': 'Maya Plugin',
+        'flow.maya2.desc': 'Retargets to Character',
+        'chapter.comfyui.title': 'ComfyUI & Generative Pipeline',
+        'comfy.overview.h3': 'Current Workflow Architecture Overview:',
+        'comfy.col1.title': 'Reference Constraints',
+        'comfy.col1.p': 'Pose & facial expression reference images constrain posture and emotion without directly feeding final video generation.',
+        'comfy.col2.title': 'Delivery & Export',
+        'comfy.col2.p': 'Output videos feed product builds; JSON animation data streams back to Maya. UE facial mocap pipeline verified, Superman integration in progress.',
+        'control.title': 'Performance Emotion Control',
+        'control.desc': 'The control model separates long-term personality, current emotion, and performance intensity. Each selection maps to tested description fragments and AU guidance before entering the generation workflow.',
+        'control.panel.top': 'Performance Settings',
+        'control.panel.personality': 'Personality',
+        'control.panel.emotion': 'Emotion',
+        'control.panel.intensity': 'Intensity',
+        'control.panel.audio': 'Audio',
+        'control.panel.btnGenerate': 'Generate',
+        'control.card1.title': 'Personality = persistent acting tone',
+        'control.card1.p': 'Controls micro-expression frequency, eye intensity, and the character\'s overall behavioral tendency.',
+        'control.card2.title': 'Emotion = momentary state',
+        'control.card2.p': 'Shapes mouth corners, brows, eyelids, and muscle direction for the current line.',
+        'control.card3.title': 'Intensity = motion amplitude',
+        'control.card3.p': 'Adjusts expression weight, motion range, and exaggeration from micro to strong.',
+        'control.card4.title': 'Rules = repeatability',
+        'control.card4.p': 'Base constraints, negative controls, AU logic, and a recorded seed reduce semantic conflicts and improve reproducibility.',
+        'results.title': 'Results Showcase',
+        'results.desc': 'Final generated performance showcasing the integration of the ComfyUI pipeline.',
+        'tech.title': 'Technical Details',
+        'tech.desc': 'Core mechanics of the ComfyUI nodes, model processing, and custom prompt system integration.',
+        'lora.title': 'Model · LoRA Training',
+        'lora.repoLabel': 'GitHub Repository',
+        'lora.desc': 'Wan2.1 video generation LoRA fine-tuned specifically for controlling character emotional performances.',
+        'footer.backBtn': '← Back to Portfolio',
+        'footer.text': 'AI Virtual Actor case study · Built from project source, development reports, demo footage, and patent draft · 2026'
+      },
+      zh: {
+        'nav.home': '首页',
+        'nav.work': '作品',
+        'nav.resume': '简历',
+        'nav.contact': '联系',
+        'hero.eyebrow': '技术美术 · AI 生成管线 · DCC 工具研发',
+        'hero.title': 'AI Virtual Actor<span>从角色单帧静图到引擎就绪的面部表演动画</span>',
+        'hero.lede': '端到端数字人面部表演工作流与 Maya 工具链：输入角色单图、音频与结构化情绪指令，自动生成高保真面部表演，并解算回传至 Maya 与 Unreal Engine 驱动 3D 角色骨骼与动作单元。',
+        'hero.chip1': '管线 · AI 生成式工作流',
+        'hero.chip2': '工具 · DCC 与引擎插件',
+        'hero.chip3': '后端 · 云端服务与调度',
+        'hero.chip4': '模型 · LoRA 微调训练',
+        'hero.chip5': '★ 已申请专利',
+        'hero.chip6': '● 腾讯内部业务交付',
+        'hero.btnExplore': '探索生成管线',
+        'hero.btnTool': '查看 Maya 工具',
+        'plugin.title': '插件概览',
+        'plugin.subtitle': '编排模型、提示词与训练数据，从静态角色生成面部表演。',
+        'tool.title': '管线深度集成于 Maya',
+        'tool.eyebrow': '面向艺术家的四步工作流',
+        'tool.head': '一次安装，无需脱离制作场景即时生成。',
+        'tool.desc': '插件作为标准化 Maya 工具架插件交付，内置媒体处理工具与自动化环境检测。',
+        'tool.step1': '<span>01</span><div><strong>拖拽快速安装。</strong>直接将单个安装脚本拖入 Maya，即可一键生成快捷工具架按钮。</div>',
+        'tool.step2': '<span>02</span><div><strong>配置表演参数。</strong>选定目标角色、驱动音频、基础性格、即时情绪、表现强度与输出路径。</div>',
+        'tool.step3': '<span>03</span><div><strong>后台静默提交。</strong>完成鉴权与媒体标准化打包，后台轮询云端任务，全程不阻塞 Maya 视口操作。</div>',
+        'tool.step4': '<span>04</span><div><strong>即时预览与回流。</strong>在线预览生成视频，直接在 UE 中完成面捕解算并将面部动画数据流回传至 Maya。</div>',
+        'flow.inputs.title': '输入资产',
+        'flow.inputs.desc': '图像、音频与情绪标签',
+        'flow.comfy.title': 'ComfyUI 工作流',
+        'flow.comfy.desc': '生成表演视频',
+        'flow.maya1.title': 'Maya 插件',
+        'flow.maya1.desc': '接收视频并调度 UE',
+        'flow.ue.title': 'Unreal Engine',
+        'flow.ue.desc': '面捕数据解算',
+        'flow.maya2.title': 'Maya 插件',
+        'flow.maya2.desc': '重定向到角色模型',
+        'chapter.comfyui.title': 'ComfyUI 与生成式管线',
+        'comfy.overview.h3': '目前工作流概述:',
+        'comfy.col1.title': '参考约束',
+        'comfy.col1.p': 'Pose / 表情参考图用于约束角色姿态与表情，不直接作为最终生成输入。',
+        'comfy.col2.title': '交付出口',
+        'comfy.col2.p': '输出视频进入产品端；JSON 动画数据可继续传回 Maya，UE 面捕链路已完成验证，Superman 接入中。',
+        'control.title': '表演情绪精细化控制',
+        'control.desc': '控制模型解耦了长期性格、即时情绪与表演强度。每个选项目标均映射至经过实测验证的提示词片段与面部动作单元（AU）参数，再输入至生成管线。',
+        'control.panel.top': '表演参数配置',
+        'control.panel.personality': '基础性格',
+        'control.panel.emotion': '即时情绪',
+        'control.panel.intensity': '情绪强度',
+        'control.panel.audio': '驱动音频',
+        'control.panel.btnGenerate': '开始生成',
+        'control.card1.title': '性格锚定',
+        'control.card1.p': '稳定的性格特征锚点有效限制同一场景多镜头剪辑中的风格漂移。',
+        'control.card2.title': '情绪流转',
+        'control.card2.p': '单镜头独立的情绪调节使角色保持丰富生动的表现力，无需重复微调训练。',
+        'control.card3.title': '情绪强度',
+        'control.card3.p': '调节表情权重、动作幅度以及从微小到强烈的夸张程度。',
+        'control.card4.title': '规则约束确保可复现性',
+        'control.card4.p': '基础约束、负向控制、AU 动作单元逻辑以及种子记录机制大幅减少语义冲突，显著提升成果可复现性。',
+        'results.title': '效果展示',
+        'results.desc': 'ComfyUI 生成管线全流程整合后的最终面部表演效果展示。',
+        'tech.title': '技术细节与架构',
+        'tech.desc': 'ComfyUI 节点链路、模型处理与自定义提示词系统的核心机制解析。',
+        'lora.title': '模型微调 · LoRA 训练',
+        'lora.repoLabel': '开源项目仓库',
+        'lora.desc': '针对 Wan2.1 视频生成模型量身微调的表情 LoRA，用于精准控制角色情绪表演。',
+        'footer.backBtn': '← 返回首页',
+        'footer.text': 'AI 虚拟演员项目案例 · 基于项目源码、研发文档、演示视频及专利草案制作 · 2026'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      if (!I18N_DICT[lang]) return;
+      currentLang = lang;
+      document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+
+      const dict = I18N_DICT[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      // Update toggles
+      document.querySelectorAll('.opt-en').forEach(el => el.classList.toggle('active', lang === 'en'));
+      document.querySelectorAll('.opt-zh').forEach(el => el.classList.toggle('active', lang === 'zh'));
+
+      try {
+        localStorage.setItem('ava_preferred_lang', lang);
+      } catch (e) { }
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'en' ? 'zh' : 'en');
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      let initialLang = 'en';
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryLang = urlParams.get('lang');
+      if (queryLang === 'zh' || queryLang === 'en') {
+        initialLang = queryLang;
+      } else {
+        try {
+          const savedLang = localStorage.getItem('ava_preferred_lang');
+          if (savedLang === 'zh' || savedLang === 'en') {
+            initialLang = savedLang;
+          }
+        } catch (e) { }
+      }
+      setLanguage(initialLang);
+    });
+  </script>
+
 </body>
 
 </html>
