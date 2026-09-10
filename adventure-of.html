@@ -307,182 +307,147 @@
     </section>
   </div>
   <div>
-    <section class="team-slider-section" style="padding-top: 2rem;">
+    <section class="team-slider-section" style="padding-top: 2rem; padding-bottom: 2rem;">
       <div class="title-center-5"
-        style="margin-bottom: 3rem; text-align: center; align-items: center; justify-content: center; display: flex;">
+        style="margin-bottom: 2rem; text-align: center; align-items: center; justify-content: center; display: flex;">
         <h3 class="h3-heading-7"><span class="text-color-gradient-2">Storyboard</span></h3>
       </div>
-      <div data-delay="4000" data-animation="slide" class="team-slider w-slider" data-autoplay="false"
-        data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0"
-        data-nav-spacing="3" data-duration="500" data-infinite="true" data-initial-slide="1">
-        <div class="team-slider-mask w-slider-mask">
-          <div class="team-slide w-slide">
-            <div class="team-slide-item">
-              <div class="team-member-image-wrapper"><img sizes="(max-width: 3508px) 100vw, 3508px"
-                  srcset="images/1-5-p-500.jpg 500w, images/1-5-p-800.jpg 800w, images/1-5-p-1080.jpg 1080w, images/1-5-p-1600.jpg 1600w, images/1-5-p-2000.jpg 2000w, images/1-5-p-2600.jpg 2600w, images/1-5-p-3200.jpg 3200w, images/1-5.JPG 3508w"
-                  alt="" src="images/1-5.JPG" class="image-cover-7"
-                  style="object-fit: contain; width: 100%; height: auto; max-height: 60vh;"></div>
-              <div class="wrap-v-regular-2">
-                <div class="team-member-details">
-                  <div>
-                    <div class="h6-heading-2">01 - 05</div>
-                    <div class="paragraph-large text-color-gray-600"><em class="italic-text">The Recipe Wakes Up</em>
-                    </div>
-                  </div>
-                </div>
-                <div class="team-divider"></div>
-                <div class="team-member-description">
-                  <p class="paragraph-regular-3 text-color-gray-600">We open in a grounded reality—reading, tools, and
-                    tabletop details anchor the medical text in the present. As ink ripples into a vortex, the scene
-                    pivots from live-action realism to magical logic: the “Little Blue Dragon” recipe begins to stir,
-                    signaling that the book is not only a source of knowledge, but a gateway with its own rules.</p>
-                </div>
-              </div>
-            </div>
+
+      <!-- Storyboard Horizontal Scroll Strip -->
+      <style>
+        .sb-scroll-wrapper {
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          cursor: grab;
+          padding: 0 3vw 1.5rem;
+        }
+        .sb-scroll-wrapper:active { cursor: grabbing; }
+        .sb-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+        .sb-scroll-wrapper::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
+        .sb-scroll-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+        .sb-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.35); }
+
+        .sb-scroll-track {
+          display: flex;
+          gap: 28px;
+          width: max-content;
+          align-items: flex-start;
+        }
+        .sb-card {
+          flex-shrink: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          max-width: 320px;
+          transition: transform 0.3s ease;
+        }
+        .sb-card:hover { transform: translateY(-4px); }
+        .sb-card-img {
+          border-radius: 12px;
+          overflow: hidden;
+          background: rgba(0,0,0,0.15);
+          border: 1px solid rgba(255,255,255,0.06);
+          line-height: 0;
+        }
+        .sb-card-img img {
+          height: 50vh;
+          width: auto;
+          display: block;
+          object-fit: contain;
+        }
+        .sb-card-title {
+          font-size: 18px;
+          font-weight: 700;
+          color: #fff;
+          letter-spacing: -0.03em;
+        }
+        .sb-card-subtitle {
+          font-size: 15px;
+          color: rgba(255,255,255,0.75);
+          font-style: italic;
+        }
+        .sb-card-divider {
+          width: 40%;
+          height: 1px;
+          background: rgba(255,255,255,0.15);
+        }
+        .sb-card-desc {
+          font-size: 13px;
+          color: rgba(255,255,255,0.7);
+          line-height: 1.55;
+          max-width: 320px;
+        }
+
+        @media (max-width: 767px) {
+          .sb-card { max-width: 260px; }
+          .sb-card-img img { height: 40vh; }
+          .sb-card-desc { max-width: 260px; font-size: 12px; }
+        }
+      </style>
+
+      <div class="sb-scroll-wrapper" id="sb-scroll">
+        <div class="sb-scroll-track">
+          <!-- Card 1: 01–05 -->
+          <div class="sb-card">
+            <div class="sb-card-img"><img src="images/1-5.JPG"
+                srcset="images/1-5-p-500.jpg 500w, images/1-5-p-800.jpg 800w, images/1-5-p-1080.jpg 1080w, images/1-5.JPG 3508w"
+                sizes="320px" alt="Storyboard 01-05"></div>
+            <div class="sb-card-title">01 - 05</div>
+            <div class="sb-card-subtitle">The Recipe Wakes Up</div>
+            <div class="sb-card-divider"></div>
+            <p class="sb-card-desc">We open in a grounded reality—reading, tools, and tabletop details anchor the medical text in the present. As ink ripples into a vortex, the scene pivots from live-action realism to magical logic: the "Little Blue Dragon" recipe begins to stir, signaling that the book is not only a source of knowledge, but a gateway with its own rules.</p>
           </div>
-          <div class="team-slide w-slide">
-            <div class="team-slide-item">
-              <div class="team-member-image-wrapper"><img sizes="(max-width: 3508px) 100vw, 3508px, 100vw"
-                  srcset="images/6-10-p-500.jpg 500w, images/6-10-p-800.jpg 800w, images/6-10-p-1080.jpg 1080w, images/6-10-p-1600.jpg 1600w, images/6-10-p-2000.jpg 2000w, images/6-10-p-2600.jpg 2600w, images/6-10-p-3200.jpg 3200w, images/6-10.JPG 3508w"
-                  alt="" src="images/6-10.JPG" class="image-cover-7"
-                  style="object-fit: contain; width: 100%; height: auto; max-height: 60vh;"></div>
-              <div class="wrap-v-regular-2">
-                <div class="team-member-details">
-                  <div>
-                    <div class="h6-heading-2">06 - 10</div>
-                    <div class="paragraph-large text-color-gray-600"><em class="italic-text-2">Into the Mountains</em>
-                    </div>
-                  </div>
-                </div>
-                <div class="team-divider"></div>
-                <div class="team-member-description">
-                  <p class="paragraph-regular-3 text-color-gray-600">This sequence shifts into a quest structure. Wide
-                    landscapes establish the world; mid shots track the character’s movement; close-ups on the basket
-                    and herbs turn tradition into an actionable objective. By moving from macro to micro, the storyboard
-                    translates TCM knowledge into visible, playable steps—environment, path, and props all carry
-                    meaning.</p>
-                </div>
-              </div>
-            </div>
+          <!-- Card 2: 06–10 -->
+          <div class="sb-card">
+            <div class="sb-card-img"><img src="images/6-10.JPG"
+                srcset="images/6-10-p-500.jpg 500w, images/6-10-p-800.jpg 800w, images/6-10-p-1080.jpg 1080w, images/6-10.JPG 3508w"
+                sizes="320px" alt="Storyboard 06-10"></div>
+            <div class="sb-card-title">06 - 10</div>
+            <div class="sb-card-subtitle">Into the Mountains</div>
+            <div class="sb-card-divider"></div>
+            <p class="sb-card-desc">This sequence shifts into a quest structure. Wide landscapes establish the world; mid shots track the character's movement; close-ups on the basket and herbs turn tradition into an actionable objective. By moving from macro to micro, the storyboard translates TCM knowledge into visible, playable steps.</p>
           </div>
-          <div class="team-slide w-slide">
-            <div class="team-slide-item">
-              <div class="team-member-image-wrapper"><img sizes="(max-width: 3508px) 100vw, 3508px"
-                  srcset="images/11-17-p-500.jpg 500w, images/11-17-p-800.jpg 800w, images/11-17-p-1080.jpg 1080w, images/11-17-p-1600.jpg 1600w, images/11-17-p-2000.jpg 2000w, images/11-17-p-2600.jpg 2600w, images/11-17-p-3200.jpg 3200w, images/11-17.JPG 3508w"
-                  alt="" src="images/11-17.JPG" class="image-cover-7"
-                  style="object-fit: contain; width: 100%; height: auto; max-height: 60vh;"></div>
-              <div class="wrap-v-regular-2">
-                <div class="team-member-details">
-                  <div>
-                    <div class="h6-heading-2">11 - 17<br></div>
-                    <div class="paragraph-large text-color-gray-600"><em>Brewing the Decoction</em></div>
-                  </div>
-                </div>
-                <div class="team-divider"></div>
-                <div class="team-member-description">
-                  <p class="paragraph-regular-3 text-color-gray-600">We treat brewing as choreography. Overhead shots
-                    clarify structure and sequence; inserts and close-ups emphasize hands, tools, and liquid texture; a
-                    back-view anchors the viewer inside the ritual. Functionally, it explains the process—but it also
-                    prepares the visual grammar for the crossover, as live-action realism and animated cues begin to
-                    share the same space.</p>
-                </div>
-              </div>
-            </div>
+          <!-- Card 3: 11–17 -->
+          <div class="sb-card">
+            <div class="sb-card-img"><img src="images/11-17.JPG"
+                srcset="images/11-17-p-500.jpg 500w, images/11-17-p-800.jpg 800w, images/11-17-p-1080.jpg 1080w, images/11-17.JPG 3508w"
+                sizes="320px" alt="Storyboard 11-17"></div>
+            <div class="sb-card-title">11 - 17</div>
+            <div class="sb-card-subtitle">Brewing the Decoction</div>
+            <div class="sb-card-divider"></div>
+            <p class="sb-card-desc">We treat brewing as choreography. Overhead shots clarify structure and sequence; inserts and close-ups emphasize hands, tools, and liquid texture; a back-view anchors the viewer inside the ritual. Live-action realism and animated cues begin to share the same space.</p>
           </div>
-          <div class="team-slide w-slide">
-            <div class="team-slide-item">
-              <div class="team-member-image-wrapper"><img sizes="(max-width: 3508px) 100vw, 3508px"
-                  srcset="images/18-21-p-500.jpg 500w, images/18-21-p-800.jpg 800w, images/18-21-p-1080.jpg 1080w, images/18-21-p-1600.jpg 1600w, images/18-21-p-2000.jpg 2000w, images/18-21-p-2600.jpg 2600w, images/18-21-p-3200.jpg 3200w, images/18-21.JPG 3508w"
-                  alt="" src="images/18-21.JPG" class="image-cover-7"
-                  style="object-fit: contain; width: 100%; height: auto; max-height: 60vh;"></div>
-              <div class="wrap-v-regular-2">
-                <div class="team-member-details">
-                  <div>
-                    <div class="h6-heading-2">18 - 21</div>
-                    <div class="paragraph-large text-color-gray-600"><em>When Worlds Collide</em></div>
-                  </div>
-                </div>
-                <div class="team-divider"></div>
-                <div class="team-member-description">
-                  <p class="paragraph-regular-3 text-color-gray-600">The finale completes the crossover through a simple
-                    visual logic—drop, ripple, portal. The Little Blue Dragon’s impact triggers an expanding
-                    ink-and-water reaction, and the page transforms from medium to doorway. The closing tableau (tools,
-                    pot, open book) makes the theme explicit: the ancient text and the present-day learner now occupy
-                    one shared reality, launching the story into its book-world exploration.</p>
-                </div>
-              </div>
-            </div>
+          <!-- Card 4: 18–21 -->
+          <div class="sb-card">
+            <div class="sb-card-img"><img src="images/18-21.JPG"
+                srcset="images/18-21-p-500.jpg 500w, images/18-21-p-800.jpg 800w, images/18-21-p-1080.jpg 1080w, images/18-21.JPG 3508w"
+                sizes="320px" alt="Storyboard 18-21"></div>
+            <div class="sb-card-title">18 - 21</div>
+            <div class="sb-card-subtitle">When Worlds Collide</div>
+            <div class="sb-card-divider"></div>
+            <p class="sb-card-desc">The finale completes the crossover through a simple visual logic—drop, ripple, portal. The Little Blue Dragon's impact triggers an expanding ink-and-water reaction, and the page transforms from medium to doorway. The ancient text and the present-day learner now occupy one shared reality.</p>
           </div>
         </div>
-        <!-- Native Webflow arrows (hidden visually but functional) -->
-        <div class="team-slider-trigger left w-slider-arrow-left"
-          style="background-image: none !important; width: 0 !important; opacity: 0 !important; overflow: hidden;">
-        </div>
-        <div class="team-slider-trigger w-slider-arrow-right"
-          style="background-image: none !important; width: 0 !important; opacity: 0 !important; overflow: hidden;">
-        </div>
-        <div class="slide-nav-hidden w-slider-nav w-round w-num"></div>
       </div>
 
-      <!-- Visual < > Chevron Overlays (positioned over the slider) -->
-      <div id="sb-prev-btn"
-        style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease; opacity: 0.7;"
-        onmouseover="this.style.opacity='1'; this.style.background='rgba(0,0,0,0.7)'"
-        onmouseout="this.style.opacity='0.7'; this.style.background='rgba(0,0,0,0.5)'">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </div>
-      <div id="sb-next-btn"
-        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease; opacity: 0.7;"
-        onmouseover="this.style.opacity='1'; this.style.background='rgba(0,0,0,0.7)'"
-        onmouseout="this.style.opacity='0.7'; this.style.background='rgba(0,0,0,0.5)'">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </div>
-
-      <!-- Arrow click + slide click script -->
+      <!-- Drag-to-scroll script -->
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-          var section = document.querySelector('.team-slider-section');
-          if (!section) return;
-          // Make section position:relative for absolute overlay buttons
-          section.style.position = 'relative';
-
-          var leftNative = section.querySelector('.w-slider-arrow-left');
-          var rightNative = section.querySelector('.w-slider-arrow-right');
-          var prevBtn = document.getElementById('sb-prev-btn');
-          var nextBtn = document.getElementById('sb-next-btn');
-
-          if (prevBtn && leftNative) {
-            prevBtn.addEventListener('click', function () { leftNative.click(); });
-          }
-          if (nextBtn && rightNative) {
-            nextBtn.addEventListener('click', function () { rightNative.click(); });
-          }
-
-          // Click-on-slide navigation
-          var slider = section.querySelector('.team-slider');
-          if (slider) {
-            slider.addEventListener('click', function (e) {
-              var slide = e.target.closest('.team-slide');
-              if (!slide || !slide.hasAttribute('aria-hidden')) return;
-
-              var mask = slider.querySelector('.w-slider-mask');
-              if (!mask) return;
-              var rect = slide.getBoundingClientRect();
-              var maskRect = mask.getBoundingClientRect();
-
-              if (rect.left > maskRect.left + 50 && rightNative) {
-                rightNative.click();
-              } else if (rect.left < maskRect.left - 50 && leftNative) {
-                leftNative.click();
-              }
-            });
-          }
+          var el = document.getElementById('sb-scroll');
+          if (!el) return;
+          var isDown = false, startX, scrollLeft;
+          el.addEventListener('mousedown', function (e) {
+            isDown = true; el.style.cursor = 'grabbing';
+            startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+          });
+          el.addEventListener('mouseleave', function () { isDown = false; el.style.cursor = 'grab'; });
+          el.addEventListener('mouseup', function () { isDown = false; el.style.cursor = 'grab'; });
+          el.addEventListener('mousemove', function (e) {
+            if (!isDown) return; e.preventDefault();
+            var x = e.pageX - el.offsetLeft;
+            el.scrollLeft = scrollLeft - (x - startX) * 1.5;
+          });
         });
       </script>
   </div>
@@ -917,38 +882,6 @@
             color: #ffffff !important;
           }
 
-          /* Storyboard Custom Slider Scaling & Opacity */
-          .team-slider-section .team-slide {
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease !important;
-            transform: scale(0.85) !important;
-            cursor: pointer;
-            transform-origin: left center;
-          }
-
-          /* Webflow natively removes aria-hidden from the active slide */
-          .team-slider-section .team-slide:not([aria-hidden="true"]) {
-            transform: scale(1) !important;
-          }
-
-          /* Dim text on inactive slides to keep them slightly visible */
-          .team-slider-section .team-slide .wrap-v-regular-2 {
-            transition: opacity 0.5s ease !important;
-            opacity: 0.35 !important;
-          }
-
-          .team-slider-section .team-slide:not([aria-hidden="true"]) .wrap-v-regular-2 {
-            opacity: 1 !important;
-          }
-
-          /* Dim image slightly on inactive slides */
-          .team-slider-section .team-slide .team-member-image-wrapper {
-            transition: opacity 0.6s ease;
-            opacity: 0.7;
-          }
-
-          .team-slider-section .team-slide:not([aria-hidden="true"]) .team-member-image-wrapper {
-            opacity: 1;
-          }
 
           /* Apply blur to main sections to ensure text legibility */
           /* Select the specific sections that sit over the background image */

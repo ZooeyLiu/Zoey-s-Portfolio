@@ -1,40 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const projectsData = [
         {
-            id: 0,
-            title: "AI Virtual Actor",
-            subtitle: "AI Facial Capture Pipeline & Maya Plugin",
-            category: "AI Tools / Tech Art / Pipeline",
-            description: "An end-to-end AI facial animation pipeline that converts a character image, voice, and structured performance direction into engine-ready facial animation data — all from inside Maya. The tool integrates ComfyUI orchestration, cloud generation, facial solving, and MetaHuman handoff into one repeatable workflow.",
-            image: "ai-virtual-actor-blockout/assets/plugin-ui.png",
-            tags: ["ComfyUI", "Maya", "Unreal Engine", "Python", "MetaHuman"],
-            bgColor: "linear-gradient(180deg, rgba(255,173,37,0.35) 0%, rgba(100,50,180,0.2) 50%, rgba(0,0,0,0) 100%)",
-            bgPosition: "60% center",
-            link: "ai-virtual-actor.html"
+            id: 10,
+            title: "Athlete Training Portal",
+            subtitle: "Web Application",
+            category: "Front-End Development",
+            description: "A comprehensive training portal for athletes.",
+            image: "images/ATP/atp_logo_tagline.png",
+            tags: ["React", "Web App", "Front-End"],
+            bgColor: "linear-gradient(180deg, rgba(20,80,60,0.4) 0%, rgba(0,0,0,0) 100%)",
+            bgSize: "80%",
+            bgPosition: "center",
+            link: "https://athletic-training-portal-front-end.vercel.app"
         },
         {
-            id: 1,
-            title: "Shaman",
-            subtitle: "The Call of Alien Civilization",
-            category: "Interactive Design / Projection",
-            description: "A large-scale interactive projection mapping installation combining TouchDesigner and real-time audio reactivity. Explores themes of extraterrestrial communication.",
-            image: "ShamanIMG/cover.png",
-            tags: ["TouchDesigner", "Projection", "Interactive"],
-            bgColor: "linear-gradient(180deg, rgba(100,20,50,0.4) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "70% center", // Shifts the image left to center the sphere
-            link: "shaman.html"
-        },
-        {
-            id: 2,
-            title: "Find the Way Home",
-            subtitle: "System Design Archetype",
-            category: "Game Dev",
-            description: "A systems-heavy UE5 project focusing on inventory management, quest tracking, and non-linear narrative structures.",
-            image: "images/截屏2023-08-26-20.47.50.png",
-            tags: ["UE5", "C++", "Systems Design"],
-            bgColor: "linear-gradient(180deg, rgba(20,50,100,0.4) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "center 60%", // Shifts the image up to show more of the bottom geometry
-            link: "find-the-way-home.html"
+            id: 9,
+            title: "Other Works",
+            subtitle: "Various Projects",
+            category: "Miscellaneous",
+            description: "A collection of other creative works, experiments, and technical explorations.",
+            image: "images/OtherWorks/graffiti.jpg",
+            tags: ["Graphic", "Branding"],
+            bgColor: "linear-gradient(180deg, rgba(50,50,50,0.4) 0%, rgba(0,0,0,0) 100%)",
+            link: "other-works.html"
         },
         {
             id: 4,
@@ -46,29 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: ["Game Design", "Level Design", "Blueprint"],
             bgColor: "linear-gradient(180deg, rgba(80,80,80,0.4) 0%, rgba(0,0,0,0) 100%)",
             link: "into-the-unknown.html"
-        },
-        {
-            id: 5,
-            title: "Adventure of Little Blue Dragon",
-            subtitle: "Live Action + CGI",
-            category: "Animation / CGI",
-            description: "Group project combining live action footage with CGI characters. Featured modeling, rigging, and post-production work.",
-            image: "images/cv-1.png",
-            tags: ["Maya", "CGI", "Live Action"],
-            bgColor: "linear-gradient(180deg, rgba(60,20,80,0.4) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "20% center",
-            link: "adventure-of.html"
-        },
-        {
-            id: 3,
-            title: "Deep Space",
-            subtitle: "Sci-Fi 3D Animation created in Unreal Engine 5",
-            category: "Animation / Unreal Engine / motion capture",
-            description: "An exploration of Niagara particle systems and chaos physics in Unreal Engine 5, creating realistic destruction and gravity manipulation effects.",
-            image: "images/DeepSpaceScene/cardDS.png",
-            tags: ["UE5", "Niagara", "Chaos Physics"],
-            bgColor: "linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(0,0,0,0) 100%)",
-            link: "deep-space.html"
         },
         {
             id: 8,
@@ -93,6 +58,29 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "pizza-delivery.html"
         },
         {
+            id: 3,
+            title: "Deep Space",
+            subtitle: "Sci-Fi 3D Animation created in Unreal Engine 5",
+            category: "Animation / Unreal Engine / motion capture",
+            description: "An exploration of Niagara particle systems and chaos physics in Unreal Engine 5, creating realistic destruction and gravity manipulation effects.",
+            image: "images/DeepSpaceScene/cardDS.png",
+            tags: ["UE5", "Niagara", "Chaos Physics"],
+            bgColor: "linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(0,0,0,0) 100%)",
+            link: "deep-space.html"
+        },
+        {
+            id: 0,
+            title: "AI Virtual Actor",
+            subtitle: "AI Facial Capture Pipeline & Maya Plugin",
+            category: "AI Tools / Tech Art / Pipeline",
+            description: "An end-to-end AI facial animation pipeline that converts a character image, voice, and structured performance direction into engine-ready facial animation data — all from inside Maya. The tool integrates ComfyUI orchestration, cloud generation, facial solving, and MetaHuman handoff into one repeatable workflow.",
+            image: "ai-virtual-actor-blockout/assets/plugin-ui.png",
+            tags: ["ComfyUI", "Maya", "Unreal Engine", "Python", "MetaHuman"],
+            bgColor: "linear-gradient(180deg, rgba(255,173,37,0.35) 0%, rgba(100,50,180,0.2) 50%, rgba(0,0,0,0) 100%)",
+            bgPosition: "60% center",
+            link: "ai-virtual-actor.html"
+        },
+        {
             id: 6,
             title: "Playdate Demo",
             subtitle: "Handheld Game Dev",
@@ -101,32 +89,44 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "images/Playdate/game%20control_2.png",
             tags: ["Lua", "Playdate", "Game Dev"],
             bgColor: "linear-gradient(180deg, rgba(255,200,50,0.2) 0%, rgba(0,0,0,0) 100%)",
-            bgPosition: "40% 65%", // Pulled down horizontally a bit to move image right, pulled up vertically to move image up
+            bgPosition: "40% 65%",
             link: "playdate-demo.html"
         },
         {
-            id: 10,
-            title: "Athlete Training Portal",
-            subtitle: "Web Application",
-            category: "Front-End Development",
-            description: "A comprehensive training portal for athletes.",
-            image: "images/ATP/atp_logo_tagline.png",
-            tags: ["React", "Web App", "Front-End"],
-            bgColor: "linear-gradient(180deg, rgba(20,80,60,0.4) 0%, rgba(0,0,0,0) 100%)",
-            bgSize: "80%",
-            bgPosition: "center",
-            link: "https://athletic-training-portal-front-end.vercel.app"
+            id: 1,
+            title: "Shaman",
+            subtitle: "The Call of Alien Civilization",
+            category: "Interactive Design / Projection",
+            description: "A large-scale interactive projection mapping installation combining TouchDesigner and real-time audio reactivity. Explores themes of extraterrestrial communication.",
+            image: "ShamanIMG/cover.png",
+            tags: ["TouchDesigner", "Projection", "Interactive"],
+            bgColor: "linear-gradient(180deg, rgba(100,20,50,0.4) 0%, rgba(0,0,0,0) 100%)",
+            bgPosition: "70% center",
+            link: "shaman.html"
         },
         {
-            id: 9,
-            title: "Other Works",
-            subtitle: "Various Projects",
-            category: "Miscellaneous",
-            description: "A collection of other creative works, experiments, and technical explorations.",
-            image: "images/OtherWorks/graffiti.jpg",
-            tags: ["Graphic", "Branding"],
-            bgColor: "linear-gradient(180deg, rgba(50,50,50,0.4) 0%, rgba(0,0,0,0) 100%)",
-            link: "other-works.html"
+            id: 2,
+            title: "Find the Way Home",
+            subtitle: "System Design Archetype",
+            category: "Game Dev",
+            description: "A systems-heavy UE5 project focusing on inventory management, quest tracking, and non-linear narrative structures.",
+            image: "images/截屏2023-08-26-20.47.50.png",
+            tags: ["UE5", "C++", "Systems Design"],
+            bgColor: "linear-gradient(180deg, rgba(20,50,100,0.4) 0%, rgba(0,0,0,0) 100%)",
+            bgPosition: "center 60%",
+            link: "find-the-way-home.html"
+        },
+        {
+            id: 5,
+            title: "Adventure of Little Blue Dragon",
+            subtitle: "Live Action + CGI",
+            category: "Animation / CGI",
+            description: "Group project combining live action footage with CGI characters. Featured modeling, rigging, and post-production work.",
+            image: "images/cv-1.png",
+            tags: ["Maya", "CGI", "Live Action"],
+            bgColor: "linear-gradient(180deg, rgba(60,20,80,0.4) 0%, rgba(0,0,0,0) 100%)",
+            bgPosition: "20% center",
+            link: "adventure-of.html"
         }
     ];
 
