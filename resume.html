@@ -83,25 +83,70 @@
     </div>
 
     <!-- RESUME MAIN CONTENT -->
-    <main class="resume-page-wrapper">
+        <main class="resume-page-wrapper">
+      <style>
+        .lang-zh { display: none; }
+        .lang-en { display: block; }
+        body.zh-mode .lang-zh { display: block; }
+        body.zh-mode .lang-en { display: none; }
+        .lang-toggle-btn {
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: #fff;
+          padding: 8px 16px;
+          border-radius: 20px;
+          cursor: pointer;
+          font-size: 13px;
+          font-weight: 600;
+          transition: all 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .lang-toggle-btn:hover {
+          background: rgba(255, 255, 255, 0.15);
+        }
+        .lang-toggle-btn.active {
+          background: #fff;
+          color: #000;
+        }
+        .hero-actions-row {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-top: 24px;
+        }
+        /* Extra fix for subtitles missing padding */
+        .resume-subtitle { text-align: left; margin-left: 0; padding-left: 0; }
+        .resume-summary { text-align: left; margin-left: 0; padding-left: 0; }
+      </style>
 
       <!-- HERO -->
       <section class="resume-hero">
         <div class="resume-title-wrap">
-          <h1 class="resume-name">Ziyu (Zoey) Liu</h1>
-          <h2 class="resume-subtitle" style="text-align: left; margin-left: 0; padding-left: 0;">Technical Artist —
-            Real-time Pipelines, Interactive Systems, & Mocap</h2>
+          <h1 class="resume-name">
+            <span class="lang-en">Ziyu (Zoey) Liu</span>
+            <span class="lang-zh">刘子瑜 (Zoey)</span>
+          </h1>
+          <h2 class="resume-subtitle">
+            <span class="lang-en">Technical Artist — Game Character Animation & AI Production Pipelines</span>
+            <span class="lang-zh">技术美术 — 游戏角色动画与 AI 生产管线</span>
+          </h2>
         </div>
 
-        <p class="resume-summary" style="text-align: left; margin-left: 0; padding-left: 0;">
-          A technical artist blending 3D animation craft with game-development execution. I specialize in building
-          efficient real-time pipelines in Unreal Engine 5, developing custom tools, and integrating motion capture data
-          to help teams ship polished, performant interactive experiences.
+        <p class="resume-summary">
+          <span class="lang-en">Oriented towards game character animation and AI production pipelines. Proficient in UE game development, animation/rendering, 3D animation production, mocap data processing, Maya Python tool creation, ComfyUI generation pipelines, cloud task submission, and Three.js virtual human showcase. Incoming Summer Intern at Tencent IEG Game AI Engine Dept, focusing on building AI pipeline for UE/Maya facial animation extraction.</span>
+          <span class="lang-zh">面向游戏角色动画与 AI 生产管线的技术美术，具备 UE 游戏开发, 动画与渲染/ 3D 动画制作 / 动捕及数据清洗整理、Maya Python 工具制作、ComfyUI AI 生成管线制作、云端任务提交和 Three.js 虚拟人展示经验。暑期在腾讯 IEG 游戏 AI 引擎部实习，重点搭建 AI 管线 UE/Maya 面部动画提取的虚拟演员工作流。</span>
         </p>
 
-        <div class="resume-actions">
-          <!-- Update href when the PDF is ready -->
-          <a href="ZoeyCV_TA.pdf" target="_blank" class="resume-btn primary">Download PDF Resume</a>
+        <div class="hero-actions-row">
+          <a href="Zoey_Liu_Resume.pdf" target="_blank" class="resume-btn primary" download>
+            <span class="lang-en">Download PDF Resume</span>
+            <span class="lang-zh">下载 PDF 简历</span>
+          </a>
+          <button id="langToggleBtn" class="lang-toggle-btn">
+            <span class="lang-label">EN / 中文</span>
+          </button>
         </div>
       </section>
 
@@ -110,80 +155,153 @@
 
         <!-- SIDEBAR (Skills, Education, etc) -->
         <aside class="resume-sidebar">
-
+          
           <div class="resume-section">
-            <h3 class="resume-section-title">Core Toolchain</h3>
+            <h3 class="resume-section-title">
+              <span class="lang-en">Core Toolchain</span>
+              <span class="lang-zh">技能与工具</span>
+            </h3>
 
             <div class="skill-category">
-              <h4 class="skill-category-title">Engine / Real-time</h4>
+              <h4 class="skill-category-title">
+                <span class="lang-en">Engine / DCC</span>
+                <span class="lang-zh">引擎 / DCC</span>
+              </h4>
               <div class="skill-chip-group">
-                <span class="skill-chip">Unreal Engine 5</span>
-                <span class="skill-chip">UEFN</span>
-                <span class="skill-chip">Niagara</span>
-                <span class="skill-chip">Lumen</span>
+                <span class="skill-chip">Unreal Engine</span>
+                <span class="skill-chip">Maya</span>
+                <span class="skill-chip">ComfyUI</span>
+                <span class="skill-chip">Substance Painter</span>
+                <span class="skill-chip">ZBrush</span>
+                <span class="skill-chip">3ds Max</span>
+                <span class="skill-chip">Marmoset</span>
+                <span class="skill-chip">TouchDesigner</span>
               </div>
             </div>
 
             <div class="skill-category">
-              <h4 class="skill-category-title">Code / Scripting</h4>
+              <h4 class="skill-category-title">
+                <span class="lang-en">Programming / Tools</span>
+                <span class="lang-zh">编程 / 工具</span>
+              </h4>
               <div class="skill-chip-group">
                 <span class="skill-chip">Python</span>
                 <span class="skill-chip">C++</span>
-                <span class="skill-chip">Blueprints</span>
                 <span class="skill-chip">C</span>
+                <span class="skill-chip">Lua</span>
+                <span class="skill-chip">JavaScript</span>
+                <span class="skill-chip">HTML</span>
+                <span class="skill-chip">Three.js</span>
+                <span class="skill-chip">Unreal Blueprint</span>
+                <span class="skill-chip">VS Code</span>
+                <span class="skill-chip">PS/PR/AE</span>
               </div>
             </div>
 
             <div class="skill-category">
-              <h4 class="skill-category-title">3D / Lookdev</h4>
+              <h4 class="skill-category-title">
+                <span class="lang-en">Languages</span>
+                <span class="lang-zh">语言</span>
+              </h4>
               <div class="skill-chip-group">
-                <span class="skill-chip">Maya</span>
-                <span class="skill-chip">Substance Painter</span>
-                <span class="skill-chip">ZBrush</span>
-                <span class="skill-chip">Blender</span>
-                <span class="skill-chip">Marmoset</span>
+                <span class="skill-chip"><span class="lang-en">English</span><span class="lang-zh">英语</span></span>
+                <span class="skill-chip"><span class="lang-en">Chinese</span><span class="lang-zh">中文</span></span>
+                <span class="skill-chip"><span class="lang-en">Korean</span><span class="lang-zh">韩语</span></span>
               </div>
             </div>
-
-            <div class="skill-category">
-              <h4 class="skill-category-title">Interactive / Other</h4>
-              <div class="skill-chip-group">
-                <span class="skill-chip">TouchDesigner</span>
-                <span class="skill-chip">Mocap (FBX/BVH)</span>
-                <span class="skill-chip">After Effects</span>
-                <span class="skill-chip">Figma</span>
-              </div>
+            
+            <div class="resume-section">
+              <h3 class="resume-section-title">
+                <span class="lang-en">Awards</span>
+                <span class="lang-zh">奖项</span>
+              </h3>
+              <ul class="resume-list">
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">1st Prize, China Collegiate Association for Visual Art (CCAVA)</span>
+                    <span class="lang-zh">中国高校教育影视协会（CCAVA） 一等奖</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">Longding Grand Prize, National 3D Digital Innovation Design</span>
+                    <span class="lang-zh">全国三维数字化创新设计大赛龙鼎大奖</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">Grand Prize, National 3D Innovation Design</span>
+                    <span class="lang-zh">全国 3D 创新设计大赛大奖</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">Best Film Award, Academy</span>
+                    <span class="lang-zh">学院最佳影片奖</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">2nd Prize, 3rd Art Exhibition of Sino-Korean New Media Institute</span>
+                    <span class="lang-zh">中韩新媒体学院第三届艺术作品联展二等奖</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">1st Prize, Professional Joint Creation</span>
+                    <span class="lang-zh">专业联合创作一等奖</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="resume-list-subtitle">
+                    <span class="lang-en">Best Poster Award, Dongseo University</span>
+                    <span class="lang-zh">东西大学最佳海报奖</span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="resume-section">
-            <h3 class="resume-section-title">Education</h3>
+            <h3 class="resume-section-title">
+              <span class="lang-en">Education</span>
+              <span class="lang-zh">教育背景</span>
+            </h3>
             <ul class="resume-list">
               <li>
-                <div class="resume-list-title">Duke University</div>
-                <div class="resume-list-subtitle">M.Eng, Game Design Development & Innovation</div>
-                <div class="exp-date">Expected May 2027</div>
+                <div class="resume-list-title">
+                  <span class="lang-en">Duke University | Pratt School of Engineering</span>
+                  <span class="lang-zh">杜克大学｜Pratt 工程学院</span>
+                </div>
+                <div class="resume-list-subtitle">
+                  <span class="lang-en">Game Design Development & Innovation (GDDI) | Master</span>
+                  <span class="lang-zh">游戏设计开发与创新 GDDI｜硕士</span>
+                </div>
+                <div class="exp-date">2025.08 - 2027.05</div>
               </li>
               <li>
-                <div class="resume-list-title">Zhongnan Univ. of Economics & Law</div>
-                <div class="resume-list-subtitle">B.A, Game Design & 3D Animation</div>
-                <div class="exp-date">Sep 2020 – Jun 2024</div>
+                <div class="resume-list-title">
+                  <span class="lang-en">Zhongnan Univ. of Economics & Law</span>
+                  <span class="lang-zh">中南财经政法大学</span>
+                </div>
+                <div class="resume-list-subtitle">
+                  <span class="lang-en">Visual Communication Design (Animation & Game) | B.A. (GPA: 3.77/4)</span>
+                  <span class="lang-zh">视觉传达设计（动画游戏方向）｜本科 GPA3.77/4</span>
+                </div>
+                <div class="exp-date">2020.09 - 2024.09</div>
               </li>
               <li>
-                <div class="resume-list-title">Dongseo University</div>
-                <div class="resume-list-subtitle">B.Eng, VFX & 3D Animation</div>
-                <div class="exp-date">Feb 2022 – Dec 2022</div>
+                <div class="resume-list-title">
+                  <span class="lang-en">Dongseo University (South Korea)</span>
+                  <span class="lang-zh">韩国 Dongseo university</span>
+                </div>
+                <div class="resume-list-subtitle">
+                  <span class="lang-en">Animation & Game Design | Exchange (GPA: 3.84/4.3)</span>
+                  <span class="lang-zh">动画与游戏设计开发｜交换｜GPA 3.84/4.3</span>
+                </div>
+                <div class="exp-date">2022.02 - 2022.12</div>
               </li>
             </ul>
-          </div>
-
-          <div class="resume-section">
-            <h3 class="resume-section-title">Languages</h3>
-            <div class="skill-chip-group">
-              <span class="skill-chip">English</span>
-              <span class="skill-chip">Korean</span>
-              <span class="skill-chip">Chinese</span>
-            </div>
           </div>
 
         </aside>
@@ -192,119 +310,234 @@
         <main class="resume-main">
 
           <section class="resume-section">
-            <h3 class="resume-section-title">Experience</h3>
+            <h3 class="resume-section-title">
+              <span class="lang-en">Experience</span>
+              <span class="lang-zh">实习经历</span>
+            </h3>
 
-            <!-- Job 0 -->
+            <!-- Tencent -->
             <article class="exp-item">
               <div class="exp-header">
                 <div>
-                  <h4 class="exp-role">Technical Artist / Graphics Engineer</h4>
-                  <div class="exp-company">2BD Studios</div>
+                  <h4 class="exp-role">
+                    <span class="lang-en">Tencent - IEG / Game AI Engine Dept</span>
+                    <span class="lang-zh">腾讯 - IEG/游戏 AI 引擎部</span>
+                  </h4>
+<div class="exp-company">
+                    <span class="lang-en">Technical Artist Intern</span>
+                    <span class="lang-zh">技术美术实习生</span>
+                  </div>
                 </div>
-                <span class="exp-date">Dec 2024 – Present</span>
+                <span class="exp-date">2026.05 – 2026.09</span>
               </div>
-              <p class="exp-Building real-time graphics and visualization tools for interactive productions.
-              </p>
-            </article>
-
-            <!-- Job 1 -->
-            <article class=" exp-item">
-              <div class="exp-header">
-                <div>
-                  <h4 class="exp-role">Graphics Engineer / Real-time Visualization</h4>
-                  <div class="exp-company">Infinity Portal LLC × Duke University</div>
-                </div>
-                <span class="exp-date">Sep 2025 – Present</span>
-              </div>
-              <p class="exp-summary">Developing real-time athlete feedback tools mapping biomechanical data to 3D
-                avatars.</p>
               <ul class="exp-bullets">
-                <li><strong>Pipeline:</strong> Built a real-time pipeline bridging external biomechanical video data to
-                  UE5 animated avatars.</li>
-                <li><strong>Tools:</strong> Scripted custom Python solutions for joint angle calculation and motion data
-                  (BVH/JSON) export.</li>
-                <li><strong>Tech Art:</strong> Created procedural materials and responsive rigs to visualize performance
-                  metrics in real-time.</li>
-                <li><strong>Outcome:</strong> Optimized data flow between AWS and UE5 rendering, ensuring low-latency
-                  feedback loops.</li>
+                <li class="lang-en">Built a controllable AI character performance generation pipeline based on ComfyUI, Wan 2.1, and InfiniteTalk. Structured multimodal inputs (images, audio/TTS, personality, emotion, intensity) into the pipeline, completing custom node integration, API wrapping, parameter testing, and reference pose constraint experiments.</li>
+                <li class="lang-zh">构建基于 ComfyUI、Wan 2.1 与 InfiniteTalk 的可控 AI 角色表演生成管线，将角色图像、音频/TTS、人格、情绪和强度等多模态条件结构化接入生成流程，完成自定义节点、API 封装、组合参数测试及参考姿态约束实验。</li>
+                
+                <li class="lang-en">Completed data preparation, training, weight integration, and inference validation for emotion performance LoRAs, establishing training SOPs; Compared Prompt-only vs Prompt+LoRA approaches, and explored evaluation methods for inference acceleration, style constraints, character consistency, emotion recognition, and performance stability.</li>
+                <li class="lang-zh">完成情绪表演 LoRA 的数据准备、训练、权重接入与推理验证，沉淀训练 SOP；对比 Prompt-only 与 Prompt+LoRA 方案，并探索推理加速、角色风格约束及角色一致性、情绪辨识度和表演稳定性的评估方法。</li>
+                
+                <li class="lang-en">Developed LLM/VLM assisted character comprehension and Prompt construction prototypes. Analyzed visual features, initial expressions, image quality, and input compliance, enhancing multi-condition performance control through parameter prioritization, conflict resolution, and negative constraints.</li>
+                <li class="lang-zh">开发 LLM/VLM 辅助角色理解和 Prompt 构建原型，对角色视觉特征、初始表情、画面质量及输入合规性进行分析，并通过参数优先级、冲突消解和负向约束增强多条件表演控制能力。</li>
+                
+                <li class="lang-en">Developed AI Virtual Actor Tool using Python following Superman task protocols for standardizing requests, Protobuf wrapping, TaskClient/dcc-cli/Executor integration, and backend deployment. Enabled remote inference, status querying, and result callbacks, integrating MetaHuman Animator facial extraction and Maya/UE data reuse loops.</li>
+                <li class="lang-zh">使用 Python 开发 AI Virtual Actor Tool，按 Superman 任务协议完成请求标准化、Protobuf 封装、TaskClient/dcc-cli/Executor 接入及服务端部署，实现远程推理、状态查询和结果回传，并打通 MetaHuman Animator 面部动画提取及 Maya/UE 数据复用链路。</li>
+                
+                <li class="lang-en">Outcome: Relevant technical solutions submitted for patent applications.</li>
+                <li class="lang-zh">成果：相关技术方案已提交专利申请。</li>
               </ul>
             </article>
 
-            <!-- Job 2 -->
+            <!-- Athletic Training Portal -->
             <article class="exp-item">
               <div class="exp-header">
                 <div>
-                  <h4 class="exp-role">Visual Developer & Marketing Intern</h4>
-                  <div class="exp-company">BIGO LIVE / JOYY</div>
+                  <h4 class="exp-role">
+                    <span class="lang-en">Athletic Training Portal, Infinity Portal LLC</span>
+                    <span class="lang-zh">Athletic Training Portal, Infinity Portal LLC.</span>
+                  </h4>
+<div class="exp-company">
+                    <span class="lang-en">Tech Artist / Graphics Engineer / Front-end Eng</span>
+                    <span class="lang-zh">技术美术/图形工程/前端开发工程师</span>
+                  </div>
                 </div>
-                <span class="exp-date">Oct 2024 – Jun 2025</span>
+                <span class="exp-date">2025.10 – 2026.05</span>
               </div>
-              <p class="exp-summary">Drove visual production and automated export workflows for global campaigns.</p>
               <ul class="exp-bullets">
-                <li><strong>Outcome:</strong> Delivered 2D/3D cross-platform assets (IG, TikTok, FB, YT) for UK
-                  campaigns, reaching 1M+ views.</li>
-                <li><strong>Pipeline:</strong> Automated export and optimization workflows, significantly reducing asset
-                  turnaround time.</li>
-                <li><strong>Tech Art:</strong> Designed dynamic lighting and real-time rendering setups for the global
-                  "Miss Bigo" virtual event.</li>
+                <li class="lang-en">Built an athlete training video to virtual human motion-driven pipeline, achieving JSON/BVH conversion, Maya skeleton retargeting, and character animation adaptation.</li>
+                <li class="lang-zh">搭建运动员训练视频到虚拟人动作驱动流程，完成 JSON/BVH 转换、Maya 骨骼重定向与角色动画适配。</li>
+                
+                <li class="lang-en">Wrote motion data processing scripts to drive avatars with real athlete motion data, serving subsequent visual analysis.</li>
+                <li class="lang-zh">编写动作数据处理代码，支持真实运动员动作驱动虚拟人角色，并服务后续可视化分析。</li>
+                
+                <li class="lang-en">Collaborated with algorithm engineers, providing feedback based on business requirements to assist in large model optimization.</li>
+                <li class="lang-zh">对接算法工程师，基于业务需求提供反馈，协助大模型优化。</li>
+                
+                <li class="lang-en">Participated in Three.js platform and company website development, supporting real-time animation streaming, avatar showcasing, and product presentation.</li>
+                <li class="lang-zh">参与 Three.js 平台与公司官网开发，支持实时动画传输、虚拟人展示与产品呈现。</li>
+                
+                <li class="lang-en">Built a ComfyUI model generation workflow API allowing athletes to upload personal headshots for one-click automated character model generation.</li>
+                <li class="lang-zh">搭建 ComfyUI 模型生成工作流运动员上传个人形象照调工作流 api 一键自动化生成角色模型</li>
               </ul>
             </article>
 
-            <!-- Job 3 -->
+            <!-- 2BD studio -->
             <article class="exp-item">
               <div class="exp-header">
                 <div>
-                  <h4 class="exp-role">Motion Capture Intern</h4>
-                  <div class="exp-company">Cultural Heritage Digital Restoration Lab</div>
+                  <h4 class="exp-role">
+                    <span class="lang-en">2BD studio</span>
+                    <span class="lang-zh">2BD studio</span>
+                  </h4>
+<div class="exp-company">
+                    <span class="lang-en">Technical Artist / Game Dev / Level Design</span>
+                    <span class="lang-zh">技术美术/游戏开发/关卡设计</span>
+                  </div>
                 </div>
-                <span class="exp-date">May 2022 – Nov 2022</span>
+                <span class="exp-date">
+                  <span class="lang-en">2025.10 - Present</span>
+                  <span class="lang-zh">2025.10 - 至今</span>
+                </span>
               </div>
-              <p class="exp-summary">Managed motion capture shoots and data integration for digital heritage projects.
-              </p>
               <ul class="exp-bullets">
-                <li><strong>Pipeline:</strong> Operated mocap systems, directed actors, and captured clean,
-                  high-fidelity motion data.</li>
-                <li><strong>Tech Art:</strong> Refined and retargeted FBX/BVH data for seamless integration into complex
-                  Maya scenes.</li>
-                <li><strong>Optimization:</strong> Streamlined the workflow from raw capture to final solved animation,
-                  improving team efficiency.</li>
+                <li class="lang-en">Responsible for UE5 character dev scene setup and animation system architecture, including Retarget, AnimBP, BlendSpace, IK / Foot Lock.</li>
+                <li class="lang-zh">负责 UE5 角色开发场景搭建等流程以及角色动画系统的搭建，包括 Retarget、AnimBP、BlendSpace、IK / Foot Lock</li>
+                
+                <li class="lang-en">Created and optimized stylized 3D to 2D material Shaders, participated in level module setup and in-engine scripting, balancing visual quality with performance.</li>
+                <li class="lang-zh">制作并优化风格化 3D 转 2D 材质 Shader，参与关卡模块搭建与引擎内脚本实现，兼顾画面表现与运行效率。</li>
+                
+                <li class="lang-en">Handled character rigging, cloth simulation, and necessary VFX design and creation.</li>
+                <li class="lang-zh">负责角色绑定，布料模拟以及需要的 VFX 设计与制作</li>
               </ul>
             </article>
-
-            <!-- Job 4 -->
+            
+            <!-- BIGO LIVE -->
             <article class="exp-item">
               <div class="exp-header">
                 <div>
-                  <h4 class="exp-role">Character Concept Artist (Contract)</h4>
-                  <div class="exp-company">Cultural Heritage Digital Restoration Lab</div>
+                  <h4 class="exp-role">
+                    <span class="lang-en">BIGO LIVE / JOYY</span>
+                    <span class="lang-zh">BIGO LIVE / 欢聚集团</span>
+                  </h4>
+<div class="exp-company">
+                    <span class="lang-en">Visual Dev & Marketing Intern</span>
+                    <span class="lang-zh">活动视觉开发与营销实习生</span>
+                  </div>
                 </div>
-                <span class="exp-date">Jul 2022 – Aug 2022</span>
+                <span class="exp-date">2024.10 – 2025.04</span>
               </div>
-              <p class="exp-summary">Provided production-ready stylized character designs.</p>
               <ul class="exp-bullets">
-                <li>Delivered 4-view orthographics, material references, and detailed concept art meeting strict art
-                  direction parameters.</li>
+                <li class="lang-en">Built AIGC workflows applying generative AI to brand visuals and ad asset production. Used Stable Diffusion, FLUX, Whisk, Freepik AI, Runway to boost generation efficiency and style consistency; asset optimization drove ROI up by 30%+.</li>
+                <li class="lang-zh">搭建 AIGC 工作流，将 AIGC 应用于品牌视觉与广告素材生产，使用 Stable Diffusion、FLUX、Whisk、Freepik AI、Runway 等工具提升生成效率与风格统一性；素材优化推动 ROI 30%+。</li>
               </ul>
             </article>
 
+            <!-- Mocap Intern -->
+            <article class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <h4 class="exp-role">
+                    <span class="lang-en">Korean Cultural Heritage Digital Restoration Lab</span>
+                    <span class="lang-zh">韩国文化遗产数字修复实验室</span>
+                  </h4>
+<div class="exp-company">
+                    <span class="lang-en">Mocap / Data Processing Intern</span>
+                    <span class="lang-zh">动作捕捉/数据处理实习生</span>
+                  </div>
+                </div>
+                <span class="exp-date">2022.05 - 2022.11</span>
+              </div>
+              <ul class="exp-bullets">
+                <li class="lang-en">Managed Mocap Lab system calibration and capture support, directing actors for motion capture and cleaning high-quality motion data.</li>
+                <li class="lang-zh">负责 Mocap Lab 系统的调试、校准与采集支持，指导演员完成动作捕捉并清洗整理高质量动作数据。</li>
+                
+                <li class="lang-en">Exported and organized FBX / BVH data, optimized animation data, and integrated into Maya character animation workflows, supporting various academic projects.</li>
+                <li class="lang-zh">导出并整理 FBX / BVH 数据，对动画数据进行优化，接入 Maya 角色动画流程，支持学校各种项目动作落地。</li>
+              </ul>
+            </article>
+            
           </section>
 
-
-
+          <!-- Projects -->
           <section class="resume-section">
-            <h3 class="resume-section-title">Honors & Awards</h3>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-              <span class="skill-chip">CCAVA First Prize</span>
-              <span class="skill-chip">2024 National 3D Comp. Longding Grand</span>
-              <span class="skill-chip">National 3D Innovation Grand Prize</span>
-              <span class="skill-chip">College Best Film Award</span>
-              <span class="skill-chip">China–Korea New Media Second Prize</span>
-              <span class="skill-chip">College Best Joint Creation</span>
-              <span class="skill-chip">Dongseo Univ. Best Poster</span>
-            </div>
+            <h3 class="resume-section-title">
+              <span class="lang-en">Selected Projects</span>
+              <span class="lang-zh">代表项目</span>
+            </h3>
+
+            <article class="exp-item">
+              <div class="exp-header" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                <h4 class="exp-role">
+                  <span class="lang-en">AI Virtual Actor Mocap Plugin | Maya / UE / ComfyUI Cloud AI Animation Pipeline</span>
+                  <span class="lang-zh">AI 虚拟演员面捕插件｜Maya /UE/ ComfyUI 云端 AI 动画管线</span>
+                </h4>
+<div class="exp-company" style="font-weight: 500;">
+                  <span class="lang-en">Technical Artist / AI Pipeline / Tool Dev</span>
+                  <span class="lang-zh">技术美术 /AI 管线/ 工具开发</span>
+                </div>
+              </div>
+              <p class="exp-summary" style="margin-top: 10px;">
+                <span class="lang-en">Bridged Maya, ComfyUI cloud generation, and UE MetaHuman Animator into an automated pipeline, achieving an integrated workflow from controllable performance video generation to facial animation solving, QA, and callback.</span>
+                <span class="lang-zh">打通 Maya、ComfyUI 云端生成与 UE MetaHuman Animator 的自动化管线，实现从可控表演视频生成到面部动画解算、质检与回传的一体化流程。</span>
+              </p>
+              <a href="ai-virtual-actor.html" target="_blank" class="resume-link">
+                <span class="lang-en">View Project: AI Virtual Actor</span>
+                <span class="lang-zh">项目链接：AI Virtual Actor</span>
+              </a>
+            </article>
+
+            <article class="exp-item">
+              <div class="exp-header" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                <h4 class="exp-role">
+                  <span class="lang-en">Deep Space / Echo Sci-Fi Short | Mocap + UE Animation Pipeline</span>
+                  <span class="lang-zh">Deep Space / Echo 科幻短片｜动捕 + UE 动画管线</span>
+                </h4>
+<div class="exp-company" style="font-weight: 500;">
+                  <span class="lang-en">Animation Data Director / Core Member</span>
+                  <span class="lang-zh">动画数据导演 / 核心成员</span>
+                </div>
+              </div>
+              <p class="exp-summary" style="margin-top: 10px;">
+                <span class="lang-en">Served as animation director designing motions, organizing mocap sessions, cleaning motion data for Maya tweaking, and integrating into UE characters; Participated in camera work, scene setup, lighting, rendering, and post-production. Won National 3D Design Grand Prize / Longding Award / CCAVA 1st Prize. (160k+ views on Bilibili)</span>
+                <span class="lang-zh">作为动画导演设计动作，组织动捕采集，将动作数据清洗后导入 Maya 调整并集成至 UE 角色；参与镜头、场景、光效、渲染与后期。作品获全国 3D 大赛特等奖 / 龙鼎大奖/中国高校教育影视协会一等奖，Bilibili 播放 16w+。</span>
+              </p>
+              <a href="https://www.bilibili.com/video/BV18i421C7Mn/" target="_blank" class="resume-link">
+                <span class="lang-en">View Project: Deep Space</span>
+                <span class="lang-zh">项目链接：Deep Space</span>
+              </a>
+            </article>
+
           </section>
 
         </main>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('langToggleBtn');
+            const body = document.body;
+            
+            // Check localStorage
+            const currentLang = localStorage.getItem('resumeLang') || 'en';
+            if (currentLang === 'zh') {
+                body.classList.add('zh-mode');
+                btn.classList.add('active');
+            }
+            
+            btn.addEventListener('click', () => {
+                if (body.classList.contains('zh-mode')) {
+                    body.classList.remove('zh-mode');
+                    btn.classList.remove('active');
+                    localStorage.setItem('resumeLang', 'en');
+                } else {
+                    body.classList.add('zh-mode');
+                    btn.classList.add('active');
+                    localStorage.setItem('resumeLang', 'zh');
+                }
+            });
+        });
+      </script>
+    </main>
 
       </div>
 
