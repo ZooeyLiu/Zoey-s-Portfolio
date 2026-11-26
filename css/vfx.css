@@ -1,0 +1,246 @@
+/* Shader & VFX section — compact grid sharing the look of .project-card.
+   Relies on css/projects.css for .projects-header, .category-tag,
+   .project-modal, .modal-close, .modal-tags, .tag, .modal-title/subtitle/desc. */
+
+#vfx {
+    position: relative;
+    width: 100%;
+    padding: 40px 0 120px;
+    font-family: 'Google Sans', sans-serif;
+    color: #fff;
+}
+
+#vfx .projects-header {
+    margin-bottom: 48px;
+}
+
+.vfx-grid {
+    width: min(1200px, calc(100% - 80px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Tile */
+.vfx-tile {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    padding: 0;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* clip video to radius in Safari */
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                border-color 0.35s, box-shadow 0.35s;
+}
+
+.vfx-tile:hover,
+.vfx-tile:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 255, 255, 0.08);
+    outline: none;
+}
+
+.vfx-cover,
+.vfx-preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vfx-cover {
+    transition: transform 0.6s ease;
+}
+
+.vfx-tile:hover .vfx-cover {
+    transform: scale(1.04);
+}
+
+.vfx-preview {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.vfx-tile.is-playing .vfx-preview {
+    opacity: 1;
+}
+
+.vfx-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.15) 55%, transparent 100%);
+    pointer-events: none;
+}
+
+/* Same glint as .project-card::after */
+.vfx-tile::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.vfx-tile:hover::after {
+    opacity: 1;
+}
+
+.vfx-meta {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+    z-index: 2;
+}
+
+.vfx-meta .category-tag {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+}
+
+.vfx-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Modal — single column: video, info, breakdown */
+.vfx-modal-content {
+    display: block;
+    max-width: 960px;
+    height: auto;
+    max-height: 88vh;
+    padding: 32px;
+}
+
+.vfx-modal-video {
+    display: block;
+    width: 100%;
+    max-height: 60vh;
+    border-radius: 12px;
+    background: #000;
+}
+
+.vfx-modal-info {
+    margin-top: 28px;
+}
+
+.vfx-modal-info .modal-tags {
+    margin-bottom: 1.2rem;
+}
+
+.vfx-modal-info .modal-title {
+    font-size: 2.2rem;
+}
+
+.vfx-modal-info .modal-subtitle {
+    margin-bottom: 1.2rem;
+}
+
+.vfx-breakdown {
+    margin-top: 12px;
+    display: grid;
+    gap: 20px;
+}
+
+.vfx-breakdown-label {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.vfx-breakdown figure {
+    margin: 0;
+}
+
+.vfx-breakdown img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vfx-breakdown figcaption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 768px) {
+    .vfx-grid {
+        width: calc(100% - 32px);
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .vfx-meta {
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+    }
+
+    .vfx-title {
+        font-size: 0.95rem;
+    }
+
+    .vfx-modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .vfx-modal-info .modal-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vfx-tile,
+    .vfx-cover {
+        transition: none;
+    }
+
+    .vfx-tile:hover,
+    .vfx-tile:hover .vfx-cover {
+        transform: none;
+    }
+}
+
+/* Embedded HD player (YouTube / Vimeo) — matches .vfx-modal-video */
+.vfx-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+}
+
+.vfx-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
