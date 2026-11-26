@@ -260,13 +260,13 @@
 }
 
 .vfx-step-text {
-    margin: 0 0 12px;
+    margin: 0 0 18px;
     line-height: 1.6;
     color: #ccc;
 }
 
 .vfx-step-points {
-    margin: 0 0 18px;
+    margin: 14px 0 0;
     padding-left: 18px;
     color: rgba(255, 255, 255, 0.65);
     font-size: 0.9rem;

@@ -229,8 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <figure${b.title || b.text ? ' class="vfx-step"' : ''}>
                         ${b.title ? `<h3 class="vfx-step-title">${b.title}</h3>` : ''}
                         ${b.text ? `<p class="vfx-step-text">${b.text}</p>` : ''}
-                        ${b.points && b.points.length ? `<ul class="vfx-step-points">${b.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}
                         <img src="${b.src}" alt="${b.title || b.caption || ''}" loading="lazy">
+                        ${b.points && b.points.length ? `<ul class="vfx-step-points">${b.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}
                         ${b.caption ? `<figcaption>${b.caption}</figcaption>` : ''}
                     </figure>`).join('')}
             </div>` : ''}
