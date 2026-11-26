@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             preview: "ShadersVFX/snow-preview.mp4",
             hd: "ShadersVFX/snow-hd.mp4", // H.264 re-encode of "snow shader_En.mp4" (HEVC doesn't play in every browser)
             tags: ["UE5", "Material Graph", "Deformation", "Real-time"],
-            description: "A snow material that reacts to whatever touches it. Props press dents into the surface, characters carve trails whose depth and shape change with the snow they walk through, and the same shader drops onto other meshes without rework. The goal was a surface that tells the player where things have been — readable at gameplay distance, cheap enough to cover a whole level.",
+            description: "Render-target snow deformation in UE5. Props and characters press into the surface, and trail depth comes from how far the character actually sinks — the same setup gives footprints in shallow snow and a ploughed trench in deep snow. Any mesh using the material picks it up.",
             // Jump points under the HD video (seconds). Local mp4 only.
             chapters: [
                 { time: 0, label: "Objects pressing into snow" },
@@ -71,37 +71,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 46, label: "Reusing the shader on other meshes" }
             ],
             breakdownLabel: "How it works",
-            // PLACEHOLDER steps — add src screenshots and replace the text.
             breakdown: [
                 {
-                    src: "",
-                    title: "01 — Capturing contact",
-                    text: "Placeholder — how contact is recorded (e.g. render target / runtime virtual texture, what writes into it, resolution and world coverage).",
-                    points: ["Placeholder — key decision", "Placeholder — key decision"]
+                    src: "ShadersVFX/SnowDiagrams/01_capture_pipeline.png",
+                    title: "01 — Contact → render target",
+                    text: "Each frame the character writes two stamps into a ping-pong RT: the body segment and the latest footprint. The snow material only reads the RT.",
+                    points: [
+                        "RT instead of a fixed point array — no limit on trail length",
+                        "1024² RGBA16F over 10 m ≈ 1 cm per texel; R = depth, G = freshness",
+                        "RTs allocate on first contact; idle surfaces update at 5 Hz"
+                    ]
                 },
                 {
-                    src: "",
-                    title: "02 — Deformation & snow depth",
-                    text: "Placeholder — how the mask becomes depth (displacement / WPO / parallax), and how snow depth changes the trail shape.",
-                    points: ["Placeholder — key decision"]
+                    src: "ShadersVFX/SnowCode/01_stamp_sdf.png",
+                    title: "02 — Stamp shader",
+                    text: "Stamps are capsule SDFs, so fast movement leaves no gaps between frames. max() blending means a trail never gets shallower when it's walked over again.",
+                    points: [
+                        "Footprint stamp narrows at the heel and lifts at the arch",
+                        "Noise on the distance breaks up the edge"
+                    ]
                 },
                 {
-                    src: "",
-                    title: "03 — Surface shading",
-                    text: "Placeholder — trail edge build-up, normals inside the dent, sparkle / roughness breakup.",
-                    points: ["Placeholder — key decision"]
+                    src: "ShadersVFX/SnowDiagrams/02_depth_cross_section.png",
+                    title: "03 — Depth from geometry",
+                    text: "Depth = (SurfaceZ − FootZ) × Compression. The snow mesh ignores the Pawn, so the character stands on the real ground and snow thickness decides the trail.",
+                    points: [
+                        "Raise the snow mesh → deeper trail. No per-level tuning",
+                        "Trench strength = smoothstep(8, 25 cm): footprints in shallow snow, a continuous trench in deep snow",
+                        "WPO: offset.z = −R · MaxDepthCm + berm · BermHeight, berm = blur(R) − R"
+                    ]
                 },
                 {
-                    src: "",
-                    title: "04 — Reuse on any mesh",
-                    text: "Placeholder — how it's packaged (material function / instance) so it applies to other objects.",
-                    points: ["Placeholder — key decision"]
+                    src: "ShadersVFX/SnowCode/04_normal.png",
+                    title: "04 — Normals from the RT",
+                    text: "Normals are rebuilt from the depth RT with central differences, so dents light correctly without a normal map.",
+                    points: [
+                        "2.5-texel sample offset removes per-texel stripes",
+                        "Gradient is soft-clamped to soften steep trench walls"
+                    ]
                 }
             ],
-            // PLACEHOLDER — the material instance parameters an artist would touch.
             params: [
-                { name: "Placeholder Param", value: "0 – 1", note: "Placeholder — what it controls" },
-                { name: "Placeholder Param", value: "0 – 1", note: "Placeholder — what it controls" }
+                { name: "MaxDepthCm", value: "40 cm", note: "Deepest press; maps RT depth to world units" },
+                { name: "Compression", value: "0.85", note: "Share of snow thickness that gets packed down" },
+                { name: "ShallowDepthCm / DeepDepthCm", value: "8 / 25 cm", note: "Blend range from footprints to trench" },
+                { name: "BermHeight", note: "Height of the pushed-up rim" },
+                { name: "RefillSeconds / FreshSeconds", note: "How fast trails fill back in and lose the fresh look" }
             ]
         }
     ];
