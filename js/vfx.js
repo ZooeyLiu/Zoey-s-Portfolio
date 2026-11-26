@@ -118,6 +118,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 { name: "BermHeight", note: "Height of the pushed-up rim" },
                 { name: "RefillSeconds / FreshSeconds", note: "How fast trails fill back in and lose the fresh look" }
             ]
+        },
+        {
+            title: "Portal",
+            category: "Niagara Fluids",
+            cover: "ShadersVFX/portal-cover.jpg",
+            preview: "ShadersVFX/portal-preview.mp4",
+            hd: "ShadersVFX/portal-hd.mp4", // H.264 re-encode of portal.mp4 (HEVC)
+            tags: ["UE5", "Niagara", "Niagara Fluids", "3D Gas Sim"],
+            description: "A smoke portal driven by a real-time 3D gas simulation. The smoke is sourced by particles that are never rendered; a separate sprite layer draws the glowing ring.",
+            breakdown: [
+                {
+                    src: "ShadersVFX/PortalTechDetail.png",
+                    title: "NS_Portal — two torus emitters, one gas grid",
+                    text: "Both particle emitters spawn on the same torus with vortex motion, but split the work: one is what you see, the other only feeds the fluid sim.",
+                    points: [
+                        "particle_glowing — visible sparks with vortex + curl noise; fluid sourcing off, so they don't disturb the smoke",
+                        "emitter_particles — renderer off; Set Fluid Source Attributes splats them into the grid as smoke sources",
+                        "Grid3D gas — pressure solve and scalar advection shape the smoke; scatter blur fakes light scattering; drawn with the Volume Renderer"
+                    ]
+                }
+            ]
+        },
+        {
+            title: "Shockwave",
+            category: "Niagara",
+            cover: "ShadersVFX/shockwave-cover.jpg",
+            preview: "ShadersVFX/shockwave-preview.mp4",
+            hd: "ShadersVFX/shockwave-hd.mp4", // H.264 re-encode of shockwave.mp4 (HEVC)
+            tags: ["UE5", "Niagara", "Flipbook", "One-shot"],
+            description: "A one-shot energy burst. Four emitters fire on the same frame from the same ring, each adding one layer: smoke rings, radial streaks and lit sparks.",
+            breakdown: [
+                {
+                    src: "ShadersVFX/ShockWaveTechDetail.png",
+                    title: "NS_ShockWave — four layers, one burst",
+                    text: "Every emitter is a single instantaneous burst from a ring/disc shape, so all layers start from the same silhouette and stay in sync.",
+                    points: [
+                        "EnergyBrust + EnergyBrust_Wider — flipbook smoke rings at two radii (Sub UV, rotation, curl noise)",
+                        "BrustLines — radial streaks that sell the initial speed",
+                        "Sparks — CPU sim so it can use the Light Renderer; collision on",
+                        "Point Attraction + Drag pull the expansion back, so the ring holds its shape before fading"
+                    ]
+                }
+            ]
         }
     ];
 
