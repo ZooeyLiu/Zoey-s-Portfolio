@@ -14,18 +14,43 @@ document.addEventListener('DOMContentLoaded', () => {
     //            e.g. "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     //                 "https://youtu.be/XXXXXXXXXXX",
     //                 "https://vimeo.com/123456789" (unlisted: ".../123456789/abcdef1234")
-    //   breakdown: optional [{ src, caption }]
+    //   breakdown: optional process steps
+    //            [{ src, title?, text?, points?: [...], caption? }]
     // ------------------------------------------------------------------
     const vfxData = [
         {
             title: "Magic Ball",
-            category: "Shader / VFX",
+            category: "Material / Niagara",
             cover: "ShadersVFX/MB.jpeg",
             preview: "ShadersVFX/magicball.mp4",
             hd: "ShadersVFX/magicball.mp4",
-            tags: ["Shader", "Particles"], // placeholder
-            description: "Placeholder — glass orb with refraction and an inner swirling particle core.",
-            breakdown: []
+            tags: ["UE5", "Material Graph", "Niagara", "Translucency"],
+            description: "A crystal orb with a living energy core, built in Unreal Engine 5. The core problem was readability: the shell had to feel like solid, reflective glass at the edges, yet stay clear enough in the centre to show the energy inside. I split it into two independent layers — a lightweight translucent shell material and a multi-emitter Niagara system — so look and motion could be tuned separately.",
+            breakdown: [
+                {
+                    src: "ShadersVFX/MB1.png",
+                    title: "01 — Shell material: faked reflections, Fresnel-driven opacity",
+                    text: "Translucent surfaces in UE don't get reliable screen-space reflections, so the reflection is faked: a Reflection Vector samples an HDRI environment map and goes into Emissive. One Fresnel term does double duty — it scales the reflection and drives Opacity — so the rim reads as dense, reflective glass while the centre stays almost fully transparent.",
+                    points: [
+                        "Environment map divided by 5 to tame HDR values, so reflections never overpower the purple core",
+                        "Fresnel exponent 2.0 for a wide, soft rim; a Power node after it exposes the falloff as one tweakable value",
+                        "Near-black purple Base Color tints the glass without competing with the emissive particles",
+                        "Refraction left off — a handful of instructions instead of an expensive translucency setup"
+                    ]
+                },
+                {
+                    src: "ShadersVFX/MB2.png",
+                    title: "02 — Niagara: five emitters, one contained volume",
+                    text: "NS_MagicBall layers five emitters, each owning a single visual job. A one-shot Minimal emitter renders the orb as a mesh particle, keeping shell and effect in one system asset. The moving sprite layers are clamped with Kill Particles in Volume (Sphere), so nothing ever escapes the glass.",
+                    points: [
+                        "Fountain — torus-shaped spawn with outward velocity and curl noise: the swirling band around the core",
+                        "Fountain003 — sphere-volume spawn for the fine dust that fills the orb",
+                        "Fountain001 — initial velocity disabled; motion comes purely from curl noise, giving the drifting energy filaments",
+                        "Fountain002 — no noise, no kill volume: a calm glow that anchors the centre",
+                        "Scale Sprite Size by Speed stretches fast particles into streaks, so motion reads even in a still frame"
+                    ]
+                }
+            ]
         }
     ];
 
@@ -201,8 +226,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="vfx-breakdown">
                 <h5 class="vfx-breakdown-label">Breakdown</h5>
                 ${item.breakdown.map(b => `
-                    <figure>
-                        <img src="${b.src}" alt="${b.caption || ''}" loading="lazy">
+                    <figure${b.title || b.text ? ' class="vfx-step"' : ''}>
+                        ${b.title ? `<h3 class="vfx-step-title">${b.title}</h3>` : ''}
+                        ${b.text ? `<p class="vfx-step-text">${b.text}</p>` : ''}
+                        ${b.points && b.points.length ? `<ul class="vfx-step-points">${b.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}
+                        <img src="${b.src}" alt="${b.title || b.caption || ''}" loading="lazy">
                         ${b.caption ? `<figcaption>${b.caption}</figcaption>` : ''}
                     </figure>`).join('')}
             </div>` : ''}
