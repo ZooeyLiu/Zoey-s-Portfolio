@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //                 "https://vimeo.com/123456789" (unlisted: ".../123456789/abcdef1234")
     //   breakdown: optional process steps
     //            [{ src, title?, text?, points?: [...], caption? }]
+    //            (empty src shows a "Screenshot coming soon" placeholder)
+    //   breakdownLabel: optional heading for the steps (default "Breakdown")
+    //   chapters: optional [{ time: seconds, label }] — seek buttons under a local HD video
+    //   params:   optional [{ name, value, note }] — "Artist controls" list
     // ------------------------------------------------------------------
     const vfxData = [
         {
@@ -50,6 +54,54 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Scale Sprite Size by Speed stretches fast particles into streaks, so motion reads even in a still frame"
                     ]
                 }
+            ]
+        },
+        {
+            title: "Interactive Snow",
+            category: "Material / Shader",
+            cover: "ShadersVFX/snow-cover.jpg",
+            preview: "ShadersVFX/snow-preview.mp4",
+            hd: "ShadersVFX/snow-hd.mp4", // H.264 re-encode of "snow shader_En.mp4" (HEVC doesn't play in every browser)
+            tags: ["UE5", "Material Graph", "Deformation", "Real-time"],
+            description: "A snow material that reacts to whatever touches it. Props press dents into the surface, characters carve trails whose depth and shape change with the snow they walk through, and the same shader drops onto other meshes without rework. The goal was a surface that tells the player where things have been — readable at gameplay distance, cheap enough to cover a whole level.",
+            // Jump points under the HD video (seconds). Local mp4 only.
+            chapters: [
+                { time: 0, label: "Objects pressing into snow" },
+                { time: 20, label: "Character trails at different depths" },
+                { time: 46, label: "Reusing the shader on other meshes" }
+            ],
+            breakdownLabel: "How it works",
+            // PLACEHOLDER steps — add src screenshots and replace the text.
+            breakdown: [
+                {
+                    src: "",
+                    title: "01 — Capturing contact",
+                    text: "Placeholder — how contact is recorded (e.g. render target / runtime virtual texture, what writes into it, resolution and world coverage).",
+                    points: ["Placeholder — key decision", "Placeholder — key decision"]
+                },
+                {
+                    src: "",
+                    title: "02 — Deformation & snow depth",
+                    text: "Placeholder — how the mask becomes depth (displacement / WPO / parallax), and how snow depth changes the trail shape.",
+                    points: ["Placeholder — key decision"]
+                },
+                {
+                    src: "",
+                    title: "03 — Surface shading",
+                    text: "Placeholder — trail edge build-up, normals inside the dent, sparkle / roughness breakup.",
+                    points: ["Placeholder — key decision"]
+                },
+                {
+                    src: "",
+                    title: "04 — Reuse on any mesh",
+                    text: "Placeholder — how it's packaged (material function / instance) so it applies to other objects.",
+                    points: ["Placeholder — key decision"]
+                }
+            ],
+            // PLACEHOLDER — the material instance parameters an artist would touch.
+            params: [
+                { name: "Placeholder Param", value: "0 – 1", note: "Placeholder — what it controls" },
+                { name: "Placeholder Param", value: "0 – 1", note: "Placeholder — what it controls" }
             ]
         }
     ];
@@ -205,6 +257,32 @@ document.addEventListener('DOMContentLoaded', () => {
         player.replaceWith(spacer);
     }
 
+    // Chapter buttons under a local HD video: click to seek, highlight current
+    function createChapters(video, chapters) {
+        const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+        const nav = document.createElement('div');
+        nav.className = 'vfx-chapters';
+        nav.setAttribute('role', 'group');
+        nav.setAttribute('aria-label', 'Video chapters');
+        nav.innerHTML = chapters.map((c, i) => `
+            <button type="button" class="vfx-chapter${i === 0 ? ' is-active' : ''}" data-time="${c.time}">
+                <span class="vfx-chapter-time">${fmt(c.time)}</span>
+                <span class="vfx-chapter-label">${c.label}</span>
+            </button>`).join('');
+
+        const buttons = [...nav.querySelectorAll('.vfx-chapter')];
+        buttons.forEach(btn => btn.addEventListener('click', () => {
+            video.currentTime = Number(btn.dataset.time);
+            video.play().catch(() => {});
+        }));
+        video.addEventListener('timeupdate', () => {
+            let current = 0;
+            chapters.forEach((c, i) => { if (video.currentTime >= c.time) current = i; });
+            buttons.forEach((btn, i) => btn.classList.toggle('is-active', i === current));
+        });
+        return nav;
+    }
+
     // ---------------- Modal ----------------
     let lastFocus = null;
 
@@ -224,18 +302,35 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             ${item.breakdown && item.breakdown.length ? `
             <div class="vfx-breakdown">
-                <h5 class="vfx-breakdown-label">Breakdown</h5>
+                <h5 class="vfx-breakdown-label">${item.breakdownLabel || 'Breakdown'}</h5>
                 ${item.breakdown.map(b => `
                     <figure${b.title || b.text ? ' class="vfx-step"' : ''}>
                         ${b.title ? `<h3 class="vfx-step-title">${b.title}</h3>` : ''}
                         ${b.text ? `<p class="vfx-step-text">${b.text}</p>` : ''}
-                        <img src="${b.src}" alt="${b.title || b.caption || ''}" loading="lazy">
+                        ${b.src
+                            ? `<img src="${b.src}" alt="${b.title || b.caption || ''}" loading="lazy">`
+                            : `<div class="vfx-step-placeholder">Screenshot coming soon</div>`}
                         ${b.points && b.points.length ? `<ul class="vfx-step-points">${b.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}
                         ${b.caption ? `<figcaption>${b.caption}</figcaption>` : ''}
                     </figure>`).join('')}
             </div>` : ''}
+            ${item.params && item.params.length ? `
+            <div class="vfx-params">
+                <h5 class="vfx-breakdown-label">Artist controls</h5>
+                <dl>
+                    ${item.params.map(p => `
+                        <div class="vfx-param">
+                            <dt><code>${p.name}</code>${p.value ? `<span class="vfx-param-value">${p.value}</span>` : ''}</dt>
+                            <dd>${p.note || ''}</dd>
+                        </div>`).join('')}
+                </dl>
+            </div>` : ''}
         `;
-        modalBody.prepend(createHdPlayer(item));
+        const player = createHdPlayer(item);
+        modalBody.prepend(player);
+        if (player.tagName === 'VIDEO' && item.chapters && item.chapters.length) {
+            player.after(createChapters(player, item.chapters));
+        }
 
         modal.classList.add('visible');
         modal.setAttribute('aria-hidden', 'false');
