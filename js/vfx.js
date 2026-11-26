@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Magic Ball",
             category: "Shader / VFX",
-            cover: "ShadersVFX/magicball.png",
+            cover: "ShadersVFX/MB.jpeg",
             preview: "ShadersVFX/magicball.mp4",
             hd: "ShadersVFX/magicball.mp4",
             tags: ["Shader", "Particles"], // placeholder
