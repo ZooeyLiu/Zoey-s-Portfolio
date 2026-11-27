@@ -1,0 +1,42 @@
+/* Shared text column for project / case-study pages.
+   Keeps long-form copy at a readable measure inside the site's 1128px content column. */
+
+.cs-intro {
+    max-width: 760px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+    font-family: 'Google Sans', 'Inter Tight', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.68);
+    text-align: left;
+}
+
+/* The Webflow export sets `p { display: flex }` globally, which splits inline
+   <em>/<strong> into columns — restore normal text flow here. */
+.cs-intro p {
+    display: block;
+    margin: 0;
+}
+
+.cs-intro p + p {
+    margin-top: 1.1em;
+}
+
+/* First paragraph reads as the lead */
+.cs-intro .cs-lead {
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+    .cs-intro {
+        margin-top: 40px;
+        font-size: 1rem;
+    }
+
+    .cs-intro .cs-lead {
+        font-size: 1.08rem;
+    }
+}
