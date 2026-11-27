@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
             bgColor: "linear-gradient(180deg, rgba(20,80,60,0.4) 0%, rgba(0,0,0,0) 100%)",
             bgSize: "80%",
             bgPosition: "center",
-            link: "https://athletic-training-portal-front-end.vercel.app"
+            link: "https://athletic-training-portal-front-end.vercel.app",
+            // Only external project: keeps the detail modal and opens its site in a new tab.
+            // Every other card goes straight to its case-study page.
+            external: true,
+            linkLabel: "Go to Project Official Site"
         },
         {
             id: 9,
@@ -169,7 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Events
             card.addEventListener('click', () => {
                 if (index === activeIndex) {
-                    openModal(project);
+                    if (project.external) {
+                        openModal(project);
+                    } else {
+                        window.location.href = project.link;
+                    }
                 } else {
                     updateActiveIndex(index);
                 }
@@ -308,7 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="modal-title">${project.title}</h2>
                 <h4 class="modal-subtitle">${project.subtitle}</h4>
                 <p class="modal-desc">${project.description}</p>
-                <a href="${project.link}" class="view-project-btn">View Detailed Case Study</a>
+                <a href="${project.link}" class="view-project-btn"
+                    ${project.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>${project.linkLabel || 'View Detailed Case Study'}${project.external ? ' &nearr;' : ''}</a>
             </div>
         `;
         modal.classList.add('visible');
