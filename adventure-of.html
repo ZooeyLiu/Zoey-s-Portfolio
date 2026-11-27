@@ -615,7 +615,7 @@
             <video id="modeling-showcase-video" autoplay muted loop playsinline
               onended="this.currentTime=0;this.play();"
               style="width: 100%; height: 100%; object-fit: contain; display: block;">
-              <source src="images/BlueDragonMedia/modelingmedia.mov">
+              <source src="images/BlueDragonMedia/modelingmedia.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <img id="modeling-preview-image"
@@ -679,7 +679,7 @@
             style="flex: 1.8; min-width: 300px; border-radius: 20px; overflow: hidden; aspect-ratio: 16/9; background: transparent;">
             <video autoplay muted loop playsinline onended="this.currentTime=0;this.play();"
               style="width: 100%; height: 100%; object-fit: contain; display: block;">
-              <source src="images/BlueDragonMedia/scenemedia_1.mov">
+              <source src="images/BlueDragonMedia/scenemedia_1.mp4" type="video/mp4">
             </video>
           </div>
 
@@ -688,7 +688,7 @@
             style="flex: 1.2; min-width: 250px; display: flex; flex-direction: column; gap: 12px; border-radius: 16px;">
             <!-- Large Preview Image -->
             <div
-              style="flex: 1; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+              style="flex: 1; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: center;">
               <img id="main-scene-preview" src="images/截屏2024-08-23-18.55.10.png"
                 style="width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.4s ease;">
             </div>
@@ -752,7 +752,7 @@
 
             <!-- Left Column: Large Preview Image -->
             <div
-              style="flex: 1.2; min-width: 250px; border-radius: 16px; overflow: hidden; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+              style="flex: 1.2; min-width: 250px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: center;">
               <img id="main-gallery-02-preview" src="images/截屏2024-08-23-18.53.28_pixian_ai.png"
                 style="width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.4s ease;">
             </div>
@@ -762,8 +762,19 @@
               style="flex: 1.8; min-width: 300px; border-radius: 20px; overflow: hidden; aspect-ratio: 16/9; background: transparent;">
               <video autoplay muted loop playsinline onended="this.currentTime=0;this.play();"
                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
-                <source src="images/BlueDragonMedia/scenemedia_2.mov">
+                <source src="images/BlueDragonMedia/scenemedia_2.mov" type='video/mp4; codecs="hvc1"' data-safari-only>
+                <source src="images/BlueDragonMedia/scenemedia_2.webm" type="video/webm">
               </video>
+              <script>
+                // Transparent cut-out: only Safari renders HEVC alpha; every other browser gets the VP9-alpha WebM
+                (function (v) {
+                  var isSafari = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent);
+                  if (!isSafari) {
+                    v.querySelectorAll('[data-safari-only]').forEach(function (s) { s.remove(); });
+                    v.load();
+                  }
+                })(document.currentScript.previousElementSibling);
+              </script>
             </div>
           </div>
 
@@ -877,42 +888,11 @@
           }
 
 
-          /* Apply blur to main sections to ensure text legibility */
-          /* Select the specific sections that sit over the background image */
-          .team-slider-section,
-          #bloomwell-content-03,
-          #cycle-feature-03,
-          #noda-gallery-01,
-          #noda-gallery-02,
-          .section-large-9:not(#pipeline-flowchart) {
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            background-color: rgba(0, 0, 0, 0.4) !important;
-          }
-
-          /* Special gradient blur for pipeline-flowchart for a natural transition */
-          #pipeline-flowchart {
-            background-color: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            position: relative;
-            z-index: 1;
-          }
-
-          #pipeline-flowchart::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            background-color: rgba(0, 0, 0, 0.4);
-            mask-image: linear-gradient(to bottom, transparent 0%, black 250px);
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 250px);
-            pointer-events: none;
+          /* One continuous background for the whole page: the body's fixed dim + blur layer
+             does the work. (Per-section dark/blur bands were removed — they stacked on top
+             of it and produced visible seams and a bright edge line.) */
+          .body-7::before {
+            background: rgba(0, 0, 0, 0.55);
           }
 
           /* Smooth transition for background images */
@@ -955,9 +935,6 @@
         <div class="title-row-3">
           <div class="max-width-large">
             <div class="column-regular-3 column-left">
-              <div class="badge-outline">
-                <div>SHOWCASE</div>
-              </div>
               <h3 class="h3-heading-7" style="line-height: 1.2;">Stills from the film<span
                   class="text-color-orange">..</span></h3>
             </div>
@@ -982,7 +959,7 @@
               <img src="images/截屏2024-08-23-18.46.28.png" alt="Still 1" loading="lazy">
             </div>
             <div class="ad-stills-item">
-              <img src="images/截屏2024-08-23-18.49.19.png" alt="Still 2" loading="lazy">
+              <img src="images/BlueDragonMedia/still-2.jpg" alt="Still 2" loading="lazy">
             </div>
             <div class="ad-stills-item">
               <img src="images/cv-1.png" alt="Still 3" loading="lazy">
@@ -1062,24 +1039,15 @@
 
             .ad-stills-item {
               flex: 0 0 auto;
-              width: clamp(320px, 60vw, 900px);
-              height: clamp(200px, 40vh, 500px);
+              height: clamp(220px, 46vh, 520px);
               border-radius: 12px;
               overflow: hidden;
-              background: rgba(0, 0, 0, 0.2);
-              border: 1px solid rgba(255, 255, 255, 0.05);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              padding: 4px;
+              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
             }
 
             .ad-stills-item img {
-              width: 100%;
               height: 100%;
-              border-radius: 8px;
-              object-fit: contain;
-              /* Core fix: prevents cropping */
+              width: auto;
               display: block;
             }
           </style>
@@ -1134,7 +1102,7 @@
 
   <!-- FOOTER MINIMAL -->
   <div class="footer-minimal"
-    style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 40px 0; margin-top: 80px; font-family: 'Google Sans', sans-serif;">
+    style="padding: 40px 0; margin-top: 80px; font-family: 'Google Sans', sans-serif;">
     <div
       style="max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
       <div style="color: rgba(255, 255, 255, 0.8); font-size: 14px;">
