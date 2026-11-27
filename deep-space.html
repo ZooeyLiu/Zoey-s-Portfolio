@@ -100,14 +100,16 @@
       font-weight: 300;
     }
 
+    /* Software toolbar — sits just under the hero video */
     .ds-hero__tools {
-      margin-top: 36px;
+      margin-top: 8px;
+      padding: 0 24px;
       display: flex;
       justify-content: center;
     }
 
     .ds-hero__tools img {
-      height: 60px;
+      height: 68px;
       width: auto;
       object-fit: contain;
     }
@@ -228,16 +230,16 @@
     <div class="ds-hero__content">
       <h1 class="ds-hero__title text-color-gradient">DEEP SPACE</h1>
       <div class="ds-hero__subtitle">Sci-Fi Short Film Created by Unreal Engine</div>
-      <div class="ds-hero__tools">
-        <img src="LOGO/DS_LOGO.png" alt="Software: Unreal Engine, Maya, 3ds Max, ZBrush, Substance Painter, After Effects, Premiere Pro, Final Cut Pro, Photoshop"
-          title="Unreal Engine · Maya · 3ds Max · ZBrush · Substance Painter · After Effects · Premiere Pro · Final Cut Pro · Photoshop">
-      </div>
     </div>
     <button type="button" class="ds-hero__toggle" aria-label="Pause background video">
       <svg class="icon-pause" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
       <svg class="icon-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
     </button>
   </section>
+  <div class="ds-hero__tools">
+    <img src="LOGO/DS_LOGO.png" alt="Software: Unreal Engine, Maya, 3ds Max, ZBrush, Substance Painter, After Effects, Premiere Pro, Final Cut Pro, Photoshop"
+      title="Unreal Engine · Maya · 3ds Max · ZBrush · Substance Painter · After Effects · Premiere Pro · Final Cut Pro · Photoshop">
+  </div>
   <script>
     (function () {
       var hero = document.querySelector('.ds-hero');
