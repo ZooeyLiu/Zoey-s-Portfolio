@@ -32,14 +32,50 @@
   <link href="LOGO/favicon.png" rel="shortcut icon" type="image/png">
   <link href="LOGO/favicon.png" rel="apple-touch-icon">
   <style>
-    .slider-2 .w-slide img {
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 50%, transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 50%, transparent 100%);
+    /* Hero — same treatment as Pizza Delivery: blurred "smudge" of the frame behind,
+       a smaller sharp frame on top whose edges fade into it. Each slide passes its image via --hero-bg. */
+    .slider-2 {
+      height: 82vh !important;
+      min-height: 620px;
     }
 
-    .slider-2 {
-      height: 100vh !important;
-      min-height: 800px;
+    .slider-2 .w-slider-mask,
+    .slider-2 .w-slide {
+      height: 100%;
+    }
+
+    .slider-2 .w-slide {
+      position: relative;
+    }
+
+    .slider-2 .w-slide::before {
+      content: "";
+      position: absolute;
+      inset: -60px;
+      background: var(--hero-bg) center / cover no-repeat;
+      filter: blur(40px);
+      opacity: 0.75;
+      z-index: 0;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 55%, transparent 100%);
+    }
+
+    .slider-2 .w-slide img {
+      position: absolute !important;
+      left: 50%;
+      top: 54%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 84%;
+      object-fit: cover;
+      z-index: 1;
+      -webkit-mask-image: radial-gradient(ellipse closest-side at center, black 55%, transparent 100%);
+      mask-image: radial-gradient(ellipse closest-side at center, black 55%, transparent 100%);
+    }
+
+    @media (max-width: 767px) {
+      .slider-2 { height: 60vh !important; min-height: 380px; }
+      .slider-2 .w-slide img { width: 100%; height: 80%; }
     }
   </style>
 </head>
@@ -111,17 +147,17 @@
         </section>
       </div>
       <div class="mask-3 w-slider-mask">
-        <div class="slide-2 w-slide"><img src="images/CG00007970_1.png" loading="lazy"
+        <div class="slide-2 w-slide" style="--hero-bg: url('images/CG00007970_1.png');"><img src="images/CG00007970_1.png" loading="lazy"
             sizes="(max-width: 1920px) 100vw, 1920px"
             srcset="images/CG00007970_1-p-500.png 500w, images/CG00007970_1-p-800.png 800w, images/CG00007970_1-p-1080.png 1080w, images/CG00007970_1.png 1920w"
             alt="" class="image-4">
         </div>
-        <div class="slide-2 w-slide"><img src="images/CG00008361.png" loading="lazy"
+        <div class="slide-2 w-slide" style="--hero-bg: url('images/CG00008361.png');"><img src="images/CG00008361.png" loading="lazy"
             sizes="(max-width: 1920px) 100vw, 1920px"
             srcset="images/CG00008361-p-500.png 500w, images/CG00008361-p-800.png 800w, images/CG00008361-p-1080.png 1080w, images/CG00008361-p-1600.png 1600w, images/CG00008361.png 1920w"
             alt="">
         </div>
-        <div class="slide-2 w-slide"><img src="images/CG00003212_1.png" loading="lazy"
+        <div class="slide-2 w-slide" style="--hero-bg: url('images/CG00003212_1.png');"><img src="images/CG00003212_1.png" loading="lazy"
             sizes="(max-width: 1920px) 100vw, 1920px"
             srcset="images/CG00003212_1-p-500.png 500w, images/CG00003212_1-p-800.png 800w, images/CG00003212_1-p-1080.png 1080w, images/CG00003212_1-p-1600.png 1600w, images/CG00003212_1.png 1920w"
             alt="">
@@ -139,13 +175,13 @@
   <style>
     /* Standardize heading and section spacing page-wide */
     .h3-heading-3 {
-      margin-top: 100px !important;
-      margin-bottom: 40px !important;
+      margin-top: 72px !important;
+      margin-bottom: 28px !important;
     }
 
     .section-large-8 {
-      padding-top: 20px !important;
-      padding-bottom: 80px !important;
+      padding-top: 0 !important;
+      padding-bottom: 32px !important;
     }
   </style>
   <div
@@ -275,7 +311,12 @@
           </div>
         </div>
         <div style="position: relative; max-width: var(--cs-content); margin: 0 auto;">
-          <div class="swiper storyboard-swiper" style="margin-top: 24px; padding-bottom: 40px;">
+          <style>
+            /* Slides were stretched to ~2x the image height, leaving a big blank under the strip */
+            .storyboard-swiper .swiper-wrapper { height: auto; align-items: flex-start; }
+            .storyboard-swiper .swiper-slide { height: auto; }
+          </style>
+          <div class="swiper storyboard-swiper" style="margin-top: 24px; padding-bottom: 28px;">
             <div class="swiper-wrapper">
               <div class="swiper-slide" style="width: 25%;"><img src="images/DS_Storyboard/1.JPG" loading="lazy"
                   style="width: 100%; border-radius: 20px; pointer-events: none;" alt="Storyboard 1"></div>
@@ -380,7 +421,7 @@
         right: -80px;
       }
 
-      @media (max-width: 1300px) {
+      @media (max-width: 1150px) {
         .lighting-arrow.left {
           left: 10px;
         }
@@ -390,7 +431,7 @@
         }
       }
     </style>
-    <div style="position: relative; width: 100%;">
+    <div style="position: relative; width: 100%; max-width: min(960px, calc(64vh * 16 / 9)); margin: 0 auto;">
       <button class="lighting-arrow left"
         onclick="document.getElementById('lighting-carousel').scrollBy({left: -document.getElementById('lighting-carousel').offsetWidth, behavior: 'smooth'})">
         <svg fill="currentColor" width="24" height="24" viewBox="0 0 24 24">
@@ -493,19 +534,17 @@
     <h3 class="h3-heading-3"> <span class="text-color-gradient">Character Modeling</span></h3>
     <section class="section-large-8" style="padding-top: 2rem; padding-bottom: 2rem;">
       <div class="container-large" style="max-width: var(--cs-content);">
+        <!-- Viewer left, thumbnails stacked on the right: whole image visible, ~half the old height -->
         <div class="character-gallery"
           style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 24px;">
           <!-- Main Image View -->
-          <div
-            style="width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 24px; aspect-ratio: 16/9; background: #111; display: flex; align-items: center; justify-content: center; position: relative; cursor: zoom-in;"
-            onclick="openLightbox(document.getElementById('mainCharImage').src)">
+          <div class="char-viewer" onclick="openLightbox(document.getElementById('mainCharImage').src)">
             <img id="mainCharImage" src="images/DeepSpaceScene/dcebacbe882067d3375a47278ec24034.PNG"
-              style="width: 100%; height: 100%; object-fit: contain; transition: opacity 0.3s ease;">
+              alt="Character model" style="transition: opacity 0.3s ease;">
           </div>
 
           <!-- Thumbnails -->
-          <div style="display: flex; gap: 16px; justify-content: center; overflow-x: auto; padding-bottom: 8px;"
-            class="char-thumbnails">
+          <div class="char-thumbnails">
             <img src="images/DeepSpaceScene/dcebacbe882067d3375a47278ec24034.PNG" onclick="setMainImage(event, this)"
               class="char-thumb active-thumb">
             <img src="images/DeepSpaceScene/1b05eec430740c73c69571f80e8abdbc.PNG" onclick="setMainImage(event, this)"
@@ -520,6 +559,42 @@
         </div>
 
         <style>
+          .character-gallery {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+          }
+
+          .char-viewer {
+            height: clamp(360px, 54vh, 500px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-in;
+          }
+
+          .char-viewer img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+          }
+
+          .char-thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          @media (max-width: 767px) {
+            .character-gallery { grid-template-columns: 1fr; }
+            .char-viewer { height: auto; }
+            .char-viewer img { height: auto; width: 100%; }
+            .char-thumbnails { flex-direction: row; justify-content: center; overflow-x: auto; }
+          }
+
           .char-thumb {
             width: 80px;
             height: 80px;
@@ -633,7 +708,7 @@
         <!-- Import Data Image -->
         <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 40px;">
           <img src="images/DeepSpaceScene/importdata.png" loading="lazy"
-            style="max-width: 60%; width: 100%; height: auto;" alt="Import Data Process">
+            style="max-width: 85%; width: 100%; height: auto;" alt="Import Data Process">
         </div>
 
         <!-- Main Area: 2 Cols -->
