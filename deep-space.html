@@ -32,63 +32,202 @@
   <link href="LOGO/favicon.png" rel="shortcut icon" type="image/png">
   <link href="LOGO/favicon.png" rel="apple-touch-icon">
   <style>
-    /* Hero — same treatment as Pizza Delivery: blurred "smudge" of the frame behind,
-       a smaller sharp frame on top whose edges fade into it. Each slide passes its image via --hero-bg. */
-    .slider-2 {
-      height: 82vh !important;
-      min-height: 620px;
-    }
-
-    .slider-2 .w-slider-mask,
-    .slider-2 .w-slide {
-      height: 100%;
-    }
-
-    .slider-2 .w-slide {
+    /* ============================================================
+       HERO — cinematic trailer loop
+       Blurred still behind, letterbox-cropped video in a frame whose
+       edges feather into it (same language as Pizza Delivery), title
+       overlapping the lower third.
+       ============================================================ */
+    .ds-hero {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0 40px;
+      overflow: hidden;
+      isolation: isolate;
     }
 
-    /* Blurred backdrop stays inside the slide (no clipped hard edge) and fades out on all four sides */
-    .slider-2 .w-slide::before {
+    .ds-hero__backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: url('images/DeepSpaceScene/hero/ds-hero-poster.jpg') center / cover no-repeat;
+      filter: blur(48px) saturate(1.15);
+      opacity: 0.5;
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, black 25%, black 60%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, black 25%, black 60%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+      mask-composite: intersect;
+    }
+
+    .ds-hero__frame {
+      position: relative;
+      width: min(1440px, 90vw);
+      aspect-ratio: 2.4 / 1;
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%);
+      mask-composite: intersect;
+    }
+
+    .ds-hero__video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #0b0b0d;
+    }
+
+    /* Lower-third shade so the title reads over bright shots */
+    .ds-hero__frame::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: var(--hero-bg) center / cover no-repeat;
-      filter: blur(40px);
-      opacity: 0.75;
-      z-index: 0;
-      -webkit-mask-image:
-        linear-gradient(to bottom, transparent 0%, black 30%, black 55%, transparent 100%),
-        linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to bottom, transparent 0%, black 30%, black 55%, transparent 100%),
-        linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%);
-      mask-composite: intersect;
+      background: linear-gradient(to top, rgba(10, 10, 12, 0.85) 0%, rgba(10, 10, 12, 0.35) 35%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ds-hero__content {
+      position: relative;
+      z-index: 2;
+      margin-top: clamp(-180px, -11vw, -96px);
+      text-align: center;
+      padding: 0 24px;
+      animation: dsHeroIn 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .ds-hero__title {
+      font-family: 'Progress', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 6rem);
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .ds-hero__subtitle {
+      margin-top: 10px;
+      font-family: 'Google Sans', sans-serif;
+      font-size: clamp(0.8rem, 1.2vw, 1.05rem);
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .ds-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .ds-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-family: 'Google Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .ds-btn--primary {
+      background: #fff;
+      color: #0b0b0d;
+    }
+
+    .ds-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(255, 255, 255, 0.18);
+    }
+
+    .ds-btn--ghost {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(8px);
+    }
+
+    .ds-btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    /* Pause / play — WCAG 2.2.2 for autoplaying motion longer than 5s */
+    .ds-hero__toggle {
+      position: absolute;
+      right: max(5vw, 24px);
+      top: calc(min(1440px, 90vw) / 2.4 - 72px);
+      z-index: 3;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .ds-hero__toggle:hover,
+    .ds-hero__toggle:focus-visible {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .ds-hero__toggle svg { width: 14px; height: 14px; fill: currentColor; }
+    .ds-hero__toggle .icon-play { display: none; }
+    .ds-hero.is-paused .ds-hero__toggle .icon-play { display: block; }
+    .ds-hero.is-paused .ds-hero__toggle .icon-pause { display: none; }
+
+    @keyframes dsHeroIn {
+      from { opacity: 0; transform: translateY(16px); }
+    }
+
+    /* Anchors from the hero buttons */
+    #production-pipeline,
+    #final-cut {
+      scroll-margin-top: 24px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ds-hero__content { animation: none; }
+    }
+
+    @media (max-width: 767px) {
+      .ds-hero__frame {
+        width: 100vw;
+        aspect-ratio: 16 / 10;
+      }
+      .ds-hero__toggle { top: 20px; right: 16px; }  /* top-right on phones, clear of the title */
+      .ds-hero__content { margin-top: -64px; }
     }
 
     /* No frame lines / corner dots around the nav on this page */
     .navbar-2 .lines-group,
     .navbar-2 .line-horizontal {
       display: none;
-    }
-
-    .slider-2 .w-slide img {
-      position: absolute !important;
-      left: 50%;
-      top: 54%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 84%;
-      object-fit: cover;
-      z-index: 1;
-      -webkit-mask-image: radial-gradient(ellipse closest-side at center, black 55%, transparent 100%);
-      mask-image: radial-gradient(ellipse closest-side at center, black 55%, transparent 100%);
-    }
-
-    @media (max-width: 767px) {
-      .slider-2 { height: 60vh !important; min-height: 380px; }
-      .slider-2 .w-slide img { width: 100%; height: 80%; }
     }
   </style>
 </head>
@@ -141,50 +280,72 @@
     </div>
     <div class="line-horizontal"></div>
   </div>
-  <div fb-slider="true" class="slider-wrapper">
-    <div class="code-embed w-embed w-script"><!--  Flowbase Booster [Custom Slider]  -->
-      <script src="https://cdn.jsdelivr.net/npm/@flowbase-co/boosters-custom-slider-webflow@2/dist/custom-slider.min.js"
-        type="text/javascript"></script>
+  <!-- HERO: trailer loop (images/DS.mp4 re-encoded: H.264, letterbox cropped, no audio) -->
+  <section class="ds-hero" aria-label="Deep Space trailer">
+    <div class="ds-hero__backdrop" aria-hidden="true"></div>
+    <div class="ds-hero__frame">
+      <video class="ds-hero__video" muted loop playsinline preload="metadata"
+        poster="images/DeepSpaceScene/hero/ds-hero-poster.jpg"
+        data-src-desktop="images/DeepSpaceScene/hero/ds-hero-1080.mp4"
+        data-src-mobile="images/DeepSpaceScene/hero/ds-hero-720.mp4"
+        aria-label="Deep Space trailer, muted"></video>
     </div>
-    <div data-delay="2000" data-animation="slide" class="slider-2 w-slider" data-autoplay="true" data-easing="ease"
-      data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3"
-      data-duration="500" data-infinite="true">
-      <!-- Deleted slider actions (Back/Next/Dots) per user request -->
-      <div class="page-content">
-        <section class="section">
-          <div class="container top-margin---medium-space">
-            <!-- Removed undesired text and graphics -->
-            <div class="w-layout-grid grid" style="display: none;">
-            </div>
-          </div>
-        </section>
+    <button type="button" class="ds-hero__toggle" aria-label="Pause background video">
+      <svg class="icon-pause" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
+      <svg class="icon-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
+    </button>
+    <div class="ds-hero__content">
+      <h1 class="ds-hero__title text-color-gradient">DEEP SPACE</h1>
+      <div class="ds-hero__subtitle">Sci-Fi Short Film Created by Unreal Engine</div>
+      <div class="ds-hero__actions">
+        <a href="#final-cut" class="ds-btn ds-btn--primary">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
+          Watch Final Cut
+        </a>
+        <a href="#production-pipeline" class="ds-btn ds-btn--ghost">Production Pipeline</a>
       </div>
-      <div class="mask-3 w-slider-mask">
-        <div class="slide-2 w-slide" style="--hero-bg: url('images/CG00007970_1.png');"><img src="images/CG00007970_1.png" loading="lazy"
-            sizes="(max-width: 1920px) 100vw, 1920px"
-            srcset="images/CG00007970_1-p-500.png 500w, images/CG00007970_1-p-800.png 800w, images/CG00007970_1-p-1080.png 1080w, images/CG00007970_1.png 1920w"
-            alt="" class="image-4">
-        </div>
-        <div class="slide-2 w-slide" style="--hero-bg: url('images/CG00008361.png');"><img src="images/CG00008361.png" loading="lazy"
-            sizes="(max-width: 1920px) 100vw, 1920px"
-            srcset="images/CG00008361-p-500.png 500w, images/CG00008361-p-800.png 800w, images/CG00008361-p-1080.png 1080w, images/CG00008361-p-1600.png 1600w, images/CG00008361.png 1920w"
-            alt="">
-        </div>
-        <div class="slide-2 w-slide" style="--hero-bg: url('images/CG00003212_1.png');"><img src="images/CG00003212_1.png" loading="lazy"
-            sizes="(max-width: 1920px) 100vw, 1920px"
-            srcset="images/CG00003212_1-p-500.png 500w, images/CG00003212_1-p-800.png 800w, images/CG00003212_1-p-1080.png 1080w, images/CG00003212_1-p-1600.png 1600w, images/CG00003212_1.png 1920w"
-            alt="">
-        </div>
-      </div>
-      <div class="hide w-slider-arrow-left" style="display: none !important;">
-        <div class="icon w-icon-slider-left"></div>
-      </div>
-      <div class="hide w-slider-arrow-right" style="display: none !important;">
-        <div class="icon-2 w-icon-slider-right"></div>
-      </div>
-      <div class="hide w-slider-nav w-round w-num" style="display: none !important;"></div>
     </div>
-  </div>
+  </section>
+  <script>
+    (function () {
+      var hero = document.querySelector('.ds-hero');
+      if (!hero) return;
+      var video = hero.querySelector('.ds-hero__video');
+      var toggle = hero.querySelector('.ds-hero__toggle');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var small = window.matchMedia('(max-width: 900px)').matches;
+      var userPaused = reduce; // reduced motion: start paused on the poster
+      video.src = small ? video.dataset.srcMobile : video.dataset.srcDesktop;
+
+      function setState(paused) {
+        hero.classList.toggle('is-paused', paused);
+        toggle.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
+      }
+      function play() {
+        video.play().then(function () { setState(false); }).catch(function () { setState(true); });
+      }
+      function pause() { video.pause(); setState(true); }
+
+      toggle.addEventListener('click', function () {
+        userPaused = !video.paused;
+        if (userPaused) pause(); else play();
+      });
+
+      // Only spend decode time while the hero is on screen
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && !userPaused) play();
+            else if (!e.isIntersecting) video.pause();
+          });
+        }, { threshold: 0.15 }).observe(hero);
+      } else if (!userPaused) {
+        play();
+      }
+
+      if (userPaused) setState(true);
+    })();
+  </script>
   <style>
     /* Standardize heading and section spacing page-wide */
     .h3-heading-3 {
@@ -197,16 +358,6 @@
       padding-bottom: 32px !important;
     }
   </style>
-  <div
-    style="text-align: center; margin-top: -80px; position: relative; z-index: 10; margin-bottom: 30px; animation: fadeIn 1.5s ease;">
-    <h1
-      style="font-family: 'Progress', sans-serif; font-size: 6rem; letter-spacing: 0.05em; color: #fff; margin-bottom: 0px; line-height: 1.2; padding-top: 20px;"
-      class="text-color-gradient">DEEP SPACE</h1>
-    <div
-      style="font-family: 'Google Sans', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.25em; text-transform: uppercase; font-weight: 300;">
-      SCI-FI SHORT FILM CREATED BY UNREAL ENGINE
-    </div>
-  </div>
   <div class="cs-intro cs-intro--wide">
     <p class="cs-lead">&quot;Deep Space&quot; is a sci-fi short film that follows the journey of Kelly, a scientist
       determined to uncover the truth behind her friend Jack&#x27;s mysterious death on Ceres, a distant asteroid. Set
@@ -230,7 +381,7 @@
         <div class="title-row" style="justify-content: center; text-align: center;">
           <div class="max-width-x-large">
             <div class="column-large-2">
-              <h3 class="h3-heading-3"><span class="text-color-gradient">Production Pipeline</span></h3>
+              <h3 class="h3-heading-3" id="production-pipeline"><span class="text-color-gradient">Production Pipeline</span></h3>
             </div>
           </div>
         </div>
@@ -746,7 +897,7 @@
     </section>
   </div>
   <div>
-    <h3 class="h3-heading-3"> <span class="text-color-gradient">Final Cut</span></h3>
+    <h3 class="h3-heading-3" id="final-cut"> <span class="text-color-gradient">Final Cut</span></h3>
     <section class="section-large-8">
       <div class="container-small-5" style="max-width: var(--cs-content);">
         <div data-delay="4000" data-animation="outin" class="slider-3 w-slider" data-autoplay="false" data-easing="ease"
