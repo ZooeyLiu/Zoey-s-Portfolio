@@ -23,6 +23,13 @@
     margin-top: 1.1em;
 }
 
+/* Wide variant: matches the 68rem .container-medium-2 used by the sections below it */
+.cs-intro--wide {
+    width: calc(100% - 48px);
+    max-width: 68rem;
+    padding: 0;
+}
+
 /* First paragraph reads as the lead */
 .cs-intro .cs-lead {
     font-size: 1.2rem;

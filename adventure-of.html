@@ -169,14 +169,14 @@
       </div>
       <!-- Software Toolbar added from request -->
       <div class="echo-software-toolbar"
-        style="max-width: 1200px; margin: 40px auto 0; padding: 0 40px; display: flex; gap: 32px; align-items: center; justify-content: flex-start; opacity: 1;">
-        <img src="LOGO/Maya.png" alt="Maya" style="height: 48px; width: auto;" title="Autodesk Maya">
-        <img src="LOGO/3Dmax.png" alt="3ds Max" style="height: 48px; width: auto; object-fit: contain;"
+        style="position: relative; z-index: 3; max-width: 1200px; margin: 48px auto 0; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; opacity: 1;">
+        <img src="LOGO/Maya.png" alt="Maya" style="height: 68px; width: auto; object-fit: contain;" title="Autodesk Maya">
+        <img src="LOGO/3Dmax.png" alt="3ds Max" style="height: 68px; width: auto; object-fit: contain;"
           title="Autodesk 3ds Max">
-        <img src="LOGO/blender.png" alt="Blender" style="height: 48px; width: auto; object-fit: contain;"
+        <img src="LOGO/blender.png" alt="Blender" style="height: 68px; width: auto; object-fit: contain;"
           title="Blender">
-        <img src="LOGO/AE.png" alt="After Effects" style="height: 48px; width: auto;" title="Adobe After Effects">
-        <img src="LOGO/FCP.png" alt="Final Cut Pro" style="height: 48px; width: auto;" title="Final Cut Pro">
+        <img src="LOGO/AE.png" alt="After Effects" style="height: 68px; width: auto; object-fit: contain;" title="Adobe After Effects">
+        <img src="LOGO/FCP.png" alt="Final Cut Pro" style="height: 68px; width: auto; object-fit: contain;" title="Final Cut Pro">
       </div>
 
       <div class="video-background"><img loading="lazy" src="images/cv-1.png" alt="" class="video-lines">
@@ -186,7 +186,7 @@
       </div>
     </section>
   </div>
-  <div class="cs-intro">
+  <div class="cs-intro cs-intro--wide">
     <p class="cs-lead">In the ancient Chinese medical book <em>Treatise on Febrile Diseases</em>, the Little Blue Dragon
       of the small green dragon formula accidentally travels to the real world and becomes a clumsy paper character. In
       order to find his identity, he leads medical students who are reading <em>Treatise on Febrile Diseases</em> into
@@ -336,6 +336,7 @@
           display: flex;
           gap: 28px;
           width: max-content;
+          margin: 0 auto;            /* centred when it fits, scrolls when it doesn't */
           align-items: flex-start;
         }
         .sb-card {
@@ -343,22 +344,29 @@
           display: flex;
           flex-direction: column;
           gap: 14px;
-          max-width: 320px;
-          transition: transform 0.3s ease;
+          width: 290px;
+          transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
         }
-        .sb-card:hover { transform: translateY(-4px); }
+        .sb-card:hover { transform: translateY(-6px); }
+        /* Frame hugs the image: fixed width, natural height */
         .sb-card-img {
           border-radius: 12px;
           overflow: hidden;
-          background: rgba(0,0,0,0.15);
-          border: 1px solid rgba(255,255,255,0.06);
           line-height: 0;
+          box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+          transition: box-shadow 0.4s ease;
         }
+        .sb-card:hover .sb-card-img { box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
         .sb-card-img img {
-          height: 50vh;
-          width: auto;
+          width: 100%;
+          height: auto;
           display: block;
-          object-fit: contain;
+          transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+        .sb-card:hover .sb-card-img img { transform: scale(1.05); }
+        @media (prefers-reduced-motion: reduce) {
+          .sb-card, .sb-card-img img { transition: none; }
+          .sb-card:hover, .sb-card:hover .sb-card-img img { transform: none; }
         }
         .sb-card-title {
           font-size: 18px;
@@ -377,16 +385,16 @@
           background: rgba(255,255,255,0.15);
         }
         .sb-card-desc {
+          display: block;            /* global Webflow rule makes <p> flex */
+          margin: 0;
           font-size: 13px;
           color: rgba(255,255,255,0.7);
           line-height: 1.55;
-          max-width: 320px;
         }
 
         @media (max-width: 767px) {
-          .sb-card { max-width: 260px; }
-          .sb-card-img img { height: 40vh; }
-          .sb-card-desc { max-width: 260px; font-size: 12px; }
+          .sb-card { width: 240px; }
+          .sb-card-desc { font-size: 12px; }
         }
       </style>
 
@@ -467,142 +475,117 @@
         </div>
       </div>
 
-      <!-- Timeline Scrolling Container -->
-      <div class="concept-timeline-wrapper"
-        style="width: 100%; overflow-x: auto; padding-bottom: 2rem; cursor: grab; -webkit-overflow-scrolling: touch;">
-        <div style="display: flex; gap: 40px; padding: 0 5vw; height: 500px; width: max-content; align-items: center;">
+      <!-- Timeline: image heights derive from --cu so the whole row fits one screen on desktop -->
+      <style>
+        .ct-wrap {
+          /* --cu = height of the tallest (final) sketch. Row width ≈ 3.47·cu + 410px;
+             the section's own side padding leaves ~89vw for the row. */
+          --cu: clamp(200px, calc((86vw - 410px) / 3.47), 420px);
+          width: 100%;
+          overflow-x: auto;
+          padding: 0 0 2rem;
+          -webkit-overflow-scrolling: touch;
+        }
+        .ct-wrap.is-scrollable { cursor: grab; }
+        .ct-wrap::-webkit-scrollbar { height: 6px; }
+        .ct-wrap::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); margin: 0 5vw; border-radius: 10px; }
+        .ct-wrap::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
+        .ct-wrap::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
 
+        .ct-row {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          width: max-content;
+          height: var(--cu);
+          margin: 0 auto;
+        }
+        .ct-group { display: flex; align-items: center; gap: 14px; height: 100%; }
+        .ct-col { display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+
+        .ct-shot {
+          height: calc(var(--cu) * var(--k, 1));
+          border-radius: 12px;
+          overflow: hidden;
+          line-height: 0;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+          transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease;
+        }
+        .ct-shot img {
+          height: 100%;
+          width: auto;
+          display: block;
+          opacity: 0.85;
+          transition: opacity 0.3s ease;
+        }
+        .ct-shot:hover { transform: scale(1.04); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45); }
+        .ct-shot:hover img { opacity: 1; }
+        .ct-shot--final { border-radius: 16px; box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
+        .ct-shot--final img, .ct-shot--v3 img { opacity: 1; }
+        .ct-shot--low { align-self: flex-end; margin-bottom: calc(var(--cu) * 0.05); }
+
+        .ct-node { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60px; }
+        .ct-node__label { font-size: 0.85rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .ct-node__line { height: 2px; width: 40px; background: rgba(255, 255, 255, 0.1); }
+        .ct-node__dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); margin-top: -4px; }
+        .ct-node--v2 .ct-node__label { color: rgba(255, 255, 255, 0.6); }
+        .ct-node--v2 .ct-node__line { background: rgba(255, 255, 255, 0.3); }
+        .ct-node--v2 .ct-node__dot { width: 8px; height: 8px; background: rgba(255, 255, 255, 0.5); margin-top: -5px; }
+        .ct-node--final { width: 80px; }
+        .ct-node--final .ct-node__label { font-size: 1rem; color: #fff; font-weight: bold; }
+        .ct-node--final .ct-node__line { width: 60px; background: rgba(255, 255, 255, 0.8); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .ct-node--final .ct-node__dot { width: 12px; height: 12px; background: #fff; margin-top: -7px; box-shadow: 0 0 10px #fff; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .ct-shot { transition: none; }
+          .ct-shot:hover { transform: none; }
+        }
+      </style>
+
+      <div class="ct-wrap concept-timeline-wrapper">
+        <div class="ct-row">
           <!-- Version 1 -->
-          <div class="concept-group" style="display: flex; gap: 20px; align-items: center; height: 100%;">
-            <div style="display: flex; flex-direction: column; gap: 20px; height: 100%; justify-content: center;">
-              <div
-                style="height: 400px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border 0.3s ease;"
-                onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='rgba(255,255,255,0.2)'"
-                onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.05)'">
-                <img src="images/concept/v1-1.png" style="height: 100%; width: auto; object-fit: contain; opacity: 0.8;"
-                  onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
-              </div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 20px; height: 400px; justify-content: center;">
-              <div
-                style="height: 190px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border 0.3s ease;"
-                onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='rgba(255,255,255,0.2)'"
-                onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.05)'">
-                <img src="images/concept/v1-2.png" style="height: 100%; width: auto; object-fit: contain; opacity: 0.8;"
-                  onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
-              </div>
-              <div
-                style="height: 190px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border 0.3s ease;"
-                onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='rgba(255,255,255,0.2)'"
-                onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.05)'">
-                <img src="images/concept/v1-3.png" style="height: 100%; width: auto; object-fit: contain; opacity: 0.8;"
-                  onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
-              </div>
+          <div class="ct-group">
+            <div class="ct-shot" style="--k: 0.8"><img src="images/concept/v1-1.png" alt="Concept V1 sketch 1" loading="lazy"></div>
+            <div class="ct-col">
+              <div class="ct-shot" style="--k: 0.38"><img src="images/concept/v1-2.png" alt="Concept V1 sketch 2" loading="lazy"></div>
+              <div class="ct-shot" style="--k: 0.38"><img src="images/concept/v1-3.png" alt="Concept V1 sketch 3" loading="lazy"></div>
             </div>
           </div>
 
-          <!-- Timeline Node V1 -->
-          <div
-            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60px;">
-            <div
-              style="font-size: 0.85rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
-              V1</div>
-            <div style="height: 2px; width: 40px; background: rgba(255,255,255,0.1);"></div>
-            <div
-              style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); margin-top: -4px;">
-            </div>
-          </div>
+          <div class="ct-node"><div class="ct-node__label">V1</div><div class="ct-node__line"></div><div class="ct-node__dot"></div></div>
 
           <!-- Version 2 -->
-          <div class="concept-group" style="display: flex; gap: 20px; align-items: center; height: 100%;">
-            <div
-              style="height: 450px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border 0.3s ease;"
-              onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='rgba(255,255,255,0.2)'"
-              onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.05)'">
-              <img src="images/concept/v2-1.png" style="height: 100%; width: auto; object-fit: contain; opacity: 0.85;"
-                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
-            </div>
-            <div
-              style="height: 380px; align-self: flex-end; margin-bottom: 25px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border 0.3s ease;"
-              onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='rgba(255,255,255,0.2)'"
-              onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.05)'">
-              <img src="images/concept/v2-2.png" style="height: 100%; width: auto; object-fit: contain; opacity: 0.85;"
-                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
-            </div>
+          <div class="ct-group">
+            <div class="ct-shot" style="--k: 0.9"><img src="images/concept/v2-1.png" alt="Concept V2 sketch 1" loading="lazy"></div>
+            <div class="ct-shot ct-shot--low" style="--k: 0.76"><img src="images/concept/v2-2.png" alt="Concept V2 sketch 2" loading="lazy"></div>
           </div>
 
-          <!-- Timeline Node V2 -->
-          <div
-            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60px;">
-            <div
-              style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
-              V2</div>
-            <div style="height: 2px; width: 40px; background: rgba(255,255,255,0.3);"></div>
-            <div
-              style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); margin-top: -5px;">
-            </div>
-          </div>
+          <div class="ct-node ct-node--v2"><div class="ct-node__label">V2</div><div class="ct-node__line"></div><div class="ct-node__dot"></div></div>
 
           <!-- Version 3 (Final) -->
-          <div class="concept-group" style="display: flex; gap: 20px; align-items: center; height: 100%;">
-            <div
-              style="height: 500px; border-radius: 16px; overflow: hidden; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 0 40px rgba(0,0,0,0.5); transition: transform 0.3s ease;"
-              onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-              <img src="images/concept/v3-1.png" style="height: 100%; width: auto; object-fit: contain;">
-            </div>
-            <div
-              style="height: 420px; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease, border 0.3s ease;"
-              onmouseover="this.style.transform='scale(1.02)'; this.style.borderColor='rgba(255,255,255,0.2)'"
-              onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.05)'">
-              <img src="images/concept/v3-2.png" style="height: 100%; width: auto; object-fit: contain;">
-            </div>
+          <div class="ct-group">
+            <div class="ct-shot ct-shot--final" style="--k: 1"><img src="images/concept/v3-1.png" alt="Final concept front" loading="lazy"></div>
+            <div class="ct-shot ct-shot--v3" style="--k: 0.84"><img src="images/concept/v3-2.png" alt="Final concept alternate" loading="lazy"></div>
           </div>
 
-          <!-- Timeline Node Final -->
-          <div
-            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 80px;">
-            <div
-              style="font-size: 1rem; color: rgba(255,255,255,1); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
-              Final</div>
-            <div
-              style="height: 2px; width: 60px; background: rgba(255,255,255,0.8); box-shadow: 0 0 10px rgba(255,255,255,0.5);">
-            </div>
-            <div
-              style="width: 12px; height: 12px; border-radius: 50%; background: #fff; margin-top: -7px; box-shadow: 0 0 10px #fff;">
-            </div>
-          </div>
+          <div class="ct-node ct-node--final"><div class="ct-node__label">Final</div><div class="ct-node__line"></div><div class="ct-node__dot"></div></div>
         </div>
       </div>
 
-      <!-- Custom scrollbar & drag-to-scroll -->
-      <style>
-        .concept-timeline-wrapper::-webkit-scrollbar {
-          height: 6px;
-        }
-
-        .concept-timeline-wrapper::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.02);
-          margin: 0 5vw;
-          border-radius: 10px;
-        }
-
-        .concept-timeline-wrapper::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.15);
-          border-radius: 10px;
-        }
-
-        .concept-timeline-wrapper::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.3);
-        }
-      </style>
+      <!-- Drag-to-scroll, only when the row overflows (small screens) -->
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-          const slider = document.querySelector('.concept-timeline-wrapper');
+          const slider = document.querySelector('.ct-wrap');
           if (!slider) return;
+          const update = () => slider.classList.toggle('is-scrollable', slider.scrollWidth > slider.clientWidth + 1);
+          update();
+          window.addEventListener('resize', update);
+          window.addEventListener('load', update);
           let isDown = false, startX, scrollLeft;
-          slider.addEventListener('mousedown', (e) => { isDown = true; slider.style.cursor = 'grabbing'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-          slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
-          slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
+          slider.addEventListener('mousedown', (e) => { if (!slider.classList.contains('is-scrollable')) return; isDown = true; slider.style.cursor = 'grabbing'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+          slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = ''; });
+          slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = ''; });
           slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX) * 2; });
         });
       </script>
@@ -676,8 +659,8 @@
     <section id="noda-gallery-01" class="section-medium-6" style="padding-top: 20;">
       <div class="container-medium-2">
         <div class="title-center-5"
-          style="text-align: center; justify-content: center; align-items: center; display: flex; flex-direction: column;">
-          <h3 class="h3-heading-7" style="line-height: 1.2;">Scene building by using<br><span
+          style="max-width: none; text-align: center; justify-content: center; align-items: center; display: flex; flex-direction: column;">
+          <h3 class="h3-heading-7" style="line-height: 1.2;">Scene building by using <span
               class="text-color-gradient-2">Blender</span><span class="text-color-orange">.</span></h3>
         </div>
 
