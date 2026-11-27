@@ -773,9 +773,9 @@ blockquote {
   background-color: #f9c22e !important;
   /* Organic background with overlay shapes - Magnified */
   background-image:
-    url('../images/PizzaDeliveryIMG/Shape-21.png'),
-    url('../images/PizzaDeliveryIMG/Shape-31.png'),
-    url('../images/PizzaDeliveryIMG/Foliage-13.png') !important;
+    url('../images/PizzaDeliveryIMG/Shape-21.webp'),
+    url('../images/PizzaDeliveryIMG/Shape-31.webp'),
+    url('../images/PizzaDeliveryIMG/Foliage-13.webp') !important;
   background-position:
     top right,
     bottom left,
@@ -915,7 +915,7 @@ blockquote {
   left: -50px;
   right: -50px;
   bottom: 0;
-  background-image: url('../images/PizzaDeliveryIMG/HeroBG.png');
+  background-image: url('../images/PizzaDeliveryIMG/HeroBG.webp');
   background-size: cover;
   background-position: center top;
   filter: blur(40px);
@@ -931,7 +931,7 @@ blockquote {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../images/PizzaDeliveryIMG/HeroBG.png');
+  background-image: url('../images/PizzaDeliveryIMG/HeroBG.webp');
   background-size: 85% auto;
   background-position: center top 130px;
   background-repeat: no-repeat;
@@ -949,7 +949,7 @@ blockquote {
 }
 
 .body {
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg.webp');
   background-position: 0 0;
   background-size: 1100px;
   max-height: none;
@@ -957,7 +957,7 @@ blockquote {
 }
 
 .section-2 {
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg.webp');
   background-position: 0 0;
   background-repeat: repeat;
   background-size: 1100px;
@@ -979,7 +979,7 @@ blockquote {
 
 .body-2 {
   background-color: var(--background);
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg.webp');
   background-position: 0 0;
   background-size: 1100px;
 }
@@ -1480,7 +1480,7 @@ blockquote {
 }
 
 .body-3 {
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg.webp');
   background-position: 0 0;
   background-size: 1100px;
 }
@@ -1851,7 +1851,7 @@ blockquote {
 
 .body-4 {
   background-color: var(--background);
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg.webp');
   background-position: 0 0;
   background-size: 100px;
 }
@@ -2367,7 +2367,7 @@ blockquote {
   aspect-ratio: 3 / 2;
   cursor: grab;
   background-color: #000;
-  background-image: url('../images/未命名-1.jpg');
+  background-image: url('../images/未命名-1.webp');
   background-position: 0 0;
   background-size: cover;
   flex: none;
@@ -2381,7 +2381,7 @@ blockquote {
   opacity: .4;
   cursor: pointer;
   object-fit: fill;
-  background-image: url('../images/截屏2024-07-26-17.06.34.png');
+  background-image: url('../images/截屏2024-07-26-17.06.34.webp');
   background-position: 0 0;
   background-size: cover;
   border-radius: 16px;
@@ -2394,25 +2394,25 @@ blockquote {
 .swiper-slide.is-thumb.swiper-slide-thumb-active {
   opacity: 1;
   background-color: #00000075;
-  background-image: url('../images/截屏2024-07-26-17.06.46.png');
+  background-image: url('../images/截屏2024-07-26-17.06.46.webp');
   background-position: 0 0;
   background-size: 455px;
   background-attachment: scroll;
 }
 
 .swiper-slide.is-thumb.lev {
-  background-image: url('../images/未命名-1.jpg');
+  background-image: url('../images/未命名-1.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .swiper-slide.is-thumb.tb2 {
-  background-image: url('../images/截屏2024-07-26-17.19.09.png');
+  background-image: url('../images/截屏2024-07-26-17.19.09.webp');
   background-size: cover;
 }
 
 .swiper-slide.is-thumb.tb3 {
-  background-image: url('../images/截屏2024-08-20-17.37.39.png');
+  background-image: url('../images/截屏2024-08-20-17.37.39.webp');
 }
 
 .swiper-slide.is-main {
@@ -2819,7 +2819,7 @@ blockquote {
 }
 
 .body-5 {
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/bg.webp');
   background-position: 0 0;
   background-size: 1100px;
 }
@@ -2878,7 +2878,7 @@ blockquote {
 .image-cover-3 {
   text-align: left;
   object-fit: cover;
-  background-image: url('../images/未命名-1.jpg');
+  background-image: url('../images/未命名-1.webp');
   background-position: 0 0;
   background-size: cover;
   width: 100%;
@@ -3066,13 +3066,13 @@ blockquote {
 }
 
 .image-8 {
-  background-image: url('../images/cover-into-the-unknown.png');
+  background-image: url('../images/cover-into-the-unknown.webp');
   background-position: 0 0;
   background-size: auto;
 }
 
 .body-6 {
-  background-image: url('../images/cover-into-the-unknown.png');
+  background-image: url('../images/cover-into-the-unknown.webp');
   background-position: 0 0;
   background-size: cover;
 }
@@ -3208,7 +3208,7 @@ blockquote {
   aspect-ratio: auto;
   -webkit-text-fill-color: inherit;
   object-fit: fill;
-  background-image: url('../images/2.png');
+  background-image: url('../images/2.webp');
   background-position: 50%;
   background-size: cover;
   background-clip: border-box;
@@ -3231,7 +3231,7 @@ blockquote {
 .div-block-4.stealthbg {
   box-sizing: border-box;
   object-fit: contain;
-  background-image: url('../images/process1-8.png');
+  background-image: url('../images/process1-8.webp');
   background-position: 0%;
   background-size: cover;
   height: 250px;
@@ -3248,7 +3248,7 @@ blockquote {
 
 .div-block-4.puzzleimg {
   opacity: .8;
-  background-image: url('../images/process1-4.png');
+  background-image: url('../images/process1-4.webp');
   background-position: 100%;
   background-size: cover;
   height: 240px;
@@ -3291,7 +3291,7 @@ blockquote {
 }
 
 .div-block-5 {
-  background-image: url('../images/Group-9.png');
+  background-image: url('../images/Group-9.webp');
   background-position: 50%;
   background-size: contain;
   background-attachment: scroll;
@@ -3512,7 +3512,7 @@ blockquote {
 .div-block-8 {
   z-index: 0;
   mix-blend-mode: normal;
-  background-image: url('../images/1.png');
+  background-image: url('../images/1.webp');
   background-position: 50%;
   background-size: cover;
   width: 240px;
@@ -3521,29 +3521,29 @@ blockquote {
 }
 
 .div-block-8.img6 {
-  background-image: url('../images/process1.png');
+  background-image: url('../images/process1.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-8.img11 {
-  background-image: url('../images/process1-3.png');
+  background-image: url('../images/process1-3.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-8.img16 {
-  background-image: url('../images/process1-11.png');
+  background-image: url('../images/process1-11.webp');
 }
 
 .div-block-8.img21 {
-  background-image: url('../images/process1-16.png');
+  background-image: url('../images/process1-16.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-8.img26 {
-  background-image: url('../images/process1-17.png');
+  background-image: url('../images/process1-17.webp');
   background-position: 0 0;
   background-size: cover;
 }
@@ -3554,145 +3554,145 @@ blockquote {
 }
 
 .div-block-9.img2 {
-  background-image: url('../images/2.png');
+  background-image: url('../images/2.webp');
   background-position: 50%;
   background-size: cover;
 }
 
 .div-block-9.img3 {
-  background-image: url('../images/3.png');
+  background-image: url('../images/3.webp');
   background-position: 0%;
   background-size: cover;
 }
 
 .div-block-9.img4 {
-  background-image: url('../images/cam-1.png');
+  background-image: url('../images/cam-1.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img5 {
-  background-image: url('../images/backbag.png');
+  background-image: url('../images/backbag.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img7 {
-  background-image: url('../images/process1-1.png');
+  background-image: url('../images/process1-1.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img8 {
-  background-image: url('../images/process1-4.png');
+  background-image: url('../images/process1-4.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img9 {
-  background-image: url('../images/process1-5.png');
+  background-image: url('../images/process1-5.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img10 {
-  background-image: url('../images/process1-2.png');
+  background-image: url('../images/process1-2.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img12 {
-  background-image: url('../images/process1-6.png');
+  background-image: url('../images/process1-6.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img13 {
-  background-image: url('../images/2-1.png');
+  background-image: url('../images/2-1.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img14 {
-  background-image: url('../images/process1-7.png');
+  background-image: url('../images/process1-7.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img15 {
-  background-image: url('../images/process1-8.png');
+  background-image: url('../images/process1-8.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img17 {
-  background-image: url('../images/process1-12.png');
+  background-image: url('../images/process1-12.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img18 {
-  background-image: url('../images/process1-13.png');
+  background-image: url('../images/process1-13.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img19 {
-  background-image: url('../images/process1-14.png');
+  background-image: url('../images/process1-14.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img20 {
-  background-image: url('../images/process1-15.png');
+  background-image: url('../images/process1-15.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img22 {
-  background-image: url('../images/unlock.png');
+  background-image: url('../images/unlock.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img23 {
-  background-image: url('../images/process1-6.png');
+  background-image: url('../images/process1-6.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img24 {
-  background-image: url('../images/process1-10.png');
+  background-image: url('../images/process1-10.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img25 {
-  background-image: url('../images/process1-19.png');
+  background-image: url('../images/process1-19.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img27 {
-  background-image: url('../images/process1-18.png');
+  background-image: url('../images/process1-18.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img28 {
-  background-image: url('../images/get-key.png');
+  background-image: url('../images/get-key.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img29 {
-  background-image: url('../images/f2.png');
+  background-image: url('../images/f2.webp');
   background-position: 0 0;
   background-size: cover;
 }
 
 .div-block-9.img30 {
-  background-image: url('../images/f3.png');
+  background-image: url('../images/f3.webp');
   background-position: 0 0;
   background-size: cover;
 }
@@ -4476,7 +4476,7 @@ blockquote {
 }
 
 .body-7 {
-  background-image: url('../images/cv-1.png');
+  background-image: url('../images/cv-1.webp');
   background-position: 0 0;
   background-repeat: repeat;
   background-attachment: fixed;
@@ -5463,7 +5463,7 @@ blockquote {
   grid-column-gap: 12px;
   grid-row-gap: 12px;
   background-color: transparent;
-  background-image: url('../images/截屏2024-08-23-18.46.28.png');
+  background-image: url('../images/截屏2024-08-23-18.46.28.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5476,14 +5476,14 @@ blockquote {
 }
 
 .blog-card-large.bg1 {
-  background-image: url('../images/截屏2024-08-23-18.49.19.png');
+  background-image: url('../images/截屏2024-08-23-18.49.19.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .blog-card-large.bg2 {
-  background-image: url('../images/cv-1.png');
+  background-image: url('../images/cv-1.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5722,7 +5722,7 @@ blockquote {
 }
 
 .body-8 {
-  background-image: url('../images/截屏2023-08-26-20.47.50.png');
+  background-image: url('../images/截屏2023-08-26-20.47.50.webp');
 }
 
 .heading-5 {
@@ -7442,7 +7442,7 @@ blockquote {
 }
 
 .video-lightbox-wrapper {
-  background-image: url('../images/CG00008375.png'), url('../images/Video_1Video.webp');
+  background-image: url('../images/CG00008375.webp'), url('../images/Video_1Video.webp');
   background-position: 50%, 0 0;
   background-repeat: no-repeat, no-repeat;
   background-size: 984px, 984px;

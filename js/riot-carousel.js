@@ -9,56 +9,56 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Shaman",
             category: "Projection Mapping",
-            image: "images/截屏2023-09-18-14.10.10.png",
+            image: "images/截屏2023-09-18-14.10.10.webp",
             link: "shaman.html",
             platforms: ['ue5', 'python']
         },
         {
             title: "Find Way Home",
             category: "Game Dev / Systems",
-            image: "images/截屏2023-08-26-20.47.50.png",
+            image: "images/截屏2023-08-26-20.47.50.webp",
             link: "find-the-way-home.html",
             platforms: ['ue5', 'cpp']
         },
         {
             title: "Into Unknown",
             category: "Mystery Game",
-            image: "images/cover-into-the-unknown.png",
+            image: "images/cover-into-the-unknown.webp",
             link: "into-the-unknown.html",
             platforms: ['ue5', 'blueprint']
         },
         {
             title: "Blue Dragon",
             category: "CGI Animation",
-            image: "images/cv-1.png",
+            image: "images/cv-1.webp",
             link: "adventure-of.html",
             platforms: ['maya', 'cgi']
         },
         {
             title: "Deep Space",
             category: "3D Animation",
-            image: "images/CG00008361.png",
+            image: "images/CG00008361.webp",
             link: "deep-space.html",
             platforms: ['ue5', 'maya']
         },
         {
             title: "Echo",
             category: "Short Film",
-            image: "images/Echo/3.png",
+            image: "images/Echo/3.webp",
             link: "echo.html",
             platforms: ['ue5', 'maya'] // Assuming UE5 based on 3D text
         },
         {
             title: "Pizza Delivery",
             category: "Game Dev / Simulation",
-            image: "images/PizzaDeliveryIMG/render.png",
+            image: "images/PizzaDeliveryIMG/render.webp",
             link: "pizza-delivery.html",
             platforms: ['ue5', 'cpp']
         },
         {
             title: "Playdate",
             category: "Handheld Game",
-            image: "images/Playdate/game%20control_2.png",
+            image: "images/Playdate/game%20control_2.webp",
             link: "playdate-demo.html",
             platforms: ['lua', 'sdk']
         },

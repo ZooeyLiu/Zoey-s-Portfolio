@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Material / Niagara",
             cover: "ShadersVFX/magicball-cover.jpg",      // MB.jpeg cropped so the orb is centred
             preview: "ShadersVFX/magicball-preview.mp4",  // same crop, 640px, muted
-            hd: "ShadersVFX/magicball.mp4",
-            poster: "ShadersVFX/MB.jpeg",                 // full-frame poster for the modal
+            hd: "ShadersVFX/magicball-web.mp4",
+            poster: "ShadersVFX/MB.webp",                 // full-frame poster for the modal
             tags: ["UE5", "Material Graph", "Niagara", "Translucency"],
             description: "A crystal orb with a living energy core, built in Unreal Engine 5. The core problem was readability: the shell had to feel like solid, reflective glass at the edges, yet stay clear enough in the centre to show the energy inside. I split it into two independent layers — a lightweight translucent shell material and a multi-emitter Niagara system — so look and motion could be tuned separately.",
             breakdown: [
                 {
-                    src: "ShadersVFX/MB1.png",
+                    src: "ShadersVFX/MB1.webp",
                     title: "01 — Shell material: faked reflections, Fresnel-driven opacity",
                     text: "Translucent surfaces in UE don't get reliable screen-space reflections, so the reflection is faked: a Reflection Vector samples an HDRI environment map and goes into Emissive. One Fresnel term does double duty — it scales the reflection and drives Opacity — so the rim reads as dense, reflective glass while the centre stays almost fully transparent.",
                     points: [
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ]
                 },
                 {
-                    src: "ShadersVFX/MB2.png",
+                    src: "ShadersVFX/MB2.webp",
                     title: "02 — Niagara: five emitters, one contained volume",
                     text: "NS_MagicBall layers five emitters, each owning a single visual job. A one-shot Minimal emitter renders the orb as a mesh particle, keeping shell and effect in one system asset. The moving sprite layers are clamped with Kill Particles in Volume (Sphere), so nothing ever escapes the glass.",
                     points: [
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             breakdownLabel: "How it works",
             breakdown: [
                 {
-                    src: "ShadersVFX/SnowDiagrams/01_capture_pipeline.png",
+                    src: "ShadersVFX/SnowDiagrams/01_capture_pipeline.webp",
                     title: "01 — Contact → render target",
                     text: "Each frame the character writes two stamps into a ping-pong RT: the body segment and the latest footprint. The snow material only reads the RT.",
                     points: [
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ]
                 },
                 {
-                    src: "ShadersVFX/SnowCode/01_stamp_sdf.png",
+                    src: "ShadersVFX/SnowCode/01_stamp_sdf.webp",
                     title: "02 — Stamp shader",
                     text: "Stamps are capsule SDFs, so fast movement leaves no gaps between frames. max() blending means a trail never gets shallower when it's walked over again.",
                     points: [
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ]
                 },
                 {
-                    src: "ShadersVFX/SnowDiagrams/02_depth_cross_section.png",
+                    src: "ShadersVFX/SnowDiagrams/02_depth_cross_section.webp",
                     title: "03 — Depth from geometry",
                     text: "Depth = (SurfaceZ − FootZ) × Compression. The snow mesh ignores the Pawn, so the character stands on the real ground and snow thickness decides the trail.",
                     points: [
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ]
                 },
                 {
-                    src: "ShadersVFX/SnowCode/04_normal.png",
+                    src: "ShadersVFX/SnowCode/04_normal.webp",
                     title: "04 — Normals from the RT",
                     text: "Normals are rebuilt from the depth RT with central differences, so dents light correctly without a normal map.",
                     points: [
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "A smoke portal driven by a real-time 3D gas simulation. The smoke is sourced by particles that are never rendered; a separate sprite layer draws the glowing ring.",
             breakdown: [
                 {
-                    src: "ShadersVFX/PortalTechDetail.png",
+                    src: "ShadersVFX/PortalTechDetail.webp",
                     title: "NS_Portal — two torus emitters, one gas grid",
                     text: "Both particle emitters spawn on the same torus with vortex motion, but split the work: one is what you see, the other only feeds the fluid sim.",
                     points: [
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "A one-shot energy burst. Four emitters fire on the same frame from the same ring, each adding one layer: smoke rings, radial streaks and lit sparks.",
             breakdown: [
                 {
-                    src: "ShadersVFX/ShockWaveTechDetail.png",
+                    src: "ShadersVFX/ShockWaveTechDetail.webp",
                     title: "NS_ShockWave — four layers, one burst",
                     text: "Every emitter is a single instantaneous burst from a ring/disc shape, so all layers start from the same silhouette and stay in sync.",
                     points: [
