@@ -28,8 +28,8 @@
     aspect-ratio: 16 / 10;
     padding: 0;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
+    border: 0;
+    background: #0b0b0b;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
     overflow: hidden;
     cursor: pointer;
@@ -37,16 +37,20 @@
     font: inherit;
     text-align: left;
     -webkit-mask-image: -webkit-radial-gradient(white, black); /* clip video to radius in Safari */
-    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
-                border-color 0.35s, box-shadow 0.35s;
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s;
 }
 
 .vfx-tile:hover,
 .vfx-tile:focus-visible {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.28);
-    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.6);
     outline: none;
+}
+
+/* Keyboard focus only — mouse users never see this ring */
+.vfx-tile:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 3px;
 }
 
 /* Reveal: staggered fade-up once the grid enters the viewport.
