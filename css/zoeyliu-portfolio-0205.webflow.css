@@ -273,16 +273,6 @@ blockquote {
   overflow: hidden;
 }
 
-.team-image._1 {
-  background-image: url('../images/Member---Man.png');
-  background-position: 50% 0;
-}
-
-.team-image._2 {
-  background-image: url('../images/Member---Woman.png');
-  background-position: 50% 0;
-}
-
 .logo {
   width: 100%;
 }
