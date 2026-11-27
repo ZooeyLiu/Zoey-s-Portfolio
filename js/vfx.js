@@ -225,8 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data-src="${item.preview}" data-poster="${item.cover}"></video>
             <div class="vfx-shade"></div>
             <div class="vfx-meta">
-                <h3 class="vfx-title">${item.title}</h3>
-                <span class="vfx-arrow" aria-hidden="true">&rarr;</span>
+                <h3 class="vfx-title">${item.title}<span class="vfx-arrow" aria-hidden="true">&rarr;</span></h3>
             </div>
         `;
         tile.querySelector('.vfx-preview').muted = true; // property too, for iOS autoplay

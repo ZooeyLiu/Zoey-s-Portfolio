@@ -18,14 +18,15 @@
     width: min(1200px, calc(100% - 80px));
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 270px));
+    justify-content: center;
     gap: 20px;
 }
 
-/* Tile */
+/* Tile — portrait */
 .vfx-tile {
     position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3 / 4;
     padding: 0;
     border-radius: 16px;
     border: 0;
@@ -104,7 +105,7 @@
 .vfx-shade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 22%, transparent 38%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 16%, transparent 28%);
     transition: opacity 0.4s ease;
     pointer-events: none;
 }
@@ -134,14 +135,14 @@
     position: absolute;
     left: 16px;
     right: 16px;
-    bottom: 12px;
+    bottom: 18px;
     z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    text-align: center;
 }
 
 .vfx-title {
+    position: relative;
+    display: inline-block;
     margin: 0;
     font-size: 0.95rem;
     font-weight: 600;
@@ -150,17 +151,22 @@
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Absolutely placed so the title stays truly centred */
 .vfx-arrow {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-left: 8px;
     font-size: 0.9rem;
     opacity: 0;
-    transform: translateX(-6px);
+    transform: translate(-6px, -50%);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .vfx-tile:hover .vfx-arrow,
 .vfx-tile:focus-visible .vfx-arrow {
     opacity: 0.85;
-    transform: translateX(0);
+    transform: translate(0, -50%);
 }
 
 /* Modal — single column: video, info, breakdown */
@@ -231,7 +237,7 @@
 @media (max-width: 768px) {
     .vfx-grid {
         width: calc(100% - 32px);
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 12px;
     }
 
