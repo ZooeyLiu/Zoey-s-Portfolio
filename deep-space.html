@@ -48,16 +48,29 @@
       position: relative;
     }
 
+    /* Blurred backdrop stays inside the slide (no clipped hard edge) and fades out on all four sides */
     .slider-2 .w-slide::before {
       content: "";
       position: absolute;
-      inset: -60px;
+      inset: 0;
       background: var(--hero-bg) center / cover no-repeat;
       filter: blur(40px);
       opacity: 0.75;
       z-index: 0;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 55%, transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 55%, transparent 100%);
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, black 30%, black 55%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, black 30%, black 55%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%);
+      mask-composite: intersect;
+    }
+
+    /* No frame lines / corner dots around the nav on this page */
+    .navbar-2 .lines-group,
+    .navbar-2 .line-horizontal {
+      display: none;
     }
 
     .slider-2 .w-slide img {
