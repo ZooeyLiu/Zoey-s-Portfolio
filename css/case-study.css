@@ -9,9 +9,10 @@
     --cs-content: 1128px;
 }
 
-/* Main content column — use on any section wrapper */
+/* Main content column — use on the wrapper inside a section.
+   Side padding comes from the section itself (Webflow section classes already have it). */
 .cs-container {
-    width: calc(100% - 48px);
+    width: 100%;
     max-width: var(--cs-content);
     margin-left: auto;
     margin-right: auto;
