@@ -156,9 +156,13 @@
   <!-- Hero Background Image (Text Removed) -->
   <div
     style="display: flex; height: 80vh; max-width: 100%; margin: 0 auto; align-items: flex-end; justify-content: center; background-image: url('ShamanIMG/ShamanBG.webp'); background-size: cover; background-position: center; position: relative; padding-bottom: 0;">
-    <!-- Gradient overlay for top and bottom fade -->
+    <!-- Blur the image's hard edges (right-side glitch strip, dark frame) before the colour fade -->
     <div
-      style="position: absolute; inset: 0; background: linear-gradient(to bottom, #000 0%, transparent 15%, transparent 85%, #000 100%); z-index: 1; pointer-events: none;">
+      style="position: absolute; inset: 0; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); -webkit-mask-image: linear-gradient(to left, #000 0%, #000 8%, transparent 30%), linear-gradient(to right, #000 0%, transparent 10%), linear-gradient(to bottom, #000 0%, transparent 14%, transparent 80%, #000 100%); mask-image: linear-gradient(to left, #000 0%, #000 8%, transparent 30%), linear-gradient(to right, #000 0%, transparent 10%), linear-gradient(to bottom, #000 0%, transparent 14%, transparent 80%, #000 100%); z-index: 1; pointer-events: none;">
+    </div>
+    <!-- Fade every edge into the page's black -->
+    <div
+      style="position: absolute; inset: 0; background: linear-gradient(to left, #000 0%, rgba(0,0,0,0.85) 7%, transparent 28%), linear-gradient(to right, #000 0%, transparent 8%), linear-gradient(to bottom, #000 0%, transparent 15%, transparent 75%, #000 100%); z-index: 1; pointer-events: none;">
     </div>
   </div>
 
@@ -168,23 +172,20 @@
       <h1 class="unified-section-title">
         SHAMAN — The Call of Alien Civilization</h1>
       <div style="font-size: 1.2rem; color: #eee; margin-bottom: 30px; font-family: Inter Tight, sans-serif;">
-        Planetary shaman costumes + TouchDesigner generative projection</div>
+        Real-time generative projection system in TouchDesigner</div>
 
       <!-- Quick Facts Chips -->
       <div
-        style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; font-family: Inter Tight, sans-serif; font-size: 0.9rem; color: #ddd;">
+        style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-family: Inter Tight, sans-serif; font-size: 0.9rem; color: #ddd;">
         <div
-          style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(5px);">
-          <strong style="color: #fff;">Role:</strong> Team Leader
-        </div>
+          style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 100px;">
+          Team Lead</div>
         <div
-          style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(5px);">
-          <strong style="color: #fff;">Medium:</strong> New Media Projection / TouchDesigner
-        </div>
+          style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 100px;">
+          TouchDesigner · GLSL</div>
         <div
-          style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(5px);">
-          <strong style="color: #fff;">Output:</strong> Costume series + projection exhibition (live + 3D sim)
-        </div>
+          style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 100px;">
+          Audio-Reactive Projection</div>
       </div>
     </div>
   </div>

@@ -1,11 +1,19 @@
 /* Other Works Page specifically */
 
 .hero-others {
-    padding: 400px 20px 260px;
-    min-height: 700px;
+    /* Same as Find the Way Home: 90vh so the next section peeks in below */
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px 0;
+    box-sizing: border-box;
     max-width: 100%;
     margin: 0;
     text-align: center;
+    background-attachment: fixed;
     background-color: #0d0008;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%), url('../images/OtherWorks/34.webp');
     background-size: cover;
@@ -277,7 +285,8 @@
     }
 
     .hero-others {
-        padding-top: 140px;
+        padding-top: 60px;
+        background-attachment: scroll;
     }
 
     .lightbox-nav {

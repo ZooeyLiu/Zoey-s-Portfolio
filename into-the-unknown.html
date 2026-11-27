@@ -30,6 +30,20 @@
   <link href="LOGO/favicon.png" rel="shortcut icon" type="image/png">
   <link href="LOGO/favicon.png" rel="apple-touch-icon">
   <style>
+    /* No nav frame line / corner dots over the hero */
+    .nav-container-lines .lines-group {
+      display: none !important;
+    }
+
+    /* Core Mechanics: the wrapper shrank to its content and the flex:1/min-width:0
+       cards collapsed to ~3px. Give the row its full width (max 1000px). */
+    .div-block-14.ittuk > .section-large {
+      width: calc(100% - 48px);
+      max-width: 1000px;
+      margin-top: 32px;
+      padding: 0;
+    }
+
     /* ===== Card base ===== */
     .project-card {
       position: relative;
@@ -246,17 +260,18 @@
       </div>
     </div>
   </div>
-  <h1 class="text---heading-large" style="color: white; top: 150px;">INTO THE UNKNOWN</h1>
-  <div class="text-block-3" style="color: white; margin-top: 150px;">First Person <br>Mystery Game</div>
-  <blockquote class="block-quote">In this game, players take on the role of acourageous journalist infiltrating an
-    illegal &quot;blackfactory&quot; to gather evidence and retrieve a hiddenemployee list from a secure safe, with the
-    goalof freeing exploited workers. As players progress,they’ll need to solve puzzles to unlock new areasand avoid
-    detection by security. The mission is toobtain key evidence and make it out safely.This game combines elements of
-    puzzle-solvingand stealth action, offering players a thrillingexperience of investigation, risk, and
-    discovery.Beyond entertainment, it aims to raise awarenessabout real-world issues of exploitation and socialjustice.
+  <!-- Left edge = same as the intro paragraph below: max(24px, (width - 1232px) / 2) -->
+  <h1 class="text---heading-large" style="color: white; top: 190px; margin-left: max(24px, calc((100% - 1232px) / 2));">INTO THE UNKNOWN</h1>
+  <div class="text-block-3" style="color: white; margin-top: 76px; padding-left: max(24px, calc((100% - 1232px) / 2));">First Person <br>Mystery Game</div>
+  <blockquote class="block-quote" style="box-sizing: border-box; width: calc(100% - 48px); max-width: 1232px; line-height: 1.6; margin-left: auto; margin-right: auto; padding: 0; border-left: 0; text-align: center;">In this game, players take on the role of a courageous journalist infiltrating an
+    illegal &quot;black factory&quot; to gather evidence and retrieve a hidden employee list from a secure safe, with the
+    goal of freeing exploited workers. As players progress, they’ll need to solve puzzles to unlock new areas and avoid
+    detection by security. The mission is to obtain key evidence and make it out safely. This game combines elements of
+    puzzle-solving and stealth action, offering players a thrilling experience of investigation, risk, and
+    discovery. Beyond entertainment, it aims to raise awareness about real-world issues of exploitation and social justice.
   </blockquote>
-  <h3 class="h3-heading-4">Core Mechanics</h3>
-  <div class="div-block-14 ittuk">
+  <h3 class="h3-heading-4" style="margin-top: 120px;">Core Mechanics</h3>
+  <div class="div-block-14 ittuk" style="padding-bottom: 0;">
     <section class="section-large">
       <div class="container-large">
         <div class="w-layout-grid grid-three-column ittuk">
@@ -292,13 +307,13 @@
       </div>
     </section>
   </div>
-  <div class="div-block-6">
-    <h1 class="heading-3">game flow</h1><img src="images/Group-9.webp" loading="lazy" width="573"
+  <div class="div-block-6" style="margin-top: 72px;">
+    <h1 class="heading-3" style="margin-top: 0;">game flow</h1><img src="images/Group-9.webp" loading="lazy" width="573"
       sizes="(max-width: 767px) 100vw, 573px" alt=""
       srcset="images/Group-9-p-500.png 500w, images/Group-9-p-800.png 800w, images/Group-9-p-1080.png 1080w, images/Group-9-p-1600.png 1600w, images/Group-9-p-2000.png 2000w, images/Group-9-p-2600.png 2600w, images/Group-9-p-3200.png 3200w, images/Group-9.webp 4303w"
       class="image-9">
   </div>
-  <div class="div-block-7" style="max-width: 1100px; margin: 0 auto; text-align: center;">
+  <div class="div-block-7" style="max-width: 1100px; margin: 80px auto 0; text-align: center;">
     <h1 class="heading-4">Level Blockout</h1><img src="images/blockout.webp" loading="lazy"
       style="width: 100%; border-radius: 12px;" sizes="" alt="" class="image-10">
   </div>
@@ -385,7 +400,7 @@
     <div></div>
   </div>
   <div>
-    <section class="content-section">
+    <section class="content-section" style="padding-top: 0;">
       <div class="code-embed w-embed w-script"><!--  Flowbase Booster [Carousel Ticker]  -->
         <!--  Please move this script to Custom Code settings when ready for production.  -->
         <script src="https://cdn.jsdelivr.net/npm/@flowbase-co/boosters-carousel-ticker@1/dist/carousel-ticker.min.js"
@@ -393,84 +408,6 @@
       </div>
       <div class="page-padding">
         <div class="title-center-large">
-          <div class="title-badge">
-            <div class="icon-small-3 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                viewbox="0 0 20 20" fill="none">
-                <g clip-path="url(#clip0_882_1288)">
-                  <circle cx="10" cy="10" r="7.75" fill="#FFE9E4" stroke="#FFC8BC" stroke-width="0.5"></circle>
-                  <g filter="url(#filter0_dddd_882_1288)">
-                    <circle cx="10" cy="10" r="3" fill="#FF443D"></circle>
-                    <circle cx="10" cy="10" r="3.5" stroke="white"></circle>
-                  </g>
-                </g>
-                <defs>
-                  <filter id="filter0_dddd_882_1288" x="2" y="5" width="16" height="24" filterunits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB">
-                    <feflood flood-opacity="0" result="BackgroundImageFix">
-                      <fecolormatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha">
-                        <feoffset dy="1">
-                          <fegaussianblur stddeviation="1">
-                            <fecolormatrix type="matrix"
-                              values="0 0 0 0 0.12549 0 0 0 0 0.121569 0 0 0 0 0.121569 0 0 0 0.1 0">
-                              <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_882_1288">
-                                <fecolormatrix in="SourceAlpha" type="matrix"
-                                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha">
-                                  <feoffset dy="3">
-                                    <fegaussianblur stddeviation="1.5">
-                                      <fecolormatrix type="matrix"
-                                        values="0 0 0 0 0.12549 0 0 0 0 0.121569 0 0 0 0 0.121569 0 0 0 0.09 0">
-                                        <feblend mode="normal" in2="effect1_dropShadow_882_1288"
-                                          result="effect2_dropShadow_882_1288">
-                                          <fecolormatrix in="SourceAlpha" type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha">
-                                            <feoffset dy="6">
-                                              <fegaussianblur stddeviation="2">
-                                                <fecolormatrix type="matrix"
-                                                  values="0 0 0 0 0.12549 0 0 0 0 0.121569 0 0 0 0 0.121569 0 0 0 0.05 0">
-                                                  <feblend mode="normal" in2="effect2_dropShadow_882_1288"
-                                                    result="effect3_dropShadow_882_1288">
-                                                    <fecolormatrix in="SourceAlpha" type="matrix"
-                                                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                                      result="hardAlpha">
-                                                      <feoffset dy="11">
-                                                        <fegaussianblur stddeviation="2">
-                                                          <fecolormatrix type="matrix"
-                                                            values="0 0 0 0 0.12549 0 0 0 0 0.121569 0 0 0 0 0.121569 0 0 0 0.01 0">
-                                                            <feblend mode="normal" in2="effect3_dropShadow_882_1288"
-                                                              result="effect4_dropShadow_882_1288">
-                                                              <feblend mode="normal" in="SourceGraphic"
-                                                                in2="effect4_dropShadow_882_1288" result="shape">
-                                                              </feblend>
-                                                            </feblend>
-                                                          </fecolormatrix>
-                                                        </fegaussianblur>
-                                                      </feoffset>
-                                                    </fecolormatrix>
-                                                  </feblend>
-                                                </fecolormatrix>
-                                              </fegaussianblur>
-                                            </feoffset>
-                                          </fecolormatrix>
-                                        </feblend>
-                                      </fecolormatrix>
-                                    </fegaussianblur>
-                                  </feoffset>
-                                </fecolormatrix>
-                              </feblend>
-                            </fecolormatrix>
-                          </fegaussianblur>
-                        </feoffset>
-                      </fecolormatrix>
-                    </feflood>
-                  </filter>
-                  <clippath id="clip0_882_1288">
-                    <rect width="20" height="20" fill="white"></rect>
-                  </clippath>
-                </defs>
-              </svg></div>
-            <div>INTO THE UNKNOWN</div>
-          </div>
           <h2 class="h2-heading-5">Gameplay </h2>
         </div>
         <div></div>
@@ -582,13 +519,13 @@
         </div>
       </div>
       <div class="page-padding">
-        <div class="content-footer"></div>
+        <div class="content-footer" style="margin-top: 0;"></div>
       </div>
     </section>
   </div>
   <div class="div-block-7"
-    style="max-width: 1100px; margin: 60px auto 0 auto; text-align: center; position: relative; z-index: 5;">
-    <h1 class="heading-4">Gameplay Video</h1>
+    style="max-width: 1100px; margin: 80px auto 0 auto; text-align: center; position: relative; z-index: 5;">
+    <h1 class="heading-4" style="margin-top: 0; margin-bottom: 28px;">Gameplay Video</h1>
     <div
       style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
       <iframe src="https://www.youtube.com/embed/w9qw3eQ1Iwc" title="Into The Unknown Gameplay" frameborder="0"

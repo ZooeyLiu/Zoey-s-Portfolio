@@ -5,7 +5,7 @@
     font-family: 'Google Sans', sans-serif;
     position: relative;
     overflow: hidden;
-    padding: 80px 0 40px;
+    padding: 56px 0 32px;
     /* Removed side padding to align with container */
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     /* Top subtle divider */
@@ -39,14 +39,53 @@
     grid-template-columns: 1.2fr 1fr;
     gap: 60px;
     align-items: start;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
 }
 
 /* Column A: Identity */
 .footer-identity {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
+}
+
+/* Contact list: plain stacked lines, no underlines */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 15px;
+    width: fit-content;
+    transition: color 0.2s ease;
+}
+
+.footer-contact a:first-child {
+    color: #fff;
+}
+
+.footer-contact a:hover,
+.footer-social a:hover,
+.back-to-top:hover {
+    color: #fff;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social a,
+.back-to-top {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s ease;
 }
 
 .footer-name {
@@ -243,7 +282,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     /* Second subtle divider */
 }
@@ -257,13 +296,13 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .portfolio-footer {
-        padding: 60px 20px 30px;
+        padding: 40px 20px 24px;
     }
 
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-        margin-bottom: 60px;
+        gap: 32px;
+        margin-bottom: 40px;
     }
 
     /* Reorder: CTA first, then Identity, then Links */

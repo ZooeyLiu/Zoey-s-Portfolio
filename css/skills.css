@@ -92,6 +92,11 @@
     color: #fff;
 }
 
+/* No description line under the title: give the pills the gap instead */
+.skill-card .card-title {
+    margin-bottom: 20px;
+}
+
 .card-desc {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
