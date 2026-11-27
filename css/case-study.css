@@ -1,5 +1,21 @@
-/* Shared text column for project / case-study pages.
-   Keeps long-form copy at a readable measure inside the site's 1128px content column. */
+/* Shared layout for project / case-study pages.
+
+   Width standard
+   --cs-content: 1128px  main content column (sections, grids, images, wide text)
+   .cs-intro     760px   narrow reading column for long copy (optional)
+*/
+
+:root {
+    --cs-content: 1128px;
+}
+
+/* Main content column — use on any section wrapper */
+.cs-container {
+    width: calc(100% - 48px);
+    max-width: var(--cs-content);
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .cs-intro {
     max-width: 760px;
@@ -23,10 +39,10 @@
     margin-top: 1.1em;
 }
 
-/* Wide variant: matches the 68rem .container-medium-2 used by the sections below it */
+/* Wide variant: same width as .cs-container */
 .cs-intro--wide {
     width: calc(100% - 48px);
-    max-width: 68rem;
+    max-width: var(--cs-content);
     padding: 0;
 }
 

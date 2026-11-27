@@ -204,7 +204,7 @@
   <div>
     <section id="pipeline-flowchart" class="section-large-9 overflow-hidden"
       style="background-color: transparent !important;">
-      <div class="container-medium-2">
+      <div class="container-medium-2 cs-container">
         <div class="column-large-2 column-left" style="margin-bottom: 3rem;">
           <div class="badge-outline" style="margin-bottom: 1rem;">
             <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #8E8E9F;">Workflow
@@ -218,12 +218,12 @@
 
           <!-- Desktop connecting line (hidden on mobile) -->
           <div class="flow-line-bg"
-            style="position: absolute; top: 50px; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.1); z-index: 1;">
+            style="position: absolute; top: 25px; left: 0; right: 0; height: 2px; background: rgba(255,255,255,0.1); z-index: 1;">
           </div>
 
-          <!-- Nodes Grid -->
-          <div class="w-layout-grid"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; position: relative; z-index: 2;">
+          <!-- Nodes Grid: 5 columns in one row on desktop -->
+          <div class="w-layout-grid flow-grid"
+            style="display: grid; gap: 1.5rem; position: relative; z-index: 2;">
 
             <!-- Node 1 -->
             <div class="flow-node" style="position: relative;">
@@ -287,6 +287,13 @@
 
         <!-- Optional CSS specifically for the flowchart mobile view -->
         <style>
+          .flow-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+          @media (max-width: 991px) {
+            .flow-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .flow-line-bg { display: none; }
+          }
+
           @media (max-width: 767px) {
             .flow-line-bg {
               display: none;
