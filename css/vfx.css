@@ -1,4 +1,4 @@
-/* Shader & VFX section — compact grid sharing the look of .project-card.
+/* Shader & VFX section — compact grid in the same glass style as .project-card.
    Relies on css/projects.css for .projects-header, .category-tag,
    .project-modal, .modal-close, .modal-tags, .tag, .modal-title/subtitle/desc. */
 
@@ -44,9 +44,28 @@
 .vfx-tile:hover,
 .vfx-tile:focus-visible {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
     outline: none;
+}
+
+/* Reveal: staggered fade-up once the grid enters the viewport.
+   fill-mode "backwards" so the hover transform still works after it ends. */
+.vfx-grid.will-reveal .vfx-tile {
+    opacity: 0;
+}
+
+.vfx-grid.is-revealed .vfx-tile {
+    opacity: 1;
+    animation: vfxTileIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@keyframes vfxTileIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
 }
 
 .vfx-cover,
@@ -58,17 +77,18 @@
     object-fit: cover;
 }
 
-.vfx-cover {
-    transition: transform 0.6s ease;
+.vfx-cover,
+.vfx-preview {
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.4s ease;
 }
 
-.vfx-tile:hover .vfx-cover {
-    transform: scale(1.04);
+.vfx-tile:hover .vfx-cover,
+.vfx-tile:hover .vfx-preview {
+    transform: scale(1.03);
 }
 
 .vfx-preview {
     opacity: 0;
-    transition: opacity 0.3s ease;
     pointer-events: none;
 }
 
@@ -76,26 +96,30 @@
     opacity: 1;
 }
 
+/* Short, light gradient — only enough to keep the title legible */
 .vfx-shade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.15) 55%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 22%, transparent 38%);
+    transition: opacity 0.4s ease;
     pointer-events: none;
 }
 
-/* Same glint as .project-card::after */
+.vfx-tile:hover .vfx-shade {
+    opacity: 0.7;
+}
+
+/* Soft spotlight that follows the cursor (position set in vfx.js) */
 .vfx-tile::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-    transform: rotate(45deg);
+    inset: 0;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(255, 255, 255, 0.10), transparent 65%);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.4s ease;
     pointer-events: none;
+    z-index: 1;
 }
 
 .vfx-tile:hover::after {
@@ -104,23 +128,35 @@
 
 .vfx-meta {
     position: absolute;
-    left: 18px;
-    right: 18px;
-    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    bottom: 12px;
     z-index: 2;
-}
-
-.vfx-meta .category-tag {
-    font-size: 0.65rem;
-    padding: 4px 10px;
-    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .vfx-title {
     margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     line-height: 1.2;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.vfx-arrow {
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.vfx-tile:hover .vfx-arrow,
+.vfx-tile:focus-visible .vfx-arrow {
+    opacity: 0.85;
+    transform: translateX(0);
 }
 
 /* Modal — single column: video, info, breakdown */
@@ -202,7 +238,7 @@
     }
 
     .vfx-title {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .vfx-modal-content {
@@ -217,13 +253,20 @@
 
 @media (prefers-reduced-motion: reduce) {
     .vfx-tile,
-    .vfx-cover {
+    .vfx-cover,
+    .vfx-preview,
+    .vfx-arrow {
         transition: none;
     }
 
     .vfx-tile:hover,
-    .vfx-tile:hover .vfx-cover {
+    .vfx-tile:hover .vfx-cover,
+    .vfx-tile:hover .vfx-preview {
         transform: none;
+    }
+
+    .vfx-grid.is-revealed .vfx-tile {
+        animation: none;
     }
 }
 

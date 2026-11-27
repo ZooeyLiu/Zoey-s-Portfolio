@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // DATA — to add a piece: put the files in ShadersVFX/ and add an entry.
     //   cover:   poster image shown in the grid (png/jpg/webp)
     //   preview: short muted loop for the grid (mp4, ideally small, no audio)
+    //   poster:  optional full-frame poster for the modal video
     //   hd:      modal video — a local mp4 path, or a YouTube / Vimeo URL
     //            e.g. "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     //                 "https://youtu.be/XXXXXXXXXXX",
@@ -25,9 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Magic Ball",
             category: "Material / Niagara",
-            cover: "ShadersVFX/MB.jpeg",
-            preview: "ShadersVFX/magicball.mp4",
+            cover: "ShadersVFX/magicball-cover.jpg",      // MB.jpeg cropped so the orb is centred
+            preview: "ShadersVFX/magicball-preview.mp4",  // same crop, 640px, muted
             hd: "ShadersVFX/magicball.mp4",
+            poster: "ShadersVFX/MB.jpeg",                 // full-frame poster for the modal
             tags: ["UE5", "Material Graph", "Niagara", "Translucency"],
             description: "A crystal orb with a living energy core, built in Unreal Engine 5. The core problem was readability: the shell had to feel like solid, reflective glass at the edges, yet stay clear enough in the centre to show the energy inside. I split it into two independent layers — a lightweight translucent shell material and a multi-emitter Niagara system — so look and motion could be tuned separately.",
             breakdown: [
@@ -211,19 +213,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---------------- Render tiles ----------------
-    vfxData.forEach((item) => {
+    vfxData.forEach((item, i) => {
         const tile = document.createElement('button');
         tile.type = 'button';
         tile.className = 'vfx-tile';
-        tile.setAttribute('aria-label', `Open ${item.title}`);
+        tile.style.setProperty('--i', i); // stagger index for the reveal
+        tile.setAttribute('aria-label', `Open ${item.title} — ${item.category}`);
         tile.innerHTML = `
             <img class="vfx-cover" src="${item.cover}" alt="" loading="lazy">
             <video class="vfx-preview" muted loop playsinline preload="none"
                 data-src="${item.preview}" data-poster="${item.cover}"></video>
             <div class="vfx-shade"></div>
             <div class="vfx-meta">
-                <span class="category-tag">${item.category}</span>
                 <h3 class="vfx-title">${item.title}</h3>
+                <span class="vfx-arrow" aria-hidden="true">&rarr;</span>
             </div>
         `;
         tile.querySelector('.vfx-preview').muted = true; // property too, for iOS autoplay
@@ -231,11 +234,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (canHover) {
             tile.addEventListener('mouseenter', () => playPreview(tile));
             tile.addEventListener('mouseleave', () => stopPreview(tile, true));
+            // Cursor-following spotlight (read by .vfx-tile::after)
+            tile.addEventListener('pointermove', (e) => {
+                const r = tile.getBoundingClientRect();
+                tile.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                tile.style.setProperty('--my', `${e.clientY - r.top}px`);
+            });
         }
 
         tile.addEventListener('click', () => openModal(item));
         grid.appendChild(tile);
     });
+
+    // Staggered fade-up the first time the grid scrolls into view
+    if ('IntersectionObserver' in window) {
+        grid.classList.add('will-reveal');
+        const revealIo = new IntersectionObserver((entries) => {
+            if (entries.some(e => e.isIntersecting)) {
+                grid.classList.add('is-revealed');
+                revealIo.disconnect();
+            }
+        }, { threshold: 0.15 });
+        revealIo.observe(grid);
+    }
 
     // Touch devices: autoplay while on screen
     if (!canHover && 'IntersectionObserver' in window) {
@@ -291,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         video.controls = true;
         video.loop = true;
         video.playsInline = true;
-        video.poster = item.cover;
+        if (item.poster) video.poster = item.poster; // covers are cropped for the grid, so no fallback
         video.src = hd.src;
         // Click is a user gesture so sound is usually allowed; fall back to muted
         video.play().catch(() => { video.muted = true; video.play().catch(() => {}); });
