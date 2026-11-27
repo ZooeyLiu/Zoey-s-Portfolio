@@ -33,86 +33,81 @@
   <link href="LOGO/favicon.png" rel="apple-touch-icon">
   <style>
     /* ============================================================
-       HERO — cinematic trailer loop
-       Letterbox-cropped video in a frame whose edges feather into the
-       page, title + software toolbar overlapping the lower third.
+       HERO — modelled on the Echo hero: full-bleed trailer loop that
+       fades in/out top and bottom, dark overlay for legibility,
+       centred title + subtitle + software toolbar.
        ============================================================ */
     .ds-hero {
       position: relative;
+      min-height: 80vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 8px 0 40px;
+      justify-content: center;
+      text-align: center;
+      padding: 96px 0 72px;
       overflow: hidden;
       isolation: isolate;
     }
 
-    .ds-hero__frame {
-      position: relative;
-      width: min(1600px, 96vw);
-      aspect-ratio: 2.4 / 1;
-      -webkit-mask-image:
-        linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%);
-      mask-composite: intersect;
+    /* Video and overlay share the same top/bottom fade so the hero melts
+       into the textured page background (no darker rectangle edge). */
+    .ds-hero__video,
+    .ds-hero__overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%);
+      pointer-events: none;
     }
 
     .ds-hero__video {
-      display: block;
-      width: 100%;
-      height: 100%;
       object-fit: cover;
-      background: #0b0b0d;
+      z-index: 0;
     }
 
-    /* Lower-third shade so the title reads over bright shots */
-    .ds-hero__frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10, 10, 12, 0.85) 0%, rgba(10, 10, 12, 0.35) 35%, transparent 60%);
-      pointer-events: none;
+    .ds-hero__overlay {
+      z-index: 1;
+      background: linear-gradient(to bottom,
+          rgba(12, 13, 16, 0.45) 0%,
+          rgba(12, 13, 16, 0.6) 50%,
+          rgba(12, 13, 16, 0.9) 100%);
     }
 
     .ds-hero__content {
       position: relative;
       z-index: 2;
-      margin-top: clamp(-180px, -11vw, -96px);
-      text-align: center;
       padding: 0 24px;
       animation: dsHeroIn 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     }
 
     .ds-hero__title {
       font-family: 'Progress', sans-serif;
-      font-size: clamp(2.6rem, 7vw, 6rem);
+      font-size: clamp(3rem, 8vw, 6.5rem);
       letter-spacing: 0.05em;
       line-height: 1.1;
       margin: 0;
     }
 
     .ds-hero__subtitle {
-      margin-top: 10px;
+      margin-top: 12px;
       font-family: 'Google Sans', sans-serif;
-      font-size: clamp(0.8rem, 1.2vw, 1.05rem);
-      color: rgba(255, 255, 255, 0.65);
+      font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.7);
       letter-spacing: 0.25em;
       text-transform: uppercase;
       font-weight: 300;
     }
 
     .ds-hero__tools {
-      margin-top: 28px;
+      margin-top: 36px;
       display: flex;
       justify-content: center;
     }
 
     .ds-hero__tools img {
-      height: 64px;
+      height: 60px;
       width: auto;
       object-fit: contain;
     }
@@ -120,8 +115,8 @@
     /* Pause / play — WCAG 2.2.2 for autoplaying motion longer than 5s */
     .ds-hero__toggle {
       position: absolute;
-      right: max(5vw, 24px);
-      top: calc(min(1600px, 96vw) / 2.4 - 72px);
+      right: 32px;
+      bottom: 40px;
       z-index: 3;
       width: 40px;
       height: 40px;
@@ -152,14 +147,9 @@
       from { opacity: 0; transform: translateY(16px); }
     }
 
-    /* Anchors from the hero buttons */
     #production-pipeline,
     #final-cut {
       scroll-margin-top: 24px;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      html { scroll-behavior: smooth; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -167,13 +157,9 @@
     }
 
     @media (max-width: 767px) {
-      .ds-hero__frame {
-        width: 100vw;
-        aspect-ratio: 16 / 10;
-      }
-      .ds-hero__toggle { top: 20px; right: 16px; }  /* top-right on phones, clear of the title */
-      .ds-hero__content { margin-top: -64px; }
+      .ds-hero { min-height: 64vh; padding: 64px 0 56px; }
       .ds-hero__tools img { height: auto; width: min(100%, 360px); }
+      .ds-hero__toggle { right: 16px; bottom: 20px; }
     }
 
     /* No frame lines / corner dots around the nav on this page */
@@ -232,19 +218,13 @@
     </div>
     <div class="line-horizontal"></div>
   </div>
-  <!-- HERO: trailer loop (images/DS.mp4 re-encoded: H.264, letterbox cropped, no audio) -->
-  <section class="ds-hero" aria-label="Deep Space trailer">
-    <div class="ds-hero__frame">
-      <video class="ds-hero__video" muted loop playsinline preload="metadata"
-        poster="images/DeepSpaceScene/hero/ds-hero-poster.jpg"
-        data-src-desktop="images/DeepSpaceScene/hero/ds-hero-1080.mp4"
-        data-src-mobile="images/DeepSpaceScene/hero/ds-hero-720.mp4"
-        aria-label="Deep Space trailer, muted"></video>
-    </div>
-    <button type="button" class="ds-hero__toggle" aria-label="Pause background video">
-      <svg class="icon-pause" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
-      <svg class="icon-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
-    </button>
+  <!-- HERO (Echo-style): full-bleed trailer loop, images/DS.mp4 re-encoded (H.264, letterbox cropped, no audio) -->
+  <section class="ds-hero" aria-label="Deep Space">
+    <video class="ds-hero__video" muted loop playsinline preload="metadata" aria-hidden="true"
+      poster="images/DeepSpaceScene/hero/ds-hero-poster.jpg"
+      data-src-desktop="images/DeepSpaceScene/hero/ds-hero-1080.mp4"
+      data-src-mobile="images/DeepSpaceScene/hero/ds-hero-720.mp4"></video>
+    <div class="ds-hero__overlay" aria-hidden="true"></div>
     <div class="ds-hero__content">
       <h1 class="ds-hero__title text-color-gradient">DEEP SPACE</h1>
       <div class="ds-hero__subtitle">Sci-Fi Short Film Created by Unreal Engine</div>
@@ -253,6 +233,10 @@
           title="Unreal Engine · Maya · 3ds Max · ZBrush · Substance Painter · After Effects · Premiere Pro · Final Cut Pro · Photoshop">
       </div>
     </div>
+    <button type="button" class="ds-hero__toggle" aria-label="Pause background video">
+      <svg class="icon-pause" viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
+      <svg class="icon-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
+    </button>
   </section>
   <script>
     (function () {
