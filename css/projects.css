@@ -119,10 +119,11 @@
     filter: brightness(0.6);
 }
 
+/* Whole console visible: scaled to fit the card width, centred horizontally,
+   sitting in the upper part so the title block doesn't cover it */
 .playdate-inner {
-    background-size: cover !important;
-    background-position: calc(50% + 25px) center !important;
-    /* Scale up the gaming console image to match reference */
+    background-size: 82% auto !important;
+    background-position: center 26% !important;
 }
 
 .echo-inner {

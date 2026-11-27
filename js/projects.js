@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitle: "Handheld Game Dev",
             category: "Game Dev / Lua",
             description: "A game developed for the Playdate console using Lua and the Playdate SDK.",
-            image: "images/Playdate/game%20control_2.png",
+            image: "images/Playdate/playdate-card.png", // tight crop of game control_2.png
             tags: ["Lua", "Playdate", "Game Dev"],
             bgColor: "linear-gradient(180deg, rgba(255,200,50,0.2) 0%, rgba(0,0,0,0) 100%)",
             bgPosition: "40% 65%",
