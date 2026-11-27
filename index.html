@@ -28,6 +28,32 @@
   <link href="css/footer.css" rel="stylesheet" type="text/css">
   <link href="css/riot-carousel.css" rel="stylesheet" type="text/css">
   <link href="css/skills.css" rel="stylesheet" type="text/css">
+  <style>
+    /* Home page: no frame lines / corner dots */
+    .lines-group,
+    .line-horizontal,
+    .footer-line {
+      display: none !important;
+    }
+
+    /* Purple glow sits higher, toward the top of the page */
+    .home-lights .light-wrap-2 {
+      transform: translateY(-320px);
+    }
+
+    /* Tighter gap between Shader & VFX and Core Toolchain (312px -> 200px) */
+    #vfx {
+      padding-bottom: 64px;
+    }
+
+    .skillset-section {
+      padding-top: 48px;
+    }
+
+    .skillset-section .container-lines-regular {
+      padding-top: 32px;
+    }
+  </style>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script
