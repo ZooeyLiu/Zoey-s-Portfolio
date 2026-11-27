@@ -569,108 +569,63 @@
     <h3 class="h3-heading-3"> <span class="text-color-gradient">Character Modeling</span></h3>
     <section class="section-large-8" style="padding-top: 2rem; padding-bottom: 2rem;">
       <div class="container-large" style="max-width: var(--cs-content);">
-        <!-- Viewer left, thumbnails stacked on the right: whole image visible, ~half the old height -->
-        <div class="character-gallery"
-          style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 24px;">
-          <!-- Main Image View -->
-          <div class="char-viewer" onclick="openLightbox(document.getElementById('mainCharImage').src)">
-            <img id="mainCharImage" src="images/DeepSpaceScene/cut/dcebacbe882067d3375a47278ec24034.png"
-              alt="Character model" style="transition: opacity 0.3s ease;">
-          </div>
-
-          <!-- Thumbnails -->
-          <div class="char-thumbnails">
-            <img src="images/DeepSpaceScene/cut/dcebacbe882067d3375a47278ec24034.png" onclick="setMainImage(event, this)"
-              class="char-thumb active-thumb">
-            <img src="images/DeepSpaceScene/cut/1b05eec430740c73c69571f80e8abdbc.png" onclick="setMainImage(event, this)"
-              class="char-thumb">
-            <img src="images/DeepSpaceScene/cut/b692ae482fa4faa31edd6bb1eb5649cc.png" onclick="setMainImage(event, this)"
-              class="char-thumb">
-            <img src="images/DeepSpaceScene/cut/d601df493a2229358f868a0703da01b2.png" onclick="setMainImage(event, this)"
-              class="char-thumb">
-            <img src="images/DeepSpaceScene/cut/d901a48f488b89e675ca114e578e9f37.png" onclick="setMainImage(event, this)"
-              class="char-thumb">
-          </div>
-        </div>
-
+        <!-- All renders in one row: equal height for the full-body turnaround, bust at 85% of that height
+             so it carries similar visual weight. Each item's width share = aspect ratio x height factor,
+             so the row fills the column exactly with nothing cropped. Click to enlarge. -->
         <style>
-          .character-gallery {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 24px;
-            align-items: center;
+          .char-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
           }
 
-          .char-viewer {
-            height: clamp(360px, 54vh, 500px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          .char-item {
+            flex: calc(var(--ar) * var(--k, 1)) 1 0;
+            min-width: 0;
             cursor: zoom-in;
           }
 
-          .char-viewer img {
-            height: 100%;
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
+          .char-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
+            transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
           }
 
-          .char-thumbnails {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+          .char-item:hover img {
+            transform: translateY(-6px) scale(1.03);
           }
 
           @media (max-width: 767px) {
-            .character-gallery { grid-template-columns: 1fr; }
-            .char-viewer { height: auto; }
-            .char-viewer img { height: auto; width: 100%; }
-            .char-thumbnails { flex-direction: row; justify-content: center; overflow-x: auto; }
+            .char-row { flex-wrap: wrap; justify-content: center; align-items: flex-end; }
+            .char-item { flex: 0 0 44%; }
+            .char-item--bust { flex-basis: 100%; }
           }
 
-          .char-thumb {
-            width: 68px;
-            height: 84px;
-            padding: 6px;
-            box-sizing: border-box;
-            object-fit: contain;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 12px;
-            cursor: pointer;
-            opacity: 0.75;
-            transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-            border: 1.5px solid rgba(255, 255, 255, 0.08);
-          }
-
-          .char-thumb:hover {
-            opacity: 1;
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateX(-2px);
-          }
-
-          .char-thumb.active-thumb {
-            opacity: 1;
-            border-color: rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.14);
+          @media (prefers-reduced-motion: reduce) {
+            .char-item img { transition: none; }
+            .char-item:hover img { transform: none; }
           }
         </style>
 
-        <script>
-          function setMainImage(e, thumbObj) {
-            e.stopPropagation();
-            const mainImg = document.getElementById('mainCharImage');
-            mainImg.style.opacity = 0;
-            setTimeout(() => {
-              mainImg.src = thumbObj.src;
-              mainImg.style.opacity = 1;
-            }, 150);
-
-            document.querySelectorAll('.char-thumb').forEach(t => t.classList.remove('active-thumb'));
-            thumbObj.classList.add('active-thumb');
-          }
-        </script>
+        <div class="char-row">
+          <div class="char-item char-item--bust" style="--ar: 1.284; --k: 0.85" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="images/DeepSpaceScene/cut/dcebacbe882067d3375a47278ec24034.png" alt="Kelly — helmet close-up" loading="lazy">
+          </div>
+          <div class="char-item" style="--ar: 0.530" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="images/DeepSpaceScene/cut/1b05eec430740c73c69571f80e8abdbc.png" alt="Kelly — side" loading="lazy">
+          </div>
+          <div class="char-item" style="--ar: 0.682" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="images/DeepSpaceScene/cut/b692ae482fa4faa31edd6bb1eb5649cc.png" alt="Kelly — back" loading="lazy">
+          </div>
+          <div class="char-item" style="--ar: 0.538" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="images/DeepSpaceScene/cut/d601df493a2229358f868a0703da01b2.png" alt="Kelly — side" loading="lazy">
+          </div>
+          <div class="char-item" style="--ar: 0.575" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="images/DeepSpaceScene/cut/d901a48f488b89e675ca114e578e9f37.png" alt="Kelly — base body front" loading="lazy">
+          </div>
+        </div>
       </div>
 
       <!-- Simple Lightbox Modal -->
