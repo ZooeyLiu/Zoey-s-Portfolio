@@ -1,7 +1,6 @@
 import os
 
 files_to_update = [
-    'content.html',
     'resume.html',
     'find-the-way-home.html',
     'into-the-unknown.html',
