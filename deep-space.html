@@ -34,9 +34,8 @@
   <style>
     /* ============================================================
        HERO — cinematic trailer loop
-       Blurred still behind, letterbox-cropped video in a frame whose
-       edges feather into it (same language as Pizza Delivery), title
-       overlapping the lower third.
+       Letterbox-cropped video in a frame whose edges feather into the
+       page, title + software toolbar overlapping the lower third.
        ============================================================ */
     .ds-hero {
       position: relative;
@@ -48,26 +47,9 @@
       isolation: isolate;
     }
 
-    .ds-hero__backdrop {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: url('images/DeepSpaceScene/hero/ds-hero-poster.jpg') center / cover no-repeat;
-      filter: blur(48px) saturate(1.15);
-      opacity: 0.5;
-      -webkit-mask-image:
-        linear-gradient(to bottom, transparent 0%, black 25%, black 60%, transparent 100%),
-        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-      -webkit-mask-composite: source-in;
-      mask-image:
-        linear-gradient(to bottom, transparent 0%, black 25%, black 60%, transparent 100%),
-        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-      mask-composite: intersect;
-    }
-
     .ds-hero__frame {
       position: relative;
-      width: min(1440px, 90vw);
+      width: min(1600px, 96vw);
       aspect-ratio: 2.4 / 1;
       -webkit-mask-image:
         linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
@@ -123,54 +105,23 @@
       font-weight: 300;
     }
 
-    .ds-hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
+    .ds-hero__tools {
       margin-top: 28px;
+      display: flex;
+      justify-content: center;
     }
 
-    .ds-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 999px;
-      font-family: 'Google Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .ds-btn--primary {
-      background: #fff;
-      color: #0b0b0d;
-    }
-
-    .ds-btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(255, 255, 255, 0.18);
-    }
-
-    .ds-btn--ghost {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      backdrop-filter: blur(8px);
-    }
-
-    .ds-btn--ghost:hover {
-      background: rgba(255, 255, 255, 0.14);
-      transform: translateY(-2px);
+    .ds-hero__tools img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
     }
 
     /* Pause / play — WCAG 2.2.2 for autoplaying motion longer than 5s */
     .ds-hero__toggle {
       position: absolute;
       right: max(5vw, 24px);
-      top: calc(min(1440px, 90vw) / 2.4 - 72px);
+      top: calc(min(1600px, 96vw) / 2.4 - 72px);
       z-index: 3;
       width: 40px;
       height: 40px;
@@ -222,6 +173,7 @@
       }
       .ds-hero__toggle { top: 20px; right: 16px; }  /* top-right on phones, clear of the title */
       .ds-hero__content { margin-top: -64px; }
+      .ds-hero__tools img { height: auto; width: min(100%, 360px); }
     }
 
     /* No frame lines / corner dots around the nav on this page */
@@ -282,7 +234,6 @@
   </div>
   <!-- HERO: trailer loop (images/DS.mp4 re-encoded: H.264, letterbox cropped, no audio) -->
   <section class="ds-hero" aria-label="Deep Space trailer">
-    <div class="ds-hero__backdrop" aria-hidden="true"></div>
     <div class="ds-hero__frame">
       <video class="ds-hero__video" muted loop playsinline preload="metadata"
         poster="images/DeepSpaceScene/hero/ds-hero-poster.jpg"
@@ -297,12 +248,9 @@
     <div class="ds-hero__content">
       <h1 class="ds-hero__title text-color-gradient">DEEP SPACE</h1>
       <div class="ds-hero__subtitle">Sci-Fi Short Film Created by Unreal Engine</div>
-      <div class="ds-hero__actions">
-        <a href="#final-cut" class="ds-btn ds-btn--primary">
-          <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg>
-          Watch Final Cut
-        </a>
-        <a href="#production-pipeline" class="ds-btn ds-btn--ghost">Production Pipeline</a>
+      <div class="ds-hero__tools">
+        <img src="LOGO/DS_LOGO.png" alt="Software: Unreal Engine, Maya, 3ds Max, ZBrush, Substance Painter, After Effects, Premiere Pro, Final Cut Pro, Photoshop"
+          title="Unreal Engine · Maya · 3ds Max · ZBrush · Substance Painter · After Effects · Premiere Pro · Final Cut Pro · Photoshop">
       </div>
     </div>
   </section>
@@ -368,12 +316,6 @@
       quest to find her old friend, &quot;Jack,&quot; who went missing after joining the mission five years ago.
       However, Kelly&#x27;s other friend, &quot;Ash,&quot; peculiarly tries to prevent her from embarking on this
       adventure. It seems that the incident from five years ago may not be as simple as it appears...</p>
-  </div>
-  <!-- Software Toolbar added from request -->
-  <div class="echo-software-toolbar"
-    style="max-width: var(--cs-content); margin: 40px auto 0; padding: 0 20px; display: flex; align-items: center; justify-content: center; opacity: 1;">
-    <img src="LOGO/DS_LOGO.png" alt="Deep Space Logo" style="height: 80px; width: auto; object-fit: contain;"
-      title="Deep Space">
   </div>
   <div>
     <div class="page-padding-2">
